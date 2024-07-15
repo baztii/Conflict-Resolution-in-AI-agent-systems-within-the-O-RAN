@@ -1,0 +1,6 @@
+Traffic_Load,Channel_Quality,MCS,CPU_Time,Airtime,Computing_Platform,Bandwidth,Energy_Consumption
+10,5,16,2,1,1,20,100
+20,3,24,4,2,2,40,200
+30,2,32,6,3,1,60,300
+40,4,64,8,4,2,80,400
+50,1,128,10,5,1,100,500
