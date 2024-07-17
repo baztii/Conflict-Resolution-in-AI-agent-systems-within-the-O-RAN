@@ -6,6 +6,10 @@ import matplotlib.pyplot as plt
 import tensorflow
 import math
 
+"""
+The xAPP agent that maximizes the throughput
+"""
+
 class Agent:
     def __init__(self, BS, K, RGB, userDistr, RGBDistr, RGBxBS, userResources, sigma, B, T, L, minP, maxP):
         self.minP = minP # float // max transmition power
