@@ -3,8 +3,10 @@ import pandas as pd
 import torch
 import gym
 import matplotlib.pyplot as plt
+import tensorflow
 import math
 import random
+import time
 
 """
 The xAPP agent that maximizes the throughput
@@ -14,7 +16,7 @@ The xAPP agent that maximizes the throughput
 """
 The PK to determine a RBG is a pair (n,m) i.e. the BS and the mth RBG of this station (0 <= n < N && 0 <= m < M)
 """
-class AGENT:
+class ENVIRONMENT:
     def __init__(self, N : int, K : int, M : int, userDistr : list, g : list, B : list, Pmin : float, Pmax: float, buffSize : int, T : float, sigma : float, lamda : float) -> None:
         self.lamda = lamda # float // Poison process rate per second
         self.N = N # int // Number of base stations
@@ -105,6 +107,13 @@ class AGENT:
             * RGB[n][m] ∀n,m
         """
     
+    def gameloop(self):
+        while True:
+            time.sleep(self.T/1000)
+            self.arrivals()
+            print(self)
+            print([self.R(n,m) for n in range(self.N) for m in range(self.M)])
+
     # TODO: Train the agent via the DQN algorithm (deep Q-learning)
 
     def step(self):
@@ -125,6 +134,12 @@ class Q_LEARNING(AGENT):
         return super().__str__()
 
 """
+
+class DQN:
+    def __init__(self):
+        pass
+
+    
         
 
 def main():
@@ -151,9 +166,9 @@ def main():
 
     lamda = 10
 
-    agent = agent(N,K,M,userDistr,g,B,Pmin,Pmax,buffSize,T,sigma, lamda)
+    environ = ENVIRONMENT(N,K,M,userDistr,g,B,Pmin,Pmax,buffSize,T,sigma, lamda)
 
-    print(agent)
+    environ.gameloop()
 
 
 
