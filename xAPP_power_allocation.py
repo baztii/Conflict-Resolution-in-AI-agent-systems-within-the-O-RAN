@@ -261,7 +261,7 @@ class ENVIRONMENT:
         sol = minimize(self.f,x0=x, constraints=rest)
         print(sol)
 
-    
+
 
 
 
@@ -277,6 +277,20 @@ class ENVIRONMENT:
 
     def DQN(self):
         pass
+
+class ONL(ENVIRONMENT):
+    def __init__(self, *args):
+        super().__init__(*args)
+    
+    def __str__(self):
+        return super().__str__()
+
+    def model(self):
+        pass
+    
+
+
+
 
 """
 class Q_LEARNING(AGENT):
