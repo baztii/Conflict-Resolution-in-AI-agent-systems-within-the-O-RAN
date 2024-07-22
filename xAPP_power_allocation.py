@@ -289,13 +289,13 @@ class ONL:
         self.M = M # fixed
 
         self.beta = {(n,k):userDistr[n][k] for n in range(N) for k in range(K)} # fixed (in this xAPP)
-        print(self.beta)
         self.g = {(n,k):g[n][k] for n in range(N) for k in range(K)} # fixed
         self.B = {(n,m):B[n][m] for n in range(N) for m in range(M)} # fixed
 
         self.Pmin = Pmin # fixed
         self.Pmax = Pmax #fixed
-        self.P = [[0 for m in range(M)] for n in range(N)] ### variable
+        self.P = {(n,m):(Pmax+Pmin)/2 for n in range(N) for m in range(M)}
+        self.alpha = {(n,m,k):1 for n in range(N) for m in range(M) for k in range(K)}
         # alpha
 
         self.buffSize = buffSize*bits # fixed
@@ -326,8 +326,11 @@ class ONL:
         self.model.L = Param(self.model.K, initialize=self.L)
         self.model.sigma = Param(initialize=self.sigma)
 
-        self.model.alpha = Var(self.model.N, self.model.M, self.model.K, domain=Binary)
-        self.model.P = Var(self.model.N, self.model.M, bounds = (self.Pmin, self.Pmax))
+        self.model.alpha = Var(self.model.N, self.model.M, self.model.K, domain=Binary, initialize=self.alpha)
+        self.model.P = Var(self.model.N, self.model.M, bounds = (self.Pmin, self.Pmax), initialize=self.P)
+
+        self.model.R = Var(self.model.N, self.model.M)
+        self.model.R_constr = Constraint(self.model.N, self.model.M, rule=self.R_constr)
 
         self.model.obj = Objective(rule=self.obj_function,sense=maximize)
         self.model.alphaConstr = Constraint(self.model.N, self.model.M, rule=self.alpha_constraint)
@@ -338,16 +341,18 @@ class ONL:
                 for n_prime in model.N if n_prime != n
                 for k_prime in model.K])
             + model.sigma**2))
-    
+
     def C(self, model, n : int, m : int): # (2)
         return model.B[n,m]*log(1+sum([self.eta(model,n,m,k) for k in model.K]))/log(2)
     
-    def R(self, model, n : int, m : int): # (3)
-        return self.C(model,n,m)*model.T if self.C(model,n,m)*model.T < sum([model.alpha[n,m,k]*model.L[k] for k in model.K]) else sum([model.alpha[n,m,k]*model.L[k] for k in model.K])
+    def R_constr(self, model, n : int, m : int): # (3)
+        lhs =  self.C(model,n,m)*value(model.T)
+        rhs = sum([model.alpha[n,m,k]*model.L[k] for k in model.K])
+        return model.R[n,m] == min(value(lhs),value(rhs))
 
     def obj_function(self, model):
-        return sum([self.R(model, n, m) for n in model.N for m in model.M])
-    
+        return sum([model.R[n, m] for n in model.N for m in model.M])
+
     def alpha_constraint(self, model, n, m):
         return sum(model.alpha[n, m, k] for k in model.K) == 1
 
@@ -355,15 +360,17 @@ class ONL:
         return f"lambda={self.lamda}\nN={self.N}\nK={self.K}\nM={self.M}\nuserDistr={self.beta}\ng={self.g}\nb={self.B}\nPmin={self.Pmin}\nPmax={self.Pmax}\nP={self.P}\nbuffSize={self.buffSize}\nT={self.T}\nL={self.L}\nsigma={self.sigma}\nobj_function={self.obj_function()}\n"
 
     def solve(self):
-        solver=SolverFactory("ipopt")
+        #self.model.create_instance()
+        solver=SolverFactory("couenne")
         solver.solve(self.model)
-    
+        #self.model.pprint()
+"""
     def get_results_alpha(self):
         return {(n, m, k): self.model.alpha[n, m, k].value for n in self.model.N for m in self.model.M for k in self.model.K}
     
     def get_results_P(self):
         return {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
-    
+"""
 
 
 
@@ -413,11 +420,15 @@ def main():
 
     onl = ONL(N,K,M,userDistr,g,B,Pmin,Pmax,buffSize,T,sigma, lamda, bits)
     onl.solve()
-
+    """
     results = onl.get_results_alpha()
     for (n,m,k) in results:
         print(f"alpha[{n},{m},{k}] = {results[(n, m, k)]}")
 
+    results = onl.get_results_P()
+    for (n,m) in results:
+        print(f"P[{n},{m}] = {results[(n, m)]}")
+    """
     return
 
     environ = ENVIRONMENT(N,K,M,userDistr,g,B,Pmin,Pmax,buffSize,T,sigma, lamda, bits)
