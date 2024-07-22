@@ -8,6 +8,9 @@ import math
 import random
 import time
 from scipy.optimize import minimize
+from pyomo.environ import *
+from pyomo.common.dependencies import numpy, numpy_available, scipy, scipy_available
+
 
 """
 The xAPP agent that maximizes the throughput
@@ -278,17 +281,89 @@ class ENVIRONMENT:
     def DQN(self):
         pass
 
-class ONL(ENVIRONMENT):
-    def __init__(self, *args):
-        super().__init__(*args)
-    
-    def __str__(self):
-        return super().__str__()
+class ONL:
+    def __init__(self, N : int, K : int, M : int, userDistr : list, g : list, B : list, Pmin : float, Pmax: float, buffSize : int, T : float, sigma : float, lamda : float, bits : int) -> None:        
+        self.lamda = lamda # fixed
+        self.N = N # fixed
+        self.K = K # fixed
+        self.M = M # fixed
 
-    def model(self):
-        pass
-    
+        self.beta = {(n,k):userDistr[n][k] for n in range(N) for k in range(K)} # fixed (in this xAPP)
+        print(self.beta)
+        self.g = {(n,k):g[n][k] for n in range(N) for k in range(K)} # fixed
+        self.B = {(n,m):B[n][m] for n in range(N) for m in range(M)} # fixed
 
+        self.Pmin = Pmin # fixed
+        self.Pmax = Pmax #fixed
+        self.P = [[0 for m in range(M)] for n in range(N)] ### variable
+        # alpha
+
+        self.buffSize = buffSize*bits # fixed
+        self.T = T # fixed
+
+        L = [6000,3000,1,5,3,4,4000]
+        
+        self.L = {k:L[k] for k in range(K)} # fixed
+
+        self.sigma = sigma # fixed
+
+        self.bits = bits # fixed
+
+        self.model = ConcreteModel()
+        self._init_model()
+        
+    def _init_model(self):
+        self.model.N = RangeSet(0,self.N-1)
+        self.model.M = RangeSet(0,self.M-1)
+        self.model.K = RangeSet(0,self.K-1)
+
+        self.model.beta = Param(self.model.N, self.model.K, initialize=self.beta)
+
+        #self.model.userDistr = Param(self.model.N, initialize=self.userDistr) ##1 BS
+        self.model.g = Param(self.model.N, self.model.K, initialize=self.g)
+        self.model.B = Param(self.model.N, self.model.M, initialize=self.B)
+        self.model.T = Param(initialize=self.T)
+        self.model.L = Param(self.model.K, initialize=self.L)
+        self.model.sigma = Param(initialize=self.sigma)
+
+        self.model.alpha = Var(self.model.N, self.model.M, self.model.K, domain=Binary)
+        self.model.P = Var(self.model.N, self.model.M, bounds = (self.Pmin, self.Pmax))
+
+        self.model.obj = Objective(rule=self.obj_function,sense=maximize)
+        self.model.alphaConstr = Constraint(self.model.N, self.model.M, rule=self.alpha_constraint)
+
+    def eta(self, model, n : int, m : int, k : int,): # (1)
+        return ((model.alpha[n, m, k]*model.g[n,k]*model.P[n,m])
+            /(sum([model.alpha[n_prime, m, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m] # is there a typo on the paper?
+                for n_prime in model.N if n_prime != n
+                for k_prime in model.K])
+            + model.sigma**2))
+    
+    def C(self, model, n : int, m : int): # (2)
+        return model.B[n,m]*log(1+sum([self.eta(model,n,m,k) for k in model.K]))/log(2)
+    
+    def R(self, model, n : int, m : int): # (3)
+        return self.C(model,n,m)*model.T if self.C(model,n,m)*model.T < sum([model.alpha[n,m,k]*model.L[k] for k in model.K]) else sum([model.alpha[n,m,k]*model.L[k] for k in model.K])
+
+    def obj_function(self, model):
+        return sum([self.R(model, n, m) for n in model.N for m in model.M])
+    
+    def alpha_constraint(self, model, n, m):
+        return sum(model.alpha[n, m, k] for k in model.K) == 1
+
+    def __str__(self) -> str:
+        return f"lambda={self.lamda}\nN={self.N}\nK={self.K}\nM={self.M}\nuserDistr={self.beta}\ng={self.g}\nb={self.B}\nPmin={self.Pmin}\nPmax={self.Pmax}\nP={self.P}\nbuffSize={self.buffSize}\nT={self.T}\nL={self.L}\nsigma={self.sigma}\nobj_function={self.obj_function()}\n"
+
+    def solve(self):
+        solver=SolverFactory("ipopt")
+        solver.solve(self.model)
+    
+    def get_results_alpha(self):
+        return {(n, m, k): self.model.alpha[n, m, k].value for n in self.model.N for m in self.model.M for k in self.model.K}
+    
+    def get_results_P(self):
+        return {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
+    
 
 
 
@@ -320,8 +395,7 @@ def main():
     K = 7
     M = 5
 
-    userDistr = [[] for i in range(N)]
-    userDistr[0] = [k for k in range(K)]
+    userDistr = [[1 if n == 0 else 0 for k in range(K)] for n in range(N)]
 
     B = [[20*1e6 for j in range(M)] for i in range(N)] # Hz
     T = 0.1 # s
@@ -336,6 +410,15 @@ def main():
 
     lamda = 10 #blocks each second
     bits = 1500*8 #bits
+
+    onl = ONL(N,K,M,userDistr,g,B,Pmin,Pmax,buffSize,T,sigma, lamda, bits)
+    onl.solve()
+
+    results = onl.get_results_alpha()
+    for (n,m,k) in results:
+        print(f"alpha[{n},{m},{k}] = {results[(n, m, k)]}")
+
+    return
 
     environ = ENVIRONMENT(N,K,M,userDistr,g,B,Pmin,Pmax,buffSize,T,sigma, lamda, bits)
 
