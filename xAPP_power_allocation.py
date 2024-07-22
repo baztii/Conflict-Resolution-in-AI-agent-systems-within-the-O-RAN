@@ -361,16 +361,16 @@ class ONL:
 
     def solve(self):
         #self.model.create_instance()
-        solver=SolverFactory("couenne")
+        solver=SolverFactory("scip")
         solver.solve(self.model)
         #self.model.pprint()
-"""
+    
     def get_results_alpha(self):
         return {(n, m, k): self.model.alpha[n, m, k].value for n in self.model.N for m in self.model.M for k in self.model.K}
     
     def get_results_P(self):
         return {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
-"""
+    
 
 
 
@@ -420,7 +420,7 @@ def main():
 
     onl = ONL(N,K,M,userDistr,g,B,Pmin,Pmax,buffSize,T,sigma, lamda, bits)
     onl.solve()
-    """
+
     results = onl.get_results_alpha()
     for (n,m,k) in results:
         print(f"alpha[{n},{m},{k}] = {results[(n, m, k)]}")
@@ -428,7 +428,7 @@ def main():
     results = onl.get_results_P()
     for (n,m) in results:
         print(f"P[{n},{m}] = {results[(n, m)]}")
-    """
+
     return
 
     environ = ENVIRONMENT(N,K,M,userDistr,g,B,Pmin,Pmax,buffSize,T,sigma, lamda, bits)
