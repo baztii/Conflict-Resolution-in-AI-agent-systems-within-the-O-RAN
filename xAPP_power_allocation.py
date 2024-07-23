@@ -10,6 +10,7 @@ import time
 from scipy.optimize import minimize
 from pyomo.environ import *
 from pyomo.common.dependencies import numpy, numpy_available, scipy, scipy_available
+import json
 
 
 """
@@ -320,6 +321,7 @@ class ONL:
         self.model.beta = Param(self.model.N, self.model.K, initialize=self.beta)
 
         #self.model.userDistr = Param(self.model.N, initialize=self.userDistr) ##1 BS
+        
         self.model.g = Param(self.model.N, self.model.K, initialize=self.g)
         self.model.B = Param(self.model.N, self.model.M, initialize=self.B)
         self.model.T = Param(initialize=self.T)
@@ -328,9 +330,6 @@ class ONL:
 
         self.model.alpha = Var(self.model.N, self.model.M, self.model.K, domain=Binary, initialize=self.alpha)
         self.model.P = Var(self.model.N, self.model.M, bounds = (self.Pmin, self.Pmax), initialize=self.P)
-
-        self.model.R = Var(self.model.N, self.model.M)
-        self.model.R_constr = Constraint(self.model.N, self.model.M, rule=self.R_constr)
 
         self.model.obj = Objective(rule=self.obj_function,sense=maximize)
         self.model.alphaConstr = Constraint(self.model.N, self.model.M, rule=self.alpha_constraint)
@@ -345,13 +344,13 @@ class ONL:
     def C(self, model, n : int, m : int): # (2)
         return model.B[n,m]*log(1+sum([self.eta(model,n,m,k) for k in model.K]))/log(2)
     
-    def R_constr(self, model, n : int, m : int): # (3)
-        lhs =  self.C(model,n,m)*value(model.T)
-        rhs = sum([model.alpha[n,m,k]*model.L[k] for k in model.K])
-        return model.R[n,m] == min(value(lhs),value(rhs))
+    def R(self, model, n : int, m : int): # (3)
+        lhs = value(self.C(model,n,m)*model.T)
+        rhs = value(sum([model.alpha[n,m,k]*model.L[k] for k in model.K]))
+        return min(lhs, rhs)
 
     def obj_function(self, model):
-        return sum([model.R[n, m] for n in model.N for m in model.M])
+        return sum([self.R(model, n, m) for n in model.N for m in model.M])
 
     def alpha_constraint(self, model, n, m):
         return sum(model.alpha[n, m, k] for k in model.K) == 1
@@ -363,15 +362,16 @@ class ONL:
         #self.model.create_instance()
         solver=SolverFactory("scip")
         solver.solve(self.model)
-        #self.model.pprint()
-    
+        self.model.pprint()
+
+"""  
     def get_results_alpha(self):
         return {(n, m, k): self.model.alpha[n, m, k].value for n in self.model.N for m in self.model.M for k in self.model.K}
     
     def get_results_P(self):
         return {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
     
-
+"""
 
 
 """
@@ -396,30 +396,35 @@ def main():
     All the parameters of the environment
     """
 
-    dBm_to_watts = lambda dBm : 10**(dBm/10)/1000
+    #dBm_to_watts = lambda dBm : 10**(dBm/10)/1000
 
-    N = 1
-    K = 7
-    M = 5
+    with open('data.json', 'r') as data_file:
+        data = json.load(data_file)
 
-    userDistr = [[1 if n == 0 else 0 for k in range(K)] for n in range(N)]
+    N = data['N']
+    K = data['K']
+    M = data['M']
 
-    B = [[20*1e6 for j in range(M)] for i in range(N)] # Hz
-    T = 0.1 # s
-    Pmin = dBm_to_watts(1) # watts
-    Pmax = dBm_to_watts(38) # watts
+    userDistr = data['userDistr']
 
-    sigma = dBm_to_watts(-114) # watts
+    B = data['B'] # Hz
+    T = data['T'] # s
+    Pmin = data['Pmin'] # watts
+    Pmax = data['Pmax'] # watts
 
-    buffSize = 50
+    sigma = data['sigma'] # watts
 
-    g = dBm_to_watts(-45 + np.random.rand(N,K)) # watts
+    buffSize = data['buffSize']
 
-    lamda = 10 #blocks each second
-    bits = 1500*8 #bits
+    g = data['g']
+
+    lamda = data['lamda'] #blocks each second
+    bits = data['bits'] #bits
 
     onl = ONL(N,K,M,userDistr,g,B,Pmin,Pmax,buffSize,T,sigma, lamda, bits)
     onl.solve()
+
+    return
 
     results = onl.get_results_alpha()
     for (n,m,k) in results:
