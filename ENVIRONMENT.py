@@ -42,7 +42,7 @@ class ENVIRONMENT:
     
     def R(self, n : int, m : int) -> float:
         lhs = self.C(n,m)*self.T
-        rhs = sum([self.alpha[n,m,k]*self.L[k] for k in range(self.K)])
+        rhs = sum([self.alpha[n,m,k]*self.beta[n,k]*self.L[k] for k in range(self.K)])
         return min(lhs, rhs)
 
     def transmissionRate(self) -> float:

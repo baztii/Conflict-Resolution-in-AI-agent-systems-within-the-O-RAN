@@ -50,20 +50,13 @@ class ONL:
         """ Constraints """
         self.model.alphaConstr = Constraint(self.model.N, self.model.M, rule=self.alpha_constraint)
 
-    def eta(self, model, n : int, m : int, k : int):
-        return ((model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m])
-            /(sum([model.alpha[n_prime, m, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m] # is there a typo on the paper?
-                for n_prime in model.N if n_prime != n
-                for k_prime in model.K])
-            + model.sigma**2))
+    def C(self,model, n, m):
+        return sum(10 **(k-m)*model.alpha[n,m,k]*model.beta[n,k] for k in model.K)*model.P[n,m]
 
-    def C(self, model, n : int, m : int):
-        return model.B[n,m]*log(1+sum([self.eta(model,n,m,k) for k in model.K]))/log(2)
-    
     def R(self, model, n : int, m : int):
-        lhs = value(self.C(model,n,m))
-        rhs = value(sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T)
-        return min(lhs, rhs)
+        return self.C(model,n,m)
+        rhs = 1
+        return max(lhs, rhs)
 
     def obj_function(self, model):
         return sum([self.R(model, n, m) for n in model.N for m in model.M])
@@ -75,23 +68,14 @@ class ONL:
         self.model.create_instance()
         solver=SolverFactory("scip")
 
-        print(self.obj_function(self.model))
-        print(self.obj_function(self))
-
-
         solver.solve(self.model)
 
         self.alpha = {(n, m, k): self.model.alpha[n, m, k].value for n in self.model.N for m in self.model.M for k in self.model.K}
         self.P = {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
 
         print(self.obj_function(self))
-        print()
-
-        print([[self.R(self,n,m) for m in self.M] for n in self.N])
-        print()
-        print([[value(self.C(self,n,m)) for m in self.M] for n in self.N])
-        print()
-        print([self.L[k] for k in self.K])
+        print(self.alpha)
+        print(self.P)
 
         cond = True
 
@@ -105,7 +89,9 @@ class ONL:
                 cond = cond and value(self.alpha_constraint(self,n,m))
         
         print(cond)        
+        print(value(self.obj_function(self.model)))
         print(self.obj_function(self.model))
+
         print(self.obj_function(self))
 
 
