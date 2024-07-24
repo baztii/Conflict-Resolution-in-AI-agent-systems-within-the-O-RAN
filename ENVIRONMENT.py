@@ -23,7 +23,7 @@ class ENVIRONMENT:
         
         """ Variables """
         self.P     = {(n,m):(self.Pmax+self.Pmin)/2 for n in range(self.N) for m in range(self.M)}    # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
-        self.alpha = {(n,m,k):1 for n in range(self.N) for m in range(self.M) for k in range(self.K)} # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
+        self.alpha = {(n,m,k):1 if k == 5 else 0 for n in range(self.N) for m in range(self.M) for k in range(self.K)} # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
 
     def gamma_maj(self, n : int, m : int) -> list[float]:
         return [math.log2(1+
@@ -31,7 +31,7 @@ class ENVIRONMENT:
                          sum([self.alpha[n,m,k]*self.g[n,k] for k in range(self.K)])) for n_prime in range(self.N) if n_prime != n]
 
     def eta(self, n : int, m : int, k : int) -> float:
-        return ((self.alpha[n, m, k]*self.g[n,k]*self.P[n,m])
+        return ((self.alpha[n, m, k]*self.beta[n,k]*self.g[n,k]*self.P[n,m])
             /(sum([self.alpha[n_prime, m, k_prime]*self.beta[n_prime,k_prime]*self.g[n_prime,k_prime]*self.P[n_prime,m] # is there a typo on the paper?
                 for n_prime in range(self.N) if n_prime != n
                 for k_prime in range(self.K)])
@@ -41,9 +41,11 @@ class ENVIRONMENT:
         return self.B[n,m]*math.log2(1+sum([self.eta(n,m,k) for k in range(self.K)]))
     
     def R(self, n : int, m : int) -> float:
-        lhs = self.C(n,m)*self.T
-        rhs = sum([self.alpha[n,m,k]*self.beta[n,k]*self.L[k] for k in range(self.K)])
-        return min(lhs, rhs)
+        lhs = self.C(n,m)
+        rhs = sum([self.alpha[n,m,k]*self.beta[n,k]*self.L[k] for k in range(self.K)])/self.T
+        #return min(lhs, rhs)
+        p = 10
+        return lhs + rhs - (lhs**p + rhs**p)**(1/p) # min(a,b) as a continuous function
 
     def transmissionRate(self) -> float:
         return sum([self.R(n, m) for n in range(self.N) for m in range(self.M)])
@@ -82,11 +84,15 @@ class ENVIRONMENT:
             self.assign()
     
 def main():
-    with open('tests/data.json', 'r') as data_file: # load the data
+    with open('tests/test3/data.json', 'r') as data_file: # load the data
         data = json.load(data_file)
     
     env = ENVIRONMENT(data)
-    env.gameloop()
+    for n in range(env.N):
+        for m in range(env.M):
+            print(env.C(n,m))
+            print(env.R(n,m))
+    #env.gameloop()
 
 if __name__ == '__main__':
     import json

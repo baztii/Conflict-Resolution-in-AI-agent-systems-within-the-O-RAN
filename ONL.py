@@ -1,4 +1,5 @@
 from pyomo.environ import *
+from time import *
 
 class ONL:
     def __init__(self, data : dict):
@@ -61,25 +62,42 @@ class ONL:
         return model.B[n,m]*log(1+sum([self.eta(model,n,m,k) for k in model.K]))/log(2)
     
     def R(self, model, n : int, m : int):
-        lhs = value(self.C(model,n,m))
-        rhs = value(sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T)
-        return min(lhs, rhs)
+        lhs = self.C(model,n,m)  + 1
+        rhs = sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T  + 1
+        p = 20
+        return lhs + rhs - (lhs**p + rhs**p)**(1/p) # min(a,b) as a continuous function
 
     def obj_function(self, model):
         return sum([self.R(model, n, m) for n in model.N for m in model.M])
+    
+    def obj_function2(self, model):
+        return sum([(model.B[n,m]*log(1+sum([(((model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m])
+            /(sum([model.alpha[n_prime, m, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m] # is there a typo on the paper?
+                for n_prime in model.N if n_prime != n
+                for k_prime in model.K])
+            + model.sigma**2))) for k in model.K]))/log(2)) for n in model.N for m in model.M])
 
     def alpha_constraint(self, model, n : int, m : int):
         return sum(model.alpha[n, m, k] for k in model.K) == 1
 
     def solve(self):
         self.model.create_instance()
-        solver=SolverFactory("scip")
+        solver=SolverFactory("ipopt") #ipopt scip
+        t = time()
+        print("start")
+        result = solver.solve(self.model, tee=True)
+        print("finish")
+        print("time: ", time()-t, "s")
+        print()
+        #print(result)
+        #self.model.pprint()
+    
 
-        print(self.obj_function(self.model))
-        print(self.obj_function(self))
-
-
-        solver.solve(self.model)
+        for i in self.get_results_alpha():
+            print(i, self.model.alpha[i].value)
+        
+        for i in self.get_results_P():
+            print(i, self.model.P[i].value)
 
         self.alpha = {(n, m, k): self.model.alpha[n, m, k].value for n in self.model.N for m in self.model.M for k in self.model.K}
         self.P = {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
@@ -105,27 +123,39 @@ class ONL:
                 cond = cond and value(self.alpha_constraint(self,n,m))
         
         print(cond)        
-        print(self.obj_function(self.model))
+        print(value(self.obj_function(self.model)))
         print(self.obj_function(self))
 
-
-        
-
-    """  
     def get_results_alpha(self):
         return {(n, m, k): self.model.alpha[n, m, k].value for n in self.model.N for m in self.model.M for k in self.model.K}
         
     def get_results_P(self):
         return {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
-    """
 
 def main():
     dBm_to_watts = lambda dBm : 10**(dBm/10)/1000 # watts = dBm_to_watts(dBm) conversor
 
-    with open('tests/test1/data.json', 'r') as data_file: # load the data
+    n = 2 #input()
+    file = f"tests/test{n}/data.json"
+
+    with open(file, 'r') as data_file: # load the data
         data = json.load(data_file)
     
+    assert len(data["beta"]) == data["N"]
+    assert len(data["beta"][0]) == data["K"]
+
+    assert len(data["B"]) == data["N"]
+    assert len(data["B"][0]) == data["M"]
+    
+    assert len(data["g"]) == data["N"]
+    assert len(data["g"][0]) == data["K"]
+
+    assert len(data["L"]) == data["K"]
+
+    print("No asserts")
+
     onl = ONL(data) # create the onl object
+
     onl.solve() # solve the problem
 
 if __name__ == '__main__':
