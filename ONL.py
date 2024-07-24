@@ -46,7 +46,7 @@ class ONL:
         self.model.P     = Var(self.model.N, self.model.M, bounds = (self.Pmin, self.Pmax), initialize=self.P)
 
         """ Objective function """
-        self.model.obj = Objective(rule=self.obj_function,sense=maximize)
+        self.model.obj = Objective(rule=self.transmissionRate,sense=maximize)
 
         """ Constraints """
         self.model.alphaConstr = Constraint(self.model.N, self.model.M, rule=self.alpha_constraint)
@@ -67,64 +67,44 @@ class ONL:
         p = 20
         return lhs + rhs - (lhs**p + rhs**p)**(1/p) # min(a,b) as a continuous function
 
-    def obj_function(self, model):
+    def transmissionRate(self, model):
         return sum([self.R(model, n, m) for n in model.N for m in model.M])
     
-    def obj_function2(self, model):
-        return sum([(model.B[n,m]*log(1+sum([(((model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m])
-            /(sum([model.alpha[n_prime, m, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m] # is there a typo on the paper?
-                for n_prime in model.N if n_prime != n
-                for k_prime in model.K])
-            + model.sigma**2))) for k in model.K]))/log(2)) for n in model.N for m in model.M])
-
     def alpha_constraint(self, model, n : int, m : int):
         return sum(model.alpha[n, m, k] for k in model.K) == 1
 
     def solve(self):
         self.model.create_instance()
         solver=SolverFactory("ipopt") #ipopt scip
+
+        #print("start")
         t = time()
-        print("start")
-        result = solver.solve(self.model, tee=True)
-        print("finish")
-        print("time: ", time()-t, "s")
-        print()
+        result = solver.solve(self.model, tee=False)
+        t = time() - t
+        #print("finish")
+        print(f"Time: {t}s\n")
         #print(result)
         #self.model.pprint()
     
-
-        for i in self.get_results_alpha():
-            print(i, self.model.alpha[i].value)
-        
-        for i in self.get_results_P():
-            print(i, self.model.P[i].value)
-
-        self.alpha = {(n, m, k): self.model.alpha[n, m, k].value for n in self.model.N for m in self.model.M for k in self.model.K}
+        self.alpha = {(n, m, k): round(self.model.alpha[n, m, k].value) for n in self.model.N for m in self.model.M for k in self.model.K}
         self.P = {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
 
-        print(self.obj_function(self))
-        print()
-
-        print([[self.R(self,n,m) for m in self.M] for n in self.N])
-        print()
-        print([[value(self.C(self,n,m)) for m in self.M] for n in self.N])
-        print()
-        print([self.L[k] for k in self.K])
-
-        cond = True
+        print(f"Total throughput: {self.transmissionRate(self)}\n")
+        
+        print("Solution:")
 
         for n in self.N:
             for m in self.M:
                 for k in self.K:
-                    self.alpha[n,m,k] = 1 if k == 0 else 0
-        
+                    print(f"alpha({n:>2},{m:>2},{k:>3}) = {self.alpha[n,m,k]}")
+            print()    
+
+        print("\n")
+
         for n in self.N:
             for m in self.M:
-                cond = cond and value(self.alpha_constraint(self,n,m))
-        
-        print(cond)        
-        print(value(self.obj_function(self.model)))
-        print(self.obj_function(self))
+                print(f"P({n:>2},{m:>2}) = {self.P[n,m]}")
+            print()
 
     def get_results_alpha(self):
         return {(n, m, k): self.model.alpha[n, m, k].value for n in self.model.N for m in self.model.M for k in self.model.K}
@@ -132,15 +112,8 @@ class ONL:
     def get_results_P(self):
         return {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
 
-def main():
-    dBm_to_watts = lambda dBm : 10**(dBm/10)/1000 # watts = dBm_to_watts(dBm) conversor
 
-    n = 2 #input()
-    file = f"tests/test{n}/data.json"
-
-    with open(file, 'r') as data_file: # load the data
-        data = json.load(data_file)
-    
+def asserts(data : dict) -> None:
     assert len(data["beta"]) == data["N"]
     assert len(data["beta"][0]) == data["K"]
 
@@ -152,7 +125,17 @@ def main():
 
     assert len(data["L"]) == data["K"]
 
-    print("No asserts")
+def main():
+    dBm_to_watts = lambda dBm : 10**(dBm/10)/1000 # watts = dBm_to_watts(dBm) conversor
+
+    n = input()
+    file = f"tests/test{n}/data.json"
+
+    with open(file, 'r') as data_file: # load the data
+        data = json.load(data_file)
+    
+    asserts(data)
+    #print("No asserts")
 
     onl = ONL(data) # create the onl object
 

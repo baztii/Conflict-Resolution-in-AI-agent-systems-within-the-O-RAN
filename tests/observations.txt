@@ -1,0 +1,6 @@
+Notes:
+    -> The test1 shows that there is something wrong with the formulas because the total throughput does not depend of the power given to the RBG's
+    -> On the other hand, using the ONL is inefficient when dealing many data and it's not factible to use it in the near-RT RIC
+
+Future Work:
+    * Solve the problem using DQN (Deep Q-Network), i.e. a RL algorithm
