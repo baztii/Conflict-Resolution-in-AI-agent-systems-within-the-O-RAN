@@ -1,26 +1,11 @@
 from pyomo.environ import *
-from time import *
+from time import time
+from ENVIRONMENT import ENVIRONMENT as ENV
 
-class ONL:
+class ONL(ENV):
     def __init__(self, data : dict):
-        """ Parameters """
-        self.N     = range(data['N'])
-        self.K     = range(data['K'])
-        self.M     = range(data['M'])
-
-        self.Pmin  = data['Pmin']
-        self.Pmax  = data['Pmax']
-        self.sigma = data['sigma']
-        self.T     = data['T']
-
-        self.beta  = {(n,k):data['beta'][n][k] for n in self.N for k in self.K}
-        self.g     = {(n,k):data['g'][n][k] for n in self.N for k in self.K}
-        self.B     = {(n,m):data['B'][n][m] for n in self.N for m in self.M}
-        self.L     = {k:data['L'][k] for k in self.K}
-        
-        """ Variables """
-        self.P     = {(n,m):(self.Pmax+self.Pmin)/2 for n in self.N for m in self.M}
-        self.alpha = {(n,m,k):0 for n in self.N for m in self.M for k in self.K}
+        """ Initialize parameters and variables"""
+        super().__init__(data)
 
         """ Solver model """
         self.model = ConcreteModel()
@@ -51,25 +36,6 @@ class ONL:
         """ Constraints """
         self.model.alphaConstr = Constraint(self.model.N, self.model.M, rule=self.alpha_constraint)
 
-    def eta(self, model, n : int, m : int, k : int):
-        return ((model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m])
-            /(sum([model.alpha[n_prime, m, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m] # is there a typo on the paper?
-                for n_prime in model.N if n_prime != n
-                for k_prime in model.K])
-            + model.sigma**2))
-
-    def C(self, model, n : int, m : int):
-        return model.B[n,m]*log(1+sum([self.eta(model,n,m,k) for k in model.K]))/log(2)
-    
-    def R(self, model, n : int, m : int):
-        lhs = self.C(model,n,m)  + 1
-        rhs = sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T  + 1
-        p = 20
-        return lhs + rhs - (lhs**p + rhs**p)**(1/p) # min(a,b) as a continuous function
-
-    def transmissionRate(self, model):
-        return sum([self.R(model, n, m) for n in model.N for m in model.M])
-    
     def alpha_constraint(self, model, n : int, m : int):
         return sum(model.alpha[n, m, k] for k in model.K) == 1
 
@@ -112,7 +78,6 @@ class ONL:
     def get_results_P(self):
         return {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
 
-
 def asserts(data : dict) -> None:
     assert len(data["beta"]) == data["N"]
     assert len(data["beta"][0]) == data["K"]
@@ -139,7 +104,9 @@ def main():
 
     onl = ONL(data) # create the onl object
 
-    onl.solve() # solve the problem
+    #onl.solve() # solve the problem
+
+    onl.gameloop(policy=onl.solve)
 
 if __name__ == '__main__':
     import json

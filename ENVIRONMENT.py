@@ -1,12 +1,12 @@
 import numpy as np
-import math
+from pyomo.environ import log
 
 class ENVIRONMENT:
     def __init__(self, data):
         """ Parameters """
-        self.N        = data['N']        # int // Number of base stations
-        self.K        = data['K']        # int // Number of users int the system
-        self.M        = data['M']        # int // Total number of RGB x BS
+        self.N        = range(data['N']) # int // Number of base stations
+        self.K        = range(data['K']) # int // Number of users int the system
+        self.M        = range(data['M']) # int // Total number of RGB x BS
         self.bits     = data['bits']     # int // We assume the pending data is queued each 'bits'
         self.buffSize = data['buffSize'] # int // The size of the transmission buffer where the pending traffic is queued
 
@@ -16,57 +16,60 @@ class ENVIRONMENT:
         self.sigma = data['sigma'] # float // noise
         self.lamda = data['lamda'] # float // Poison process rate per second
 
-        self.beta  = {(n,k):data['beta'][n][k] for n in range(self.N) for k in range(self.K)} # list // User distribution in BS (i.e self.beta[n,k] = 1 iff user[k] is on BS n, 0 otherwise)
-        self.g     = {(n,k):data['g'][n][k] for n in range(self.N) for k in range(self.K)}    # list // Channel coefficient between base stations and users (i.e g[n,k] is between BS n and user k)
-        self.B     = {(n,m):data['B'][n][m] for n in range(self.N) for m in range(self.M)}    # list // Brandwith of all RBG (i.e. BW[n,m] determines the brandwith of the RBG m at the BS n)
-        self.L     = {k:data['L'][k] for k in range(self.K)}                                  # list // Amount of remained data of all users in the transimssion buffer (i.e. L[k] is the remaining data of user k)
+        self.g     = {(n,k):data['g'][n][k] for n in self.N for k in self.K}    # list // Channel coefficient between base stations and users (i.e g[n,k] is between BS n and user k)
+        self.B     = {(n,m):data['B'][n][m] for n in self.N for m in self.M}    # list // Brandwith of all RBG (i.e. BW[n,m] determines the brandwith of the RBG m at the BS n)
+        self.L     = {k:data['L'][k] for k in self.K}                           # list // Amount of remained data of all users in the transimssion buffer (i.e. L[k] is the remaining data of user k)
         
         """ Variables """
-        self.P     = {(n,m):(self.Pmax+self.Pmin)/2 for n in range(self.N) for m in range(self.M)}    # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
-        self.alpha = {(n,m,k):1 if k == 5 else 0 for n in range(self.N) for m in range(self.M) for k in range(self.K)} # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
+        self.P     = {(n,m):(self.Pmax+self.Pmin)/2 for n in self.N for m in self.M} # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
+        self.alpha = {(n,m,k):0 for n in self.N for m in self.M for k in self.K}     # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
+        self.beta  = {(n,k):data['beta'][n][k] for n in self.N for k in self.K}      # list // User distribution in BS (i.e self.beta[n,k] = 1 iff user[k] is on BS n, 0 otherwise)
 
     def gamma_maj(self, n : int, m : int) -> list[float]:
-        return [math.log2(1+
-                         sum([self.alpha[n_prime, m, k]*self.g[n_prime,k] for k in range(self.K)])/
-                         sum([self.alpha[n,m,k]*self.g[n,k] for k in range(self.K)])) for n_prime in range(self.N) if n_prime != n]
+        return [log(1+
+                         sum([self.alpha[n_prime, m, k]*self.g[n_prime,k] for k in self.K])/
+                         sum([self.alpha[n,m,k]*self.g[n,k] for k in self.K]))/log(2) for n_prime in self.N if n_prime != n]
 
-    def eta(self, n : int, m : int, k : int) -> float:
-        return ((self.alpha[n, m, k]*self.beta[n,k]*self.g[n,k]*self.P[n,m])
-            /(sum([self.alpha[n_prime, m, k_prime]*self.beta[n_prime,k_prime]*self.g[n_prime,k_prime]*self.P[n_prime,m] # is there a typo on the paper?
-                for n_prime in range(self.N) if n_prime != n
-                for k_prime in range(self.K)])
-            + self.sigma**2))
+    def eta(self, n : int, m : int, k : int, model=None):
+        if model is None: model = self
+        return ((model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m])
+            /(sum([model.alpha[n_prime, m, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m] # is there a typo on the paper?
+                for n_prime in model.N if n_prime != n
+                for k_prime in model.K])
+            + model.sigma**2))
 
-    def C(self, n : int, m : int) -> float:
-        return self.B[n,m]*math.log2(1+sum([self.eta(n,m,k) for k in range(self.K)]))
+    def C(self, n : int, m : int, model=None):
+        if model is None: model = self
+        return model.B[n,m]*log(1+sum([self.eta(n,m,k,model) for k in model.K]))/log(2)
     
-    def R(self, n : int, m : int) -> float:
-        lhs = self.C(n,m)
-        rhs = sum([self.alpha[n,m,k]*self.beta[n,k]*self.L[k] for k in range(self.K)])/self.T
-        #return min(lhs, rhs)
-        p = 10
+    def R(self, n : int, m : int, model=None):
+        if model is None: model = self
+        lhs = self.C(n,m,model)  + 1
+        rhs = sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T  + 1
+        p = 20
         return lhs + rhs - (lhs**p + rhs**p)**(1/p) # min(a,b) as a continuous function
 
-    def transmissionRate(self) -> float:
-        return sum([self.R(n, m) for n in range(self.N) for m in range(self.M)])
-
-    def updateBuffer(self) -> list[bool]:
-        probability = np.random.poisson(self.lamda*self.T, self.K) #math.exp(-self.lamda*self.T/1000) * (self.lamda*self.T/1000)
-        ret = np.random.random(self.K) > probability
-        for k in range(self.K): # "insert" new data to be transmitted
+    def transmissionRate(self, model=None):
+        if model is None: model = self
+        return sum([self.R(n, m, model) for n in model.N for m in model.M])
+    
+    def updateBuffer(self):
+        probability = np.random.poisson(self.lamda*self.T, self.K[-1]+1) #math.exp(-self.lamda*self.T/1000) * (self.lamda*self.T/1000)
+        ret = np.random.random(self.K[-1]+1) > probability
+        for k in self.K: # "insert" new data to be transmitted
             if ret[k]:
                 self.L[k] = min(self.buffSize, self.L[k]+self.bits)
 
-            for n in range(self.N): # "send" the data of the buffer
-                for m in range(self.M):
+            for n in self.N: # "send" the data of the buffer
+                for m in self.M:
                     self.L[k] = max(0, self.alpha[n,m,k]*(self.L[k] - int(self.R(n,m))))
 
         return ret.tolist()
 
     def valid(self) -> bool:
-        for n in range(self.N):
-            for m in range(self.M):
-                if self.Pmin <= self.P[n,m] <= self.Pmax and sum([self.alpha[n,m,k] for k in range(self.K)]) == 1:
+        for n in self.N:
+            for m in self.M:
+                if self.Pmin <= self.P[n,m] <= self.Pmax and sum([self.alpha[n,m,k] for k in self.K]) == 1:
                     continue
                 return False
 
@@ -78,21 +81,22 @@ class ENVIRONMENT:
         """
         policy()
 
-    def gameloop(self, iter=1000):
-        for _ in range(iter):
+    def gameloop(self, iter=10, policy=lambda:None):
+        for i in range(iter):
+            print(f"Iteration {i}:")
+            self.assign(policy)
             self.updateBuffer()
-            self.assign()
-    
+
 def main():
     with open('tests/test3/data.json', 'r') as data_file: # load the data
         data = json.load(data_file)
     
     env = ENVIRONMENT(data)
-    for n in range(env.N):
-        for m in range(env.M):
+    for n in env.N:
+        for m in env.M:
             print(env.C(n,m))
             print(env.R(n,m))
-    #env.gameloop()
+    env.gameloop()
 
 if __name__ == '__main__':
     import json
