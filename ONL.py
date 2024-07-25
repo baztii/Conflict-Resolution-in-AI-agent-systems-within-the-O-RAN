@@ -40,6 +40,8 @@ class ONL(ENV):
         return sum(model.alpha[n, m, k] for k in model.K) == 1
 
     def solve(self):
+        self.model.del_component('L')
+        self.model.L = Param(self.model.K, initialize=self.L)
         self.model.create_instance()
         solver=SolverFactory("ipopt") #ipopt scip
 

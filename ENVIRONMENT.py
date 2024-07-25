@@ -56,13 +56,14 @@ class ENVIRONMENT:
     def updateBuffer(self):
         probability = np.random.poisson(self.lamda*self.T, self.K[-1]+1) #math.exp(-self.lamda*self.T/1000) * (self.lamda*self.T/1000)
         ret = np.random.random(self.K[-1]+1) > probability
-        for k in self.K: # "insert" new data to be transmitted
-            if ret[k]:
-                self.L[k] = min(self.buffSize, self.L[k]+self.bits)
-
+        print(ret)
+        for k in self.K:
             for n in self.N: # "send" the data of the buffer
                 for m in self.M:
                     self.L[k] = max(0, self.alpha[n,m,k]*(self.L[k] - int(self.R(n,m))))
+
+            if ret[k]: # "insert" new data to be transmitted
+                self.L[k] = min(self.buffSize, self.L[k]+self.bits)
 
         return ret.tolist()
 
@@ -86,6 +87,7 @@ class ENVIRONMENT:
             print(f"Iteration {i}:")
             self.assign(policy)
             self.updateBuffer()
+            print(self.L)
 
 def main():
     with open('tests/test3/data.json', 'r') as data_file: # load the data
