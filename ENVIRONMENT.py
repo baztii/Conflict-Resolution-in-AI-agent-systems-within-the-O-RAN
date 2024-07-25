@@ -1,6 +1,10 @@
 import numpy as np
 from pyomo.environ import log
 
+
+""" Global variables """
+DISPLAY = True
+
 class ENVIRONMENT:
     def __init__(self, data):
         """ Parameters """
@@ -44,28 +48,28 @@ class ENVIRONMENT:
     
     def R(self, n : int, m : int, model=None):
         if model is None: model = self
-        lhs = self.C(n,m,model)  + 1
-        rhs = sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T  + 1
+        lhs = self.C(n,m,model) + 1
+        rhs = sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T + 1
         p = 20
-        return lhs + rhs - (lhs**p + rhs**p)**(1/p) # min(a,b) as a continuous function
+        #print(f"lhs: {lhs} and rhs: {rhs}")
+        #print(f"Returned: {lhs + rhs - (lhs**p + rhs**p)**(1/p) - 1}")
+        return lhs + rhs - (lhs**p + rhs**p)**(1/p) - 1 # min(a,b) as a continuous function
 
     def transmissionRate(self, model=None):
         if model is None: model = self
         return sum([self.R(n, m, model) for n in model.N for m in model.M])
     
-    def updateBuffer(self):
-        probability = np.random.poisson(self.lamda*self.T, self.K[-1]+1) #math.exp(-self.lamda*self.T/1000) * (self.lamda*self.T/1000)
-        ret = np.random.random(self.K[-1]+1) > probability
-        print(ret)
+    def TxData(self): # "send" the data of the buffer (inefficient)
         for k in self.K:
-            for n in self.N: # "send" the data of the buffer
+            for n in self.N:
                 for m in self.M:
-                    self.L[k] = max(0, self.alpha[n,m,k]*(self.L[k] - int(self.R(n,m))))
+                    self.L[k] = max(0, self.L[k] - self.alpha[n,m,k]*self.beta[n,k]*round(self.R(n,m)*self.T)) # without max?
 
-            if ret[k]: # "insert" new data to be transmitted
-                self.L[k] = min(self.buffSize, self.L[k]+self.bits)
-
-        return ret.tolist()
+    def RqData(self): # "insert" new data to be transmitted
+        pkg = np.random.poisson(self.lamda*self.T, self.K[-1]+1) # The expected value
+        
+        for k in self.K:
+            self.L[k] = min(self.buffSize*self.bits, self.L[k]+self.bits*pkg[k])
 
     def valid(self) -> bool:
         for n in self.N:
@@ -80,14 +84,42 @@ class ENVIRONMENT:
         """
         Here goes the policy to solve the problem
         """
-        policy()
+        policy(display=DISPLAY)
+
+    def own_policy(self, display=DISPLAY):
+        l = 0
+        for n in self.N:
+            for m in self.M:
+                for k in self.K:
+                    self.alpha[n,m,k] = 1 if k == l else 0
+                
+                l+=1
+                l=l%(self.K[-1]+1)
+        
+        return
+        
+        for n in self.N:
+            for m in self.M:
+                for k in self.K:
+                    print(f"alpha({n:>2},{m:>2},{k:>3}) = {self.alpha[n,m,k]}")
+            print()    
 
     def gameloop(self, iter=10, policy=lambda:None):
         for i in range(iter):
             print(f"Iteration {i}:")
             self.assign(policy)
-            self.updateBuffer()
+            #print("They throughput:", round(self.transmissionRate()))
+            #self.assign(self.own_policy)
+            #print("My   throughput:", round(self.transmissionRate()))
             print(self.L)
+            self.TxData()
+            print(self.L)
+            self.RqData()
+            #if i == 0: self.L = {k:100000 + 50*k for k in self.K}
+            
+            #print()
+
+            #print(self.L)
 
 def main():
     with open('tests/test3/data.json', 'r') as data_file: # load the data

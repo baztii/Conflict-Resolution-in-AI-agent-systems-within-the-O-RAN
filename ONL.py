@@ -24,7 +24,7 @@ class ONL(ENV):
         self.model.beta  = Param(self.model.N, self.model.K, initialize=self.beta)
         self.model.g     = Param(self.model.N, self.model.K, initialize=self.g)
         self.model.B     = Param(self.model.N, self.model.M, initialize=self.B)
-        self.model.L     = Param(self.model.K, initialize=self.L)
+        self.model.L     = Param(self.model.K, mutable=True, initialize=self.L)
 
         """ Variables """
         self.model.alpha = Var(self.model.N, self.model.M, self.model.K, domain=Binary, initialize=self.alpha)
@@ -39,9 +39,8 @@ class ONL(ENV):
     def alpha_constraint(self, model, n : int, m : int):
         return sum(model.alpha[n, m, k] for k in model.K) == 1
 
-    def solve(self):
-        self.model.del_component('L')
-        self.model.L = Param(self.model.K, initialize=self.L)
+    def solve(self, display=True):
+        self.model.L.store_values(self.L)
         self.model.create_instance()
         solver=SolverFactory("ipopt") #ipopt scip
 
@@ -50,12 +49,15 @@ class ONL(ENV):
         result = solver.solve(self.model, tee=False)
         t = time() - t
         #print("finish")
-        print(f"Time: {t}s\n")
         #print(result)
         #self.model.pprint()
     
         self.alpha = {(n, m, k): round(self.model.alpha[n, m, k].value) for n in self.model.N for m in self.model.M for k in self.model.K}
         self.P = {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
+
+        if not display: return
+
+        print(f"Time: {t}s\n")
 
         print(f"Total throughput: {self.transmissionRate(self)}\n")
         
