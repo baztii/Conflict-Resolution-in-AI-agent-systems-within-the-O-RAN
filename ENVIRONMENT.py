@@ -26,7 +26,7 @@ class ENVIRONMENT:
         
         """ Variables """
         self.P     = {(n,m):(self.Pmax+self.Pmin)/2 for n in self.N for m in self.M} # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
-        self.alpha = {(n,m,k):0 for n in self.N for m in self.M for k in self.K}     # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
+        self.alpha = {(n,m,k):1 for n in self.N for m in self.M for k in self.K}     # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
         self.beta  = {(n,k):data['beta'][n][k] for n in self.N for k in self.K}      # list // User distribution in BS (i.e self.beta[n,k] = 1 iff user[k] is on BS n, 0 otherwise)
 
     def gamma_maj(self, n : int, m : int) -> list[float]:
@@ -66,6 +66,11 @@ class ENVIRONMENT:
                     self.L[k] = max(0, self.L[k] - self.alpha[n,m,k]*self.beta[n,k]*round(self.R(n,m)*self.T)) # without max?
 
     def RqData(self): # "insert" new data to be transmitted
+        
+        for k in self.K:
+            self.L[k] = self.buffSize*self.bits
+        return
+
         pkg = np.random.poisson(self.lamda*self.T, self.K[-1]+1) # The expected value
         
         for k in self.K:
@@ -87,6 +92,13 @@ class ENVIRONMENT:
         policy(display=DISPLAY)
 
     def own_policy(self, display=DISPLAY):
+
+        for n in self.N:
+            for m in self.M:
+                self.P[n,m] = self.Pmax
+            
+        return
+
         l = 0
         for n in self.N:
             for m in self.M:
@@ -111,6 +123,10 @@ class ENVIRONMENT:
             #print("They throughput:", round(self.transmissionRate()))
             #self.assign(self.own_policy)
             #print("My   throughput:", round(self.transmissionRate()))
+            for n in self.N:
+                for m in self.M:
+                    pass#print(f"R({n},{m}): {self.R(n,m)}")
+            print()
             print(self.L)
             self.TxData()
             print(self.L)

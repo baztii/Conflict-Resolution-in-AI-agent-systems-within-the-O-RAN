@@ -3,9 +3,13 @@ Notes1:
     -> On the other hand, using the ONL is inefficient when dealing many data and it's not factible to use it in the near-RT RIC
     
 Notes2:
-    -> The RBGs are allocated always to the same user
-    -> I found a better throughput  
-    -> Sometimes it does not work
+    -> The RBGs are allocated always to the user with the most pending data (to maximize the R^n,m)
+    -> If we force the C < L, the solver gives all RBGs the max power
+    -> It seems not to depend of the power in the case where L < C
+
+Notes3:
+    -> The noise ratio affects the capacity in a way that the bigger the noise is the bigger the capacity is!!!
+    
 
 Future Work:
     * Solve the problem using DQN (Deep Q-Network), i.e. a RL algorithm

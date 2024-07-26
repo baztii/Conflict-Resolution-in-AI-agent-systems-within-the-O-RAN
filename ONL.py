@@ -44,6 +44,12 @@ class ONL(ENV):
         self.model.create_instance()
         solver=SolverFactory("ipopt") #ipopt scip
 
+        """
+        solver.options['max_iter'] = 10_000
+        solver.options['tol'] = 1e-6
+        solver.options['constr_viol_tol'] = 1e-6
+        """
+
         #print("start")
         t = time()
         result = solver.solve(self.model, tee=False)

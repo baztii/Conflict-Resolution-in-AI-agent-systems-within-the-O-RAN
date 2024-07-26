@@ -2,10 +2,14 @@ import json
 import random
 import os
 
-def random_data() -> dict:
-    N = random.randint(1,10)
-    M = random.randint(10,50)
-    K = random.randint(10,100)
+N = 1
+M = 10
+K = 1
+
+def random_data(N : int = N, M : int = M, K : int = K) -> dict:
+    N = random.randint(1,10) if N == -1 else N
+    M = random.randint(10,50) if M == -1 else M
+    K = random.randint(10,100) if K == -1 else K
 
     usrBS = [random.randint(0,N-1) for _ in range(K)]
     beta = [[0 for __ in range(K)] for _ in range(N)]
