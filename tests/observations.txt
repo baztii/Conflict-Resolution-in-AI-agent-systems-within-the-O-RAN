@@ -9,6 +9,7 @@ Notes2:
 
 Notes3:
     -> The noise ratio affects the capacity in a way that the bigger the noise is the bigger the capacity is!!!
+    -> If there is more than one solution, the ONL is not efficient (i.e. takes more time to solve the problem)
     
 
 Future Work:

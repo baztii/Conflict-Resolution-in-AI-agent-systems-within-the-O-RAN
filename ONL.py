@@ -29,13 +29,17 @@ class ONL(ENV):
         """ Variables """
         self.model.alpha = Var(self.model.N, self.model.M, self.model.K, domain=Binary, initialize=self.alpha)
         self.model.P     = Var(self.model.N, self.model.M, bounds = (self.Pmin, self.Pmax), initialize=self.P)
+        #self.model.L     = Var(self.model.K, initialize=self.L)
 
         """ Objective function """
         self.model.obj = Objective(rule=self.transmissionRate,sense=maximize)
 
         """ Constraints """
         self.model.alphaConstr = Constraint(self.model.N, self.model.M, rule=self.alpha_constraint)
+        #self.model.LConstr     = Constraint(self.model.K, rule=self.L_constraint)
 
+    def L_constraint(self, model, k : int):
+        return model.L[k] == self.L[k]
     def alpha_constraint(self, model, n : int, m : int):
         return sum(model.alpha[n, m, k] for k in model.K) == 1
 

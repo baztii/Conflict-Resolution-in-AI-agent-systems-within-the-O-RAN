@@ -66,11 +66,11 @@ class ENVIRONMENT:
                     self.L[k] = max(0, self.L[k] - self.alpha[n,m,k]*self.beta[n,k]*round(self.R(n,m)*self.T)) # without max?
 
     def RqData(self): # "insert" new data to be transmitted
-        
+        """
         for k in self.K:
             self.L[k] = self.buffSize*self.bits
         return
-
+        """
         pkg = np.random.poisson(self.lamda*self.T, self.K[-1]+1) # The expected value
         
         for k in self.K:
