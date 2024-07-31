@@ -4,6 +4,7 @@ from pyomo.environ import log
 
 """ Global variables """
 DISPLAY = True
+ITER    = 10
 
 class ENVIRONMENT:
     def __init__(self, data):
@@ -25,8 +26,8 @@ class ENVIRONMENT:
         self.L     = {k:data['L'][k] for k in self.K}                           # list // Amount of remained data of all users in the transimssion buffer (i.e. L[k] is the remaining data of user k)
         
         """ Variables """
-        self.P     = {(n,m):(self.Pmax+self.Pmin)/2 for n in self.N for m in self.M} # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
-        self.alpha = {(n,m,k):1 for n in self.N for m in self.M for k in self.K}     # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
+        self.P     = {(n,m):1.6961971202034667 for n in self.N for m in self.M} # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
+        self.alpha = {(n,m,k):0 for n in self.N for m in self.M for k in self.K}     # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
         self.beta  = {(n,k):data['beta'][n][k] for n in self.N for k in self.K}      # list // User distribution in BS (i.e self.beta[n,k] = 1 iff user[k] is on BS n, 0 otherwise)
 
     def gamma_maj(self, n : int, m : int) -> list[float]:
@@ -46,7 +47,7 @@ class ENVIRONMENT:
         if model is None: model = self
         return model.B[n,m]*log(1+sum([self.eta(n,m,k,model) for k in model.K]))/log(2)
     
-    def R(self, n : int, m : int, model=None):
+    def R_fancy(self, n : int, m : int, model=None):
         if model is None: model = self
         lhs = self.C(n,m,model) + 1
         rhs = sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T + 1
@@ -55,15 +56,73 @@ class ENVIRONMENT:
         #print(f"Returned: {lhs + rhs - (lhs**p + rhs**p)**(1/p) - 1}")
         return lhs + rhs - (lhs**p + rhs**p)**(1/p) - 1 # min(a,b) as a continuous function
 
+    def R(self, n : int, m : int, model=None):
+        #return 10000
+        if model is None or model == self:
+            model = self
+            return min(self.C(n,m,model), sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T)
+        
+        return model.min_bool_R[n,m]*self.C(n,m,model) + (1-model.min_bool_R[n,m])*sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T
+
     def transmissionRate(self, model=None):
         if model is None: model = self
         return sum([self.R(n, m, model) for n in model.N for m in model.M])
+
+    """
+    Calculates the number of bits for a given user in a fancy way.
+
+    Args:
+        k (int): The user index.
+        model (Environment, optional): The environment model. Defaults to None.
+
+    Returns:
+        float: The number of bits for the user.
+
+    Note:
+        This function calculates the number of bits for a given user in a fancy way by using a specific formula.
+        It takes into account the user's remaining data in the transmission buffer, the distribution of
+        RBGs to each user, the transmission rate of each RBG, and the transmission time.
+        The formula used is a continuous approximation of the minimum function between the user's remaining data
+        and the sum of the transmission rates of each RBG multiplied by the transmission time.
+
+    """
+    def Bits_fancy(self, k : int, model=None):
+        if model is None: model = self
+        lhs = model.L[k] + 1
+        rhs = sum([model.alpha[n,m,k]*model.beta[n,k]*self.R(n, m, model)*model.T for n in model.N for m in model.M]) + 1
+        p = 50
+        #print(f"lhs: {lhs} and rhs: {rhs}")
+        #print(f"Returned: {lhs + rhs - (lhs**p + rhs**p)**(1/p) - 1}")
+        return lhs + rhs - ((lhs)**p + (rhs)**p)**(1/p) - 1 # min(a,b) as a continuous function
+
+    def lhs(self, k : int, model=None):
+        if model is None: model = self
+        return model.L[k]
+
+    def rhs(self, k : int, model=None):
+        if model is None: model = self
+        return sum([model.alpha[n,m,k]*model.beta[n,k]*self.R(n, m, model)*model.T for n in model.N for m in model.M])
+
+    def Bits(self, k : int, model=None):
+        if model is None or model == self: return min(self.lhs(k), self.rhs(k))
+        return model.min_bool_bits[k]*self.lhs(k, model) + (1-model.min_bool_bits[k])*self.rhs(k, model) 
     
+    def transmissionBits(self, model=None):
+        if model is None: model = self
+        return sum([self.Bits(k, model) for k in model.K])
+
+    def RBGs(self, model=None):
+        if model is None: model = self
+        return sum([model.alpha[n,m,k] for n in model.N for m in model.M for k in model.K])
+
     def TxData(self): # "send" the data of the buffer (inefficient)
         for k in self.K:
+            self.L[k] = round(self.L[k] - self.Bits(k))
+            """
             for n in self.N:
                 for m in self.M:
                     self.L[k] = max(0, self.L[k] - self.alpha[n,m,k]*self.beta[n,k]*round(self.R(n,m)*self.T)) # without max?
+            """
 
     def RqData(self): # "insert" new data to be transmitted
         """
@@ -116,7 +175,7 @@ class ENVIRONMENT:
                     print(f"alpha({n:>2},{m:>2},{k:>3}) = {self.alpha[n,m,k]}")
             print()    
 
-    def gameloop(self, iter=10, policy=lambda:None):
+    def gameloop(self, iter=ITER, policy=lambda:None):
         for i in range(iter):
             print(f"Iteration {i}:")
             self.assign(policy)
