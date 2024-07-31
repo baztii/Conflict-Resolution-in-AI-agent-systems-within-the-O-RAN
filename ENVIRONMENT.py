@@ -35,12 +35,20 @@ class ENVIRONMENT:
                          sum([self.alpha[n_prime, m, k]*self.g[n_prime,k] for k in self.K])/
                          sum([self.alpha[n,m,k]*self.g[n,k] for k in self.K]))/log(2) for n_prime in self.N if n_prime != n]
 
-    def eta(self, n : int, m : int, k : int, model=None):
+    def eta1(self, n : int, m : int, k : int, model=None):
         if model is None: model = self
         return ((model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m])
             /(sum([model.alpha[n_prime, m, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m] # is there a typo on the paper?
                 for n_prime in model.N if n_prime != n
                 for k_prime in model.K])
+            + model.sigma**2))
+    
+    def eta(self, n : int, m : int, k : int, model=None):
+        if model is None: model = self
+        return ((model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m])
+            /(sum([model.alpha[n_prime, m, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m] # is there a typo on the paper?
+                for n_prime in model.N
+                for k_prime in model.K]) - sum([model.alpha[n, m, k_prime]*model.beta[n,k_prime]*model.g[n,k_prime]*model.P[n,m] for k_prime in model.K])
             + model.sigma**2))
 
     def C(self, n : int, m : int, model=None):
@@ -56,13 +64,16 @@ class ENVIRONMENT:
         #print(f"Returned: {lhs + rhs - (lhs**p + rhs**p)**(1/p) - 1}")
         return lhs + rhs - (lhs**p + rhs**p)**(1/p) - 1 # min(a,b) as a continuous function
 
-    def R(self, n : int, m : int, model=None):
+    def R(self, n : int, m : int, model=None, P=None):
+        if model is None: model = self        
+        if P is not None:
+            P = self.P[n,m] = P
+            return self.C(n,m,model)/1000000
+
         #return 10000
-        if model is None or model == self:
-            model = self
-            return min(self.C(n,m,model), sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T)
-        
-        return model.min_bool_R[n,m]*self.C(n,m,model) + (1-model.min_bool_R[n,m])*sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T
+
+        ####print((self.C(n,m,self)/100000)) --> Check what happens to the C function (values too small???) what happens when min{C,L} = C (there are some problems!!!!)
+        return self.C(n,m,model)/1000000
 
     def transmissionRate(self, model=None):
         if model is None: model = self

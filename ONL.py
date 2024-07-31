@@ -1,6 +1,8 @@
 from pyomo.environ import *
 from time import time
 from ENVIRONMENT import ENVIRONMENT as ENV
+import matplotlib.pyplot as plt
+import numpy as np
 
 class ONL(ENV):
     def __init__(self, data : dict):
@@ -31,7 +33,6 @@ class ONL(ENV):
         self.model.beta          = Var(self.model.N, self.model.K, domain=Binary, initialize=self.beta) # self.beta
         self.model.P             = Var(self.model.N, self.model.M, bounds = (self.Pmin, self.Pmax), initialize=self.P) # self.P
         self.model.min_bool_bits = Var(self.model.K, domain=Binary)
-        self.model.min_bool_R    = Var(self.model.N, self.model.M, domain=Binary)
         #self.model.L     = Var(self.model.K, domain=NonNegativeIntegers, initialize=self.L)
 
         """ Objective function """
@@ -42,18 +43,9 @@ class ONL(ENV):
         self.model.betaConstr     = Constraint(self.model.K, rule=self.beta_constraint)
         self.model.min_bool_bitsConstr = Constraint(self.model.K, rule=self.min_bool_bits_constraint)
         self.model.min_bool_bitsConstr2 = Constraint(self.model.K, rule=self.min_bool_bits_constraint2)
-        self.model.min_bool_RConstr = Constraint(self.model.N, self.model.M, rule=self.min_bool_R_constraint)
-        self.model.min_bool_RConstr2 = Constraint(self.model.N, self.model.M, rule=self.min_bool_R_constraint2)
-
 
         #self.model.LConstr     = Constraint(self.model.K, rule=self.L_constraint)
     
-    def min_bool_R_constraint(self, model, n : int, m : int):
-        return model.min_bool_R[n, m]*(sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T - self.R(n, m, model)) >= 0
-    
-    def min_bool_R_constraint2(self, model, n : int, m : int):
-        return (1-model.min_bool_R[n, m])*(sum([model.alpha[n,m,k]*model.beta[n,k]*model.L[k] for k in model.K])/model.T - self.R(n, m, model)) <= 0
-
     def min_bool_bits_constraint(self, model, k : int):
         return model.min_bool_bits[k]*(self.rhs(k, model) -  self.lhs(k, model)) >= 0
     
@@ -69,13 +61,14 @@ class ONL(ENV):
     def alpha_constraint(self, model, n : int, m : int):
         return sum(model.alpha[n, m, k] for k in model.K) <= 1
 
-    def obj_function(self, model):
+    def obj_function(self, model=None):
+        if model is None: model = self
         return self.transmissionBits(model) - self.RBGs(model) # Maximize the bits sent and minimize the number of RBGs used
 
     def solve(self, display=True):
-        self.model = ConcreteModel()
-        self._init_model()
-        solver=SolverFactory("scip") #ipopt scip --> Ipopt is not working
+        #self.model = ConcreteModel()
+        #self._init_model()
+        solver=SolverFactory("scip") #ipopt scip --> Ipopt is not working well
 
         """
         solver.options['max_iter'] = 10_000
@@ -85,11 +78,44 @@ class ONL(ENV):
 
         #print("start")
         t = time()
-        #self.model.L.store_values(self.L)
+        self.model.L.store_values(self.L)
 
         print(self.L)
 
         result = solver.solve(self.model, tee=False)
+
+        """
+        P = [self.Pmin + i*(self.Pmax-self.Pmin)/5000 for i in range(5001)]
+
+        R = [self.R(0,0,None,p) for p in P]
+        plt.plot(P, R)
+        plt.title("Throughput as a function of power")
+        plt.xlabel("Power (W)")
+        plt.ylabel("Throughput (bits/s)")
+        plt.show()
+        R = [self.R(0,1,None,p) for p in P]
+        plt.plot(P, R)
+        plt.title("Throughput as a function of power")
+        plt.xlabel("Power (W)")
+        plt.ylabel("Throughput (bits/s)")
+        plt.show()
+        R = [self.R(1,0,None,p) for p in P]
+        plt.plot(P, R)
+        plt.title("Throughput as a function of power")
+        plt.xlabel("Power (W)")
+        plt.ylabel("Throughput (bits/s)")
+        plt.show()
+        R = [self.R(1,1,None,p) for p in P]
+        plt.plot(P, R)
+        plt.title("Throughput as a function of power")
+        plt.xlabel("Power (W)")
+        plt.ylabel("Throughput (bits/s)")
+        plt.show()
+        """
+
+
+
+
 
 
         try:
@@ -128,6 +154,34 @@ class ONL(ENV):
         self.alpha = {(n, m, k): round(self.model.alpha[n, m, k].value) for n in self.model.N for m in self.model.M for k in self.model.K}
         self.P = {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
         self.beta = {(n, k): round(self.model.beta[n, k].value) for n in self.model.N for k in self.model.K}
+        
+        """
+        print(f"Before changing: {value(self.obj_function(self.model))}")
+
+        self.model.alpha[0,0,0] = 0
+        self.model.alpha[0,1,0] = 0
+
+        print(f"After changing: {value(self.obj_function(self.model))}")
+
+        print("Are the constraints satisfied?")
+
+        print(value(self.min_bool_bits_constraint(self.model,0)))
+        print(value(self.min_bool_bits_constraint2(self.model,0)))
+
+        print(value(self.alpha_constraint(self.model,0,0)))
+        print(value(self.alpha_constraint(self.model,0,1)))
+        print(value(self.alpha_constraint(self.model,1,0)))
+        print(value(self.alpha_constraint(self.model,1,1)))
+
+        print(value(self.beta_constraint(self.model,0)))
+        """
+
+
+
+        print(self.obj_function())
+
+
+
 
         if not display: return
 
