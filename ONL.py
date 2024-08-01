@@ -63,18 +63,19 @@ class ONL(ENV):
 
     def obj_function(self, model=None):
         if model is None: model = self
-        return self.transmissionBits(model) - self.RBGs(model) # Maximize the bits sent and minimize the number of RBGs used
+        return  - self.RBGs(model) + self.transmissionBits(model) # Maximize the bits sent and minimize the number of RBGs used
 
     def solve(self, display=True):
         #self.model = ConcreteModel()
         #self._init_model()
-        solver=SolverFactory("scip") #ipopt scip --> Ipopt is not working well
+        solver=SolverFactory("ipopt") #ipopt scip --> Ipopt is not working well
 
         """
-        solver.options['max_iter'] = 10_000
+        solver.options['max_iter'] = 100
         solver.options['tol'] = 1e-6
         solver.options['constr_viol_tol'] = 1e-6
         """
+
 
         #print("start")
         t = time()
@@ -82,7 +83,36 @@ class ONL(ENV):
 
         print(self.L)
 
+        """
+
+        self.beta[0,0] = 1
+        self.beta[0,1] = 0
+
+        self.alpha[0,0,0] = 1
+        self.alpha[0,1,0] = 0
+        self.alpha[1,0,0] = 0
+        self.alpha[1,1,0] = 0
+
+        P = [self.Pmin + i*(self.Pmax-self.Pmin)/5000 for i in range(5001)]
+
+        R = [self.R(0,0,None,p) for p in P]
+
+        plt.plot(P, R)
+        plt.title("Throughput as a function of power")
+        plt.xlabel("Power (W)")     
+        plt.ylabel("Throughput (bits/s)")
+        plt.show()
+
+        """
+
+
+
+
         result = solver.solve(self.model, tee=False)
+        self.model.pprint()
+
+        print(f"Value of decision variable: {[value(self.model.min_bool_bits[i]) for i in self.K]}")
+
 
         """
         P = [self.Pmin + i*(self.Pmax-self.Pmin)/5000 for i in range(5001)]
@@ -154,6 +184,12 @@ class ONL(ENV):
         self.alpha = {(n, m, k): round(self.model.alpha[n, m, k].value) for n in self.model.N for m in self.model.M for k in self.model.K}
         self.P = {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
         self.beta = {(n, k): round(self.model.beta[n, k].value) for n in self.model.N for k in self.model.K}
+
+        print("Check the capacity: ")
+
+        for n in self.N:
+            for m in self.M:
+                print(f"R({n}{m}) : {self.R(n,m)}")
         
         """
         print(f"Before changing: {value(self.obj_function(self.model))}")

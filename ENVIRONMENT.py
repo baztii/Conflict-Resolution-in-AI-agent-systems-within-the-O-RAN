@@ -35,7 +35,7 @@ class ENVIRONMENT:
                          sum([self.alpha[n_prime, m, k]*self.g[n_prime,k] for k in self.K])/
                          sum([self.alpha[n,m,k]*self.g[n,k] for k in self.K]))/log(2) for n_prime in self.N if n_prime != n]
 
-    def eta1(self, n : int, m : int, k : int, model=None):
+    def eta(self, n : int, m : int, k : int, model=None):
         if model is None: model = self
         return ((model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m])
             /(sum([model.alpha[n_prime, m, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m] # is there a typo on the paper?
@@ -43,7 +43,16 @@ class ENVIRONMENT:
                 for k_prime in model.K])
             + model.sigma**2))
     
-    def eta(self, n : int, m : int, k : int, model=None):
+    def eta1(self, n : int, m : int, k : int, model=None):
+        if model is None: model = self
+        return ((model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m])
+            /(sum([model.alpha[n_prime, m_prime, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m_prime] # is there a typo on the paper?
+                for n_prime in model.N
+                for k_prime in model.K
+                for m_prime in model.M]) - model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m]
+            + model.sigma**2))
+    
+    def eta2(self, n : int, m : int, k : int, model=None):
         if model is None: model = self
         return ((model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m])
             /(sum([model.alpha[n_prime, m, k_prime]*model.beta[n_prime,k_prime]*model.g[n_prime,k_prime]*model.P[n_prime,m] # is there a typo on the paper?
@@ -70,10 +79,10 @@ class ENVIRONMENT:
             P = self.P[n,m] = P
             return self.C(n,m,model)/1000000
 
-        #return 10000
+        return 1000
 
         ####print((self.C(n,m,self)/100000)) --> Check what happens to the C function (values too small???) what happens when min{C,L} = C (there are some problems!!!!)
-        return self.C(n,m,model)/1000000
+        return self.C(n,m,model)
 
     def transmissionRate(self, model=None):
         if model is None: model = self
