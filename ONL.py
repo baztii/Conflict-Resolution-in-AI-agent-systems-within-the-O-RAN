@@ -109,7 +109,7 @@ class ONL(ENV):
 
 
         result = solver.solve(self.model, tee=False)
-        self.model.pprint()
+        #self.model.pprint()
 
         print(f"Value of decision variable: {[value(self.model.min_bool_bits[i]) for i in self.K]}")
 
