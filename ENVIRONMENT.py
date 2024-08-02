@@ -79,7 +79,10 @@ class ENVIRONMENT:
             P = self.P[n,m] = P
             return self.C(n,m,model)/1000000
 
-        return 1000
+        a = 3 # The power value that maximizes the transmission rate of RBG (n,m)
+        throughput_value = 10000 # The value of the maximum throughput that the RBG can achieve
+
+        return log(-(0.4*model.P[n,m]-0.4*a)**2 + 4)/log(4)*throughput_value
 
         ####print((self.C(n,m,self)/100000)) --> Check what happens to the C function (values too small???) what happens when min{C,L} = C (there are some problems!!!!)
         return self.C(n,m,model)

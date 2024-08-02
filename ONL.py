@@ -63,12 +63,12 @@ class ONL(ENV):
 
     def obj_function(self, model=None):
         if model is None: model = self
-        return  - self.RBGs(model) + self.transmissionBits(model) # Maximize the bits sent and minimize the number of RBGs used
+        return self.transmissionBits(model) - self.RBGs(model)# Maximize the bits sent and minimize the number of RBGs used
 
     def solve(self, display=True):
         #self.model = ConcreteModel()
         #self._init_model()
-        solver=SolverFactory("ipopt") #ipopt scip --> Ipopt is not working well
+        solver=SolverFactory("scip") #ipopt scip --> Ipopt is not working well
 
         """
         solver.options['max_iter'] = 100
