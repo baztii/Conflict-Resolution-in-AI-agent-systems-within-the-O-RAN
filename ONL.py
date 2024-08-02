@@ -84,6 +84,24 @@ class ONL(ENV):
         print(self.L)
 
         """
+        self.alpha[0,0,0] = 1
+        P = [self.Pmin + i*(self.Pmax-self.Pmin)/5000 for i in range(5001)]
+        B = []
+        for p in P:
+            self.P[0,0] = p
+            B.append(self.Bits(0))
+        
+            
+
+        plt.plot(P, B)
+        plt.title("Bits as a function of power")
+        plt.xlabel("Power (W)")     
+        plt.ylabel("Bits Sent")
+        plt.show()
+        """
+
+
+        """
 
         self.beta[0,0] = 1
         self.beta[0,1] = 0
@@ -111,7 +129,7 @@ class ONL(ENV):
         result = solver.solve(self.model, tee=False)
         #self.model.pprint()
 
-        print(f"Value of decision variable: {[value(self.model.min_bool_bits[i]) for i in self.K]}")
+        #print(f"Value of decision variable: {[value(self.model.min_bool_bits[i]) for i in self.K]}")
 
 
         """
