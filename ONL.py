@@ -3,6 +3,13 @@ from time import time
 from ENVIRONMENT import ENVIRONMENT as ENV
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
+
+"""Global variables"""
+FILE = 2
+TEE = False
+SOLVER = "scip"
+CONSOLE = False
 
 class ONL(ENV):
     def __init__(self, data : dict):
@@ -23,7 +30,6 @@ class ONL(ENV):
         self.model.sigma = Param(initialize=self.sigma)
         self.model.T     = Param(initialize=self.T)
 
-        #self.model.beta  = Param(self.model.N, self.model.K, initialize=self.beta)
         self.model.g     = Param(self.model.N, self.model.K, initialize=self.g)
         self.model.B     = Param(self.model.N, self.model.M, initialize=self.B)
         self.model.L     = Param(self.model.K, mutable=True, initialize=self.L) # self.L
@@ -33,7 +39,6 @@ class ONL(ENV):
         self.model.beta          = Var(self.model.N, self.model.K, domain=Binary, initialize=self.beta) # self.beta
         self.model.P             = Var(self.model.N, self.model.M, bounds = (self.Pmin, self.Pmax), initialize=self.P) # self.P
         self.model.min_bool_bits = Var(self.model.K, domain=Binary)
-        #self.model.L     = Var(self.model.K, domain=NonNegativeIntegers, initialize=self.L)
 
         """ Objective function """
         self.model.obj = Objective(rule=self.obj_function,sense=maximize)
@@ -44,8 +49,9 @@ class ONL(ENV):
         self.model.min_bool_bitsConstr = Constraint(self.model.K, rule=self.min_bool_bits_constraint)
         self.model.min_bool_bitsConstr2 = Constraint(self.model.K, rule=self.min_bool_bits_constraint2)
 
-        #self.model.LConstr     = Constraint(self.model.K, rule=self.L_constraint)
-    
+        self.model.betaConstr2     = Constraint(self.model.N, self.model.K, rule=self.beta_constraint2)
+        
+
     def min_bool_bits_constraint(self, model, k : int):
         return model.min_bool_bits[k]*(self.rhs(k, model) -  self.lhs(k, model)) >= 0
     
@@ -54,9 +60,9 @@ class ONL(ENV):
 
     def beta_constraint(self, model, k : int):
         return sum(model.beta[n,k] for n in model.N) == 1
-    
-    def L_constraint(self, model, k : int):
-        return model.L[k] == self.L[k]
+
+    def beta_constraint2(self, model, n : int, k : int):
+        return (1 - model.beta[n,k])*sum(model.alpha[n,m,k] for m in model.M) == 0
     
     def alpha_constraint(self, model, n : int, m : int):
         return sum(model.alpha[n, m, k] for k in model.K) <= 1
@@ -65,243 +71,78 @@ class ONL(ENV):
         if model is None: model = self
         return self.transmissionBits(model) - self.RBGs(model)# Maximize the bits sent and minimize the number of RBGs used
 
+    def results(self, time : float):        
+        print(f"Time: {time}s\n")
+        print(f"Total bits sent: {round(self.transmissionBits())}", end="\t")
+        print(f"Total RBGs used: {self.RBGs()}\n")
+
+        for n in self.N:
+            print(f"BS {n}:")
+            for m in self.M:
+                print(f"\tP({n:>2},{m:>2}) = {self.P[n,m]}")
+            print()
+
+            for k in self.K:
+                if self.beta[n,k] == 1:
+                    print(f"\tuser({k:>2}) uses", end=' ')
+                    has_rbg = False
+                    for m in self.M:
+                        if self.alpha[n,m,k] == 1:
+                            print(f"{m:>2}", end=' ')
+                            has_rbg = True
+
+                    if not has_rbg:
+                        print("NO", end=' ')
+
+                    print("RBGs", end=' ')
+                    print(f"and sends {self.Bits(k)} bits")
+
+            print()
+
     def solve(self, display=True):
-        #self.model = ConcreteModel()
-        #self._init_model()
-        solver=SolverFactory("scip") #ipopt scip --> Ipopt is not working well
+        solver=SolverFactory(SOLVER)
+        self.model.L.store_values(self.L)
 
         """
         solver.options['max_iter'] = 100
         solver.options['tol'] = 1e-6
         solver.options['constr_viol_tol'] = 1e-6
         """
-
-
-        #print("start")
         t = time()
-        self.model.L.store_values(self.L)
-
-        print(self.L)
-
-        """
-        self.alpha[0,0,0] = 1
-        P = [self.Pmin + i*(self.Pmax-self.Pmin)/5000 for i in range(5001)]
-        B = []
-        for p in P:
-            self.P[0,0] = p
-            B.append(self.Bits(0))
-        
-            
-
-        plt.plot(P, B)
-        plt.title("Bits as a function of power")
-        plt.xlabel("Power (W)")     
-        plt.ylabel("Bits Sent")
-        plt.show()
-        """
-
-
-        """
-
-        self.beta[0,0] = 1
-        self.beta[0,1] = 0
-
-        self.alpha[0,0,0] = 1
-        self.alpha[0,1,0] = 0
-        self.alpha[1,0,0] = 0
-        self.alpha[1,1,0] = 0
-
-        P = [self.Pmin + i*(self.Pmax-self.Pmin)/5000 for i in range(5001)]
-
-        R = [self.R(0,0,None,p) for p in P]
-
-        plt.plot(P, R)
-        plt.title("Throughput as a function of power")
-        plt.xlabel("Power (W)")     
-        plt.ylabel("Throughput (bits/s)")
-        plt.show()
-
-        """
-
-
-
-
-        result = solver.solve(self.model, tee=False)
-        #self.model.pprint()
-
-        #print(f"Value of decision variable: {[value(self.model.min_bool_bits[i]) for i in self.K]}")
-
-
-        """
-        P = [self.Pmin + i*(self.Pmax-self.Pmin)/5000 for i in range(5001)]
-
-        R = [self.R(0,0,None,p) for p in P]
-        plt.plot(P, R)
-        plt.title("Throughput as a function of power")
-        plt.xlabel("Power (W)")
-        plt.ylabel("Throughput (bits/s)")
-        plt.show()
-        R = [self.R(0,1,None,p) for p in P]
-        plt.plot(P, R)
-        plt.title("Throughput as a function of power")
-        plt.xlabel("Power (W)")
-        plt.ylabel("Throughput (bits/s)")
-        plt.show()
-        R = [self.R(1,0,None,p) for p in P]
-        plt.plot(P, R)
-        plt.title("Throughput as a function of power")
-        plt.xlabel("Power (W)")
-        plt.ylabel("Throughput (bits/s)")
-        plt.show()
-        R = [self.R(1,1,None,p) for p in P]
-        plt.plot(P, R)
-        plt.title("Throughput as a function of power")
-        plt.xlabel("Power (W)")
-        plt.ylabel("Throughput (bits/s)")
-        plt.show()
-        """
-
-
-
-
-
-
-        try:
-            pass
-        except:
-            print("Debug information:")
-
-            for n in self.N:
-                for m in self.M:
-                    for k in self.K:
-                        print(f"alpha({n:>2},{m:>2},{k:>3}) = {self.alpha[n,m,k]}")
-                print()
-            
-            for n in self.N:
-                for k in self.K:
-                    print(f"beta({n:>2},{k:>3}) = {self.beta[n,k]}")
-                print()
-            
-            print("\n")
-
-            for n in self.N:
-                for m in self.M:
-                    print(f"P({n:>2},{m:>2}) = {self.P[n,m]}")
-                print()
-            
-            exit()
-
-
-
-
+        solver.solve(self.model, tee=TEE)
         t = time() - t
-        #print("finish")
-        #print(result)
-        #self.model.pprint()
-    
+
         self.alpha = {(n, m, k): round(self.model.alpha[n, m, k].value) for n in self.model.N for m in self.model.M for k in self.model.K}
         self.P = {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
         self.beta = {(n, k): round(self.model.beta[n, k].value) for n in self.model.N for k in self.model.K}
 
-        print("Check the capacity: ")
-
-        for n in self.N:
-            for m in self.M:
-                print(f"R({n}{m}) : {self.R(n,m)}")
-        
-        """
-        print(f"Before changing: {value(self.obj_function(self.model))}")
-
-        self.model.alpha[0,0,0] = 0
-        self.model.alpha[0,1,0] = 0
-
-        print(f"After changing: {value(self.obj_function(self.model))}")
-
-        print("Are the constraints satisfied?")
-
-        print(value(self.min_bool_bits_constraint(self.model,0)))
-        print(value(self.min_bool_bits_constraint2(self.model,0)))
-
-        print(value(self.alpha_constraint(self.model,0,0)))
-        print(value(self.alpha_constraint(self.model,0,1)))
-        print(value(self.alpha_constraint(self.model,1,0)))
-        print(value(self.alpha_constraint(self.model,1,1)))
-
-        print(value(self.beta_constraint(self.model,0)))
-        """
-
-
-
-        print(self.obj_function())
-
-
-
-
-        if not display: return
-
-        print("L_constraint")
-        for k in self.K:
-            print(self.model.L[k].value, self.L[k])
-
-        print(f"Time: {t}s\n")
-
-        print(f"Total bits sent: {round(self.transmissionBits())}")
-        print(f"The bits: {self.Bits(0)}")
-        print(f"Total RBGs used: {self.RBGs()}\n")
-        
-        print("Solution:")
-
-        for n in self.N:
-            for m in self.M:
-                for k in self.K:
-                    print(f"alpha({n:>2},{m:>2},{k:>3}) = {self.alpha[n,m,k]}")
-            print()
-        
-        for n in self.N:
-            for k in self.K:
-                print(f"beta({n:>2},{k:>3}) = {self.beta[n,k]}")
-            print()
-        
-        print("\n")
-
-        for n in self.N:
-            for m in self.M:
-                print(f"P({n:>2},{m:>2}) = {self.P[n,m]}")
-            print()
-
-    def get_results_alpha(self):
-        return {(n, m, k): self.model.alpha[n, m, k].value for n in self.model.N for m in self.model.M for k in self.model.K}
-        
-    def get_results_P(self):
-        return {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
+        self.results(time=t)
 
 def asserts(data : dict) -> None:
-    assert len(data["beta"]) == data["N"]
-    assert len(data["beta"][0]) == data["K"]
-
-    assert len(data["B"]) == data["N"]
+    assert len(data["B"])    == data["N"]
     assert len(data["B"][0]) == data["M"]
     
-    assert len(data["g"]) == data["N"]
+    assert len(data["g"])    == data["N"]
     assert len(data["g"][0]) == data["K"]
 
-    assert len(data["L"]) == data["K"]
+    assert len(data["L"])    == data["K"]
 
 def main():
     dBm_to_watts = lambda dBm : 10**(dBm/10)/1000 # watts = dBm_to_watts(dBm) conversor
 
-    n = input()
+    n = FILE
     file = f"tests/test{n}/data.json"
+
+    if not CONSOLE:
+        f = open(f"tests/test{n}/results_normal_traffic.txt", 'w')
+        sys.stdout = f
 
     with open(file, 'r') as data_file: # load the data
         data = json.load(data_file)
     
     asserts(data)
-    #print("No asserts")
 
     onl = ONL(data) # create the onl object
-
-    #onl.solve() # solve the problem
 
     onl.gameloop(policy=onl.solve)
 

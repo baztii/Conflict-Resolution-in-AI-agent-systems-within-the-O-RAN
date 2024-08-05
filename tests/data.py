@@ -3,24 +3,18 @@ import random
 import os
 
 N = 1
-M = 10
-K = 1
+M = 12
+K = 10
 
 def random_data(N : int = N, M : int = M, K : int = K) -> dict:
     N = random.randint(1,10) if N == -1 else N
     M = random.randint(10,50) if M == -1 else M
     K = random.randint(10,100) if K == -1 else K
 
-    usrBS = [random.randint(0,N-1) for _ in range(K)]
-    beta = [[0 for __ in range(K)] for _ in range(N)]
-
-    for usr, bs in enumerate(usrBS):
-        beta[bs][usr] = 1     
-
     g = [[(3+random.random())*1e-8 for __ in range(K)] for _ in range(N)]
-    B = [[20e6+random.random()*1e7 for __ in range(M)] for _ in range(N)]
+    B = [[30e3+random.random()*1e2 for __ in range(M)] for _ in range(N)]
 
-    T = 0.1
+    T = 0.5
 
     Pmin = 0.0012589254117941673
     Pmax = 6.30957344480193
@@ -28,17 +22,16 @@ def random_data(N : int = N, M : int = M, K : int = K) -> dict:
     sigma = 3.9810717055349695e-15 + random.random()*1e-15
     buffSize = 10_000
 
-    lamda = random.randint(10,20)
+    lamda = 1000
 
-    bits = 1200
+    bits = 3824
 
-    L = [random.randint(0,6000) for _ in range(K)]
+    L = [random.randint(0,382400) for _ in range(K)]
 
     data = {
         'N': N,
         'M': M,
         'K': K,
-        'beta': beta,
         'B': B,
         'T': T,
         'Pmin': Pmin,
