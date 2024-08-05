@@ -7,9 +7,11 @@ import sys
 
 """Global variables"""
 FILE = 2
-TEE = False
+TEE = True
 SOLVER = "scip"
 CONSOLE = False
+TERMINAL = sys.stdout
+OF = sys.stdout
 
 class ONL(ENV):
     def __init__(self, data : dict):
@@ -50,8 +52,13 @@ class ONL(ENV):
         self.model.min_bool_bitsConstr2 = Constraint(self.model.K, rule=self.min_bool_bits_constraint2)
 
         self.model.betaConstr2     = Constraint(self.model.N, self.model.K, rule=self.beta_constraint2)
+        #self.etasss =  Constraint(self.model.N, self.model.M, self.model.K, rule=self.auto_denominator)
         
 
+    def auto_denominator(self, model, n : int, m: int, k: int):
+        return self.eta(n,m,k,model) >= 0
+
+    
     def min_bool_bits_constraint(self, model, k : int):
         return model.min_bool_bits[k]*(self.rhs(k, model) -  self.lhs(k, model)) >= 0
     
@@ -103,20 +110,53 @@ class ONL(ENV):
         solver=SolverFactory(SOLVER)
         self.model.L.store_values(self.L)
 
-        """
-        solver.options['max_iter'] = 100
-        solver.options['tol'] = 1e-6
-        solver.options['constr_viol_tol'] = 1e-6
-        """
+        sys.stdout = TERMINAL
         t = time()
         solver.solve(self.model, tee=TEE)
         t = time() - t
+        sys.stdout = OF
 
         self.alpha = {(n, m, k): round(self.model.alpha[n, m, k].value) for n in self.model.N for m in self.model.M for k in self.model.K}
         self.P = {(n, m): self.model.P[n, m].value for n in self.model.N for m in self.model.M}
         self.beta = {(n, k): round(self.model.beta[n, k].value) for n in self.model.N for k in self.model.K}
 
         self.results(time=t)
+
+    def own_policy(self, display=True):
+        usr = 0
+        for n in self.N:
+            for m in self.M:
+                for k in self.K:
+                    if k == usr:
+                        self.alpha[n, m, k] = 1
+                    else:
+                        self.alpha[n, m, k] = 0
+                usr += 1
+                usr %= self.K[-1] + 1
+
+        for n in self.N:
+            for k in self.K:
+                self.beta[n, k] = 1
+
+        for n in self.N:
+            for m in self.M:
+                self.P[n,m] = self.Pmax
+                
+        self.results(time=0)
+
+        for n in self.N:
+            for m in self.M:
+                for k in self.K:
+                    print(f"Numerator({n},{m},{k})={self.numerator(n, m, k)}")
+
+        for n in self.N:
+            for m in self.M:
+                print(f"Denominator({n},{m})={self.denominator(n, m)}")
+        
+        for n in self.N:
+            for m in self.M:
+                print(f"C({n},{m})={self.C(n,m)}")
+
 
 def asserts(data : dict) -> None:
     assert len(data["B"])    == data["N"]
@@ -127,6 +167,7 @@ def asserts(data : dict) -> None:
 
     assert len(data["L"])    == data["K"]
 
+
 def main():
     dBm_to_watts = lambda dBm : 10**(dBm/10)/1000 # watts = dBm_to_watts(dBm) conversor
 
@@ -136,6 +177,9 @@ def main():
     if not CONSOLE:
         f = open(f"tests/test{n}/results_normal_traffic.txt", 'w')
         sys.stdout = f
+    
+    global OF
+    OF = sys.stdout
 
     with open(file, 'r') as data_file: # load the data
         data = json.load(data_file)

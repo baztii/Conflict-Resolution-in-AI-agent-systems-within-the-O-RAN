@@ -4,7 +4,7 @@ from pyomo.environ import log
 
 """ Global variables """
 DISPLAY = True
-ITER    = 20
+ITER    = 1
 
 class ENVIRONMENT:
     def __init__(self, data):
@@ -39,7 +39,7 @@ class ENVIRONMENT:
         if model is None: model = self
         return model.alpha[n, m, k]*model.g[n,k]*model.P[n,m]
 
-    def denominator(self, n : int, m : int, k : int, model=None):
+    def denominator(self, n : int, m : int, model=None):
         if model is None: model = self
         return sum([model.alpha[n_prime, m, k]*model.g[n_prime,k]*model.P[n_prime,m]
             for n_prime in model.N if n_prime != n
@@ -47,7 +47,7 @@ class ENVIRONMENT:
 
     def eta(self, n : int, m : int, k : int, model=None):
         if model is None: model = self
-        return self.numerator(n, m, k, model)/(self.denominator(n, m, k, model) + model.sigma) # If sigma is too small there are numerical errors
+        return self.numerator(n, m, k, model)/(self.denominator(n, m, model) + model.sigma) # If sigma is too small there are numerical errors
 
     def C(self, n : int, m : int, model=None):
         if model is None: model = self

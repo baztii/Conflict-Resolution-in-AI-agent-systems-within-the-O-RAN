@@ -2,9 +2,9 @@ import json
 import random
 import os
 
-N = 1
+N = 3
 M = 12
-K = 10
+K = 30
 
 def random_data(N : int = N, M : int = M, K : int = K) -> dict:
     N = random.randint(1,10) if N == -1 else N
