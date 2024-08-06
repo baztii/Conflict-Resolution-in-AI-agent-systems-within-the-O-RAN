@@ -7,9 +7,9 @@ import sys
 
 """Global variables"""
 FILE = 2
-TEE = True
+TEE = False
 SOLVER = "scip"
-CONSOLE = False
+CONSOLE = True
 TERMINAL = sys.stdout
 OF = sys.stdout
 
@@ -51,7 +51,7 @@ class ONL(ENV):
         self.model.min_bool_bitsConstr = Constraint(self.model.K, rule=self.min_bool_bits_constraint)
         self.model.min_bool_bitsConstr2 = Constraint(self.model.K, rule=self.min_bool_bits_constraint2)
 
-        self.model.betaConstr2     = Constraint(self.model.N, self.model.K, rule=self.beta_constraint2)
+        self.model.betaConstr2     = Constraint(self.model.N, self.model.M, self.model.K, rule=self.beta_constraint2)
         #self.etasss =  Constraint(self.model.N, self.model.M, self.model.K, rule=self.auto_denominator)
         
 
@@ -68,8 +68,8 @@ class ONL(ENV):
     def beta_constraint(self, model, k : int):
         return sum(model.beta[n,k] for n in model.N) == 1
 
-    def beta_constraint2(self, model, n : int, k : int):
-        return (1 - model.beta[n,k])*sum(model.alpha[n,m,k] for m in model.M) == 0
+    def beta_constraint2(self, model, n : int, m: int, k : int):
+        return (1 - model.beta[n,k])*model.alpha[n,m,k] == 0
     
     def alpha_constraint(self, model, n : int, m : int):
         return sum(model.alpha[n, m, k] for k in model.K) <= 1

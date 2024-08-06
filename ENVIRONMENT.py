@@ -4,7 +4,7 @@ from pyomo.environ import log
 
 """ Global variables """
 DISPLAY = True
-ITER    = 1
+ITER    = 20
 
 class ENVIRONMENT:
     def __init__(self, data):
@@ -32,16 +32,16 @@ class ENVIRONMENT:
 
     def gamma_maj(self, n : int, m : int) -> list[float]:
         return [log(1+
-                         sum([self.alpha[n_prime, m, k]*self.g[n_prime,k] for k in self.K])/
-                         sum([self.alpha[n,m,k]*self.g[n,k] for k in self.K]))/log(2) for n_prime in self.N if n_prime != n]
+                         sum([self.alpha[n_prime, m, k]*self.beta[n_prime,k]*self.g[n_prime,k] for k in self.K])/
+                         sum([self.alpha[n,m,k]*self.beta[n,k]*self.g[n,k] for k in self.K]))/log(2) for n_prime in self.N if n_prime != n]
 
     def numerator(self, n : int, m : int, k : int, model=None):
         if model is None: model = self
-        return model.alpha[n, m, k]*model.g[n,k]*model.P[n,m]
+        return model.alpha[n, m, k]*model.beta[n,k]*model.g[n,k]*model.P[n,m]
 
     def denominator(self, n : int, m : int, model=None):
         if model is None: model = self
-        return sum([model.alpha[n_prime, m, k]*model.g[n_prime,k]*model.P[n_prime,m]
+        return sum([model.alpha[n_prime, m, k]*model.beta[n_prime,k]*model.g[n_prime,k]*model.P[n_prime,m]
             for n_prime in model.N if n_prime != n
             for k in model.K])
 
@@ -60,9 +60,9 @@ class ENVIRONMENT:
             return self.C(n,m,model)
 
         a = 3 # The power value that maximizes the transmission rate of RBG (n,m)
-        throughput_value = 10000 # The value of the maximum throughput that the RBG can achieve
+        throughput_value = 2000000 # The value of the maximum throughput that the RBG can achieve
 
-        #return log(-(0.4*model.P[n,m]-0.4*a)**2 + 4)/log(4)*throughput_value
+        return log(-(0.4*model.P[n,m]-0.4*a)**2 + 4)/log(4)*throughput_value
 
         ####print((self.C(n,m,self)/100000)) --> Check what happens to the C function (values too small???) what happens when min{C,L} = C (there are some problems!!!!)
         return self.C(n,m,model)
@@ -77,7 +77,7 @@ class ENVIRONMENT:
 
     def rhs(self, k : int, model=None):
         if model is None: model = self
-        return sum([model.alpha[n,m,k]*self.R(n, m, model)*model.T for n in model.N for m in model.M])
+        return sum([model.alpha[n,m,k]*model.beta[n,k]*self.R(n, m, model)*model.T for n in model.N for m in model.M])
 
     def Bits(self, k : int, model=None):
         if model is None or model == self: return min(self.lhs(k), self.rhs(k))
