@@ -4,7 +4,7 @@ from pyomo.environ import log
 
 """ Global variables """
 DISPLAY = True
-ITER    = 20
+ITER    = 10
 
 class ENVIRONMENT:
     def __init__(self, data):
@@ -18,10 +18,10 @@ class ENVIRONMENT:
         self.Pmin  = data['Pmin']  # float // min transmition power
         self.Pmax  = data['Pmax']  # float // max transmition power
         self.T     = data['T']     # float // Length of time slot
-        self.sigma = data['sigma'] # float // noise
+        self.sigma = data['sigma']*1e10 # float // noise
         self.lamda = data['lamda'] # float // Poison process rate per second
 
-        self.g     = {(n,k):data['g'][n][k] for n in self.N for k in self.K}    # list // Channel coefficient between base stations and users (i.e g[n,k] is between BS n and user k)
+        self.g     = {(n,k):data['g'][n][k]*1e10 for n in self.N for k in self.K}    # list // Channel coefficient between base stations and users (i.e g[n,k] is between BS n and user k)
         self.B     = {(n,m):data['B'][n][m] for n in self.N for m in self.M}    # list // Brandwith of all RBG (i.e. BW[n,m] determines the brandwith of the RBG m at the BS n)
         self.L     = {k:data['L'][k] for k in self.K}                           # list // Amount of remained data of all users in the transimssion buffer (i.e. L[k] is the remaining data of user k)
         
@@ -62,7 +62,7 @@ class ENVIRONMENT:
         a = 3 # The power value that maximizes the transmission rate of RBG (n,m)
         throughput_value = 2000000 # The value of the maximum throughput that the RBG can achieve
 
-        return log(-(0.4*model.P[n,m]-0.4*a)**2 + 4)/log(4)*throughput_value
+        #return log(-(0.4*model.P[n,m]-0.4*a)**2 + 4)/log(4)*throughput_value
 
         ####print((self.C(n,m,self)/100000)) --> Check what happens to the C function (values too small???) what happens when min{C,L} = C (there are some problems!!!!)
         return self.C(n,m,model)
@@ -81,6 +81,13 @@ class ENVIRONMENT:
 
     def Bits(self, k : int, model=None):
         if model is None or model == self: return min(self.lhs(k), self.rhs(k))
+
+        """
+        p = 20
+        rhs = self.rhs(k, model) + 1
+        lhs = self.lhs(k, model) + 1
+        return rhs + lhs - (rhs**p+lhs**p)**(1/p) - 1
+        """
         return model.min_bool_bits[k]*self.lhs(k, model) + (1-model.min_bool_bits[k])*self.rhs(k, model) 
     
     def transmissionBits(self, model=None):

@@ -4,12 +4,15 @@ from ENVIRONMENT import ENVIRONMENT as ENV
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
+import os
 
 """Global variables"""
-FILE = 2
-TEE = False
+FILE = 1
+START = 7
+END = 7
+TEE = True
 SOLVER = "scip"
-CONSOLE = True
+CONSOLE = False
 TERMINAL = sys.stdout
 OF = sys.stdout
 
@@ -68,7 +71,7 @@ class ONL(ENV):
     def beta_constraint(self, model, k : int):
         return sum(model.beta[n,k] for n in model.N) == 1
 
-    def beta_constraint2(self, model, n : int, m: int, k : int):
+    def beta_constraint2(self, model, n : int, m : int, k : int):
         return (1 - model.beta[n,k])*model.alpha[n,m,k] == 0
     
     def alpha_constraint(self, model, n : int, m : int):
@@ -175,7 +178,7 @@ def main():
     file = f"tests/test{n}/data.json"
 
     if not CONSOLE:
-        f = open(f"tests/test{n}/results_normal_traffic.txt", 'w')
+        f = open(f"tests/test{n}/results.txt", 'w')
         sys.stdout = f
     
     global OF
@@ -192,4 +195,13 @@ def main():
 
 if __name__ == '__main__':
     import json
-    main()
+    for FILE in range(START,END+1):
+        sys.stdout = TERMINAL
+        print("Doing file:", FILE)
+        sys.stdout = OF
+        main()
+        sys.stdout = TERMINAL
+        print(f"File: {FILE} done!")
+        sys.stdout = OF
+        os.system('cls')
+

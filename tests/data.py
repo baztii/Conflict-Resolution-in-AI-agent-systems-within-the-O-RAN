@@ -3,7 +3,7 @@ import random
 import os
 
 N = 1
-M = 4
+M = 1
 K = 1
 
 def random_data(N : int = N, M : int = M, K : int = K) -> dict:
@@ -22,11 +22,11 @@ def random_data(N : int = N, M : int = M, K : int = K) -> dict:
     sigma = 3.9810717055349695e-15 + random.random()*1e-15
     buffSize = 10_000
 
-    lamda = 1000
+    lamda = 200
 
-    bits = 3824
+    bits = 3500
 
-    L = [random.randint(0,382400) for _ in range(K)]
+    L = [0 for _ in range(K)]
 
     data = {
         'N': N,
@@ -46,11 +46,14 @@ def random_data(N : int = N, M : int = M, K : int = K) -> dict:
 
     return data
 
-def upload_data(data : dict) -> None:
-    with os.scandir('.') as dir:
-        n = sum(1 for file in dir if file.is_dir() and file.name.startswith('test')) + 1
+def upload_data(data : dict, where=None) -> None:
+    if where is None:
+        with os.scandir('.') as dir:
+            n = sum(1 for file in dir if file.is_dir() and file.name.startswith('test')) + 1
 
-    os.makedirs(f"./test{n}", exist_ok=True)
+        os.makedirs(f"./test{n}", exist_ok=True)
+    else:
+        n = where
 
     with open(f"./test{n}/data.json", 'w') as file:
         json.dump(data, file)
@@ -58,7 +61,9 @@ def upload_data(data : dict) -> None:
     print(f"Test{n} folder and data created succesfully!")
 
 def main():
-    upload_data(random_data())
+    upload_data(random_data(N=2,K=3,M=5))
+    #upload_data(random_data(N=3,K=7,M=5),4)
+
 
 if __name__ == '__main__':
     main()

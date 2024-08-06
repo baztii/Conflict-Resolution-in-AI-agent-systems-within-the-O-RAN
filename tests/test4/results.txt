@@ -1,0 +1,117 @@
+Iteration 0:
+Bits in the buffer: {0: 0, 1: 0, 2: 0}
+Time: 0.7382779121398926s
+
+Total bits sent: 0	Total RBGs used: 0
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+
+
+BS 1:
+	P( 1, 0) = 0.0012589254117941673
+	P( 1, 1) = 0.0012589254117941673
+	P( 1, 2) = 0.0012589254117941673
+	P( 1, 3) = 0.0012589254117941673
+
+	user( 0) uses NO RBGs and sends 0 bits
+	user( 1) uses NO RBGs and sends 0 bits
+	user( 2) uses NO RBGs and sends 0 bits
+
+Iteration 1:
+Bits in the buffer: {0: 339500, 1: 381500, 2: 374500}
+Time: 37.237481117248535s
+
+Total bits sent: 1095500	Total RBGs used: 3
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 6.30957344480193
+	P( 0, 3) = 1.0
+
+	user( 0) uses  1 RBGs and sends 339500 bits
+	user( 1) uses  2 RBGs and sends 381500 bits
+
+BS 1:
+	P( 1, 0) = 1.0
+	P( 1, 1) = 1.0
+	P( 1, 2) = 1.0
+	P( 1, 3) = 6.30957344480193
+
+	user( 2) uses  3 RBGs and sends 374500 bits
+
+Iteration 2:
+Bits in the buffer: {0: 364000, 1: 399000, 2: 332500}
+Time: 16.88245725631714s
+
+Total bits sent: 1095500	Total RBGs used: 4
+
+BS 0:
+	P( 0, 0) = 3.1554183661216726
+	P( 0, 1) = 3.1554183661216726
+	P( 0, 2) = 3.1554155252012226
+	P( 0, 3) = 3.1554183661216726
+
+
+BS 1:
+	P( 1, 0) = 5.647448798940028
+	P( 1, 1) = 3.279919114925667
+	P( 1, 2) = 3.2798999723071036
+	P( 1, 3) = 4.029040813290575
+
+	user( 0) uses  0 RBGs and sends 364000 bits
+	user( 1) uses  1  2 RBGs and sends 399000 bits
+	user( 2) uses  3 RBGs and sends 332500 bits
+
+Iteration 3:
+Bits in the buffer: {0: 395500, 1: 332500, 2: 339500}
+Time: 10.69885802268982s
+
+Total bits sent: 1067500	Total RBGs used: 4
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 6.30957344480193
+
+
+BS 1:
+	P( 1, 0) = 0.0012589254117941673
+	P( 1, 1) = 0.7086482538910582
+	P( 1, 2) = 0.0012589254117941673
+	P( 1, 3) = 0.9546816770408079
+
+	user( 0) uses  0  2 RBGs and sends 395500 bits
+	user( 1) uses  1 RBGs and sends 332500 bits
+	user( 2) uses  3 RBGs and sends 339500 bits
+
+Iteration 4:
+Bits in the buffer: {0: 367500, 1: 322000, 2: 353500}
+Time: 15.009816408157349s
+
+Total bits sent: 1043000	Total RBGs used: 3
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+
+
+BS 1:
+	P( 1, 0) = 1.7796885237821656
+	P( 1, 1) = 0.4365085428318973
+	P( 1, 2) = 1.0
+	P( 1, 3) = 2.9927169422711013
+
+	user( 0) uses  3 RBGs and sends 367500 bits
+	user( 1) uses  1 RBGs and sends 321999.9999999862 bits
+	user( 2) uses  0 RBGs and sends 353500 bits
+
+Iteration 5:
+Bits in the buffer: {0: 378000, 1: 346500, 2: 430500}
