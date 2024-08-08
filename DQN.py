@@ -1,17 +1,21 @@
 import torch as T
 import torch.nn as nn
 import torch.nn.functional as F
-from ENVIRONMENT import ENVIRONMENT as ENV
+
 import random
 import numpy as np
 
 from collections import deque
 
-device = "cuda" if T.cuda.is_available() else "cpu"
+class DQN(nn.Module):
+    def __init__(self, state_dim, action_dim, hidden_dim=256):
+        super(DQN, self).__init__()
+        self.fc1    = nn.Linear(state_dim, hidden_dim)
+        self.output = nn.Linear(hidden_dim, action_dim)
 
-class DQN(ENV):
-    def __init__(self,data):
-        super().__init__(data)
+    def forward(self, x):
+        x = F.relu(self.fc1(x))
+        return self.output(x)
 
 class ReplayMemory(object):
     def __init__(self, size : int, device : str = 'cpu'):
@@ -25,15 +29,15 @@ class ReplayMemory(object):
         self.buffer.append((state,action,reward,next_state, done))
 
     def sample(self, batch_size):
-        batch = random.sample(self.buffer, min(len(self.buffer, batch_size)))
-        state, action, reward, next_state, done = map(np.stack, zip(*batch))
-        return state, action, reward, next_state, done
-
-    
-
+        return random.sample(self.buffer, min(len(self.buffer), batch_size))
 
 def main():
-    pass
+    state_dim = 12
+    action_dim = 2
+    net = DQN(state_dim, action_dim)
+    state = T.randn(10, state_dim)
+    output = net(state)
+    print(output)
 
 if __name__ == '__main__':
     main()

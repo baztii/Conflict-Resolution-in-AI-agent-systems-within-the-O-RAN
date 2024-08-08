@@ -1,13 +1,19 @@
 import numpy as np
 from pyomo.environ import log
+import random
 
 
 """ Global variables """
 DISPLAY = True
 ITER    = 10
+DIV = 50
 
-class ENVIRONMENT:
-    def __init__(self, data):
+class ENVIRONMENT():
+    def __init__(self, data, render):
+        " Save the data "
+        self.data = data
+        self.render = render
+
         """ Parameters """
         self.N        = range(data['N']) # int // Number of base stations
         self.K        = range(data['K']) # int // Number of users int the system
@@ -26,9 +32,21 @@ class ENVIRONMENT:
         self.L     = {k:data['L'][k] for k in self.K}                           # list // Amount of remained data of all users in the transimssion buffer (i.e. L[k] is the remaining data of user k)
         
         """ Variables """
-        self.P     = {(n,m):(self.Pmin+self.Pmax)/2 for n in self.N for m in self.M} # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
+        self.P     = {(n,m):self.Pmin for n in self.N for m in self.M} # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
         self.alpha = {(n,m,k):0 for n in self.N for m in self.M for k in self.K}     # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
-        self.beta  = {(n,k):0 for n in self.N for k in self.K}                       # list // User distribution in BS (i.e self.beta[n,k] = 1 iff user[k] is on BS n, 0 otherwise)
+        self.beta  = {(n,k):1 for n in self.N for k in self.K}                       # list // User distribution in BS (i.e self.beta[n,k] = 1 iff user[k] is on BS n, 0 otherwise)
+    
+        self.alpha[0,0,0] = 1
+        return
+
+        usr = 0
+        for n in self.N:
+            for m in self.M:
+                for k in self.K:
+                    self.alpha[n,m,k] = int(k == usr)
+                usr += 1
+                usr %= self.K[-1] + 1
+
 
     def gamma_maj(self, n : int, m : int) -> list[float]:
         return [log(1+
@@ -123,6 +141,115 @@ class ENVIRONMENT:
         
         print("Bits remaining in the buffer:", end=' ')
         print(f"{self.L}")
+
+    def reset(self):
+        self.__init__(self.data, self.render)
+
+        new_state = []
+
+        for n in self.N:
+            for m in self.M:
+                new_state += self.gamma_maj(n, m)
+
+        for k in self.K:
+            new_state.append(self.Bits(k))
+
+        for k in self.K:
+            new_state.append(self.L[k])
+
+        for n in self.N:
+            for m in self.M:
+                new_state.append(self.P[n,m]) 
+        
+        return new_state
+    
+    def step(self, action):
+        if self.render:
+            print(f"Iteration x:")
+            print("Bits in the buffer:", end=' ')
+            print(f"{self.L}")
+
+
+        N = self.N[-1] + 1
+        M = self.M[-1] + 1
+
+        BS  = int(action//(DIV*M))
+        RBG = int((action%(DIV*M))//DIV)
+        P   = int(action%(DIV*M)%DIV)
+
+        self.P[BS, RBG] = self.Pmin + (self.Pmax - self.Pmin)/(DIV-1)*P
+
+        self.TxData()
+        self.RqData()
+
+        new_state = []
+
+        for n in self.N:
+            for m in self.M:
+                new_state += self.gamma_maj(n, m)
+
+        for k in self.K:
+            new_state.append(self.Bits(k))
+
+        for k in self.K:
+            new_state.append(self.L[k])
+
+        for n in self.N:
+            for m in self.M:
+                new_state.append(self.P[n,m])    
+       
+        reward = self.transmissionBits()
+
+        if self.render:
+            self.results()
+
+        return new_state, reward
+    
+    def results(self, time : float = 0.0):        
+        print(f"Time: {time}s\n")
+        print(f"Total bits sent: {round(self.transmissionBits())}", end="\t")
+        print(f"Total RBGs used: {self.RBGs()}\n")
+
+        for n in self.N:
+            print(f"BS {n}:")
+            for m in self.M:
+                print(f"\tP({n:>2},{m:>2}) = {self.P[n,m]}")
+            print()
+
+            for k in self.K:
+                if self.beta[n,k] == 1:
+                    print(f"\tuser({k:>2}) uses", end=' ')
+                    has_rbg = False
+                    for m in self.M:
+                        if self.alpha[n,m,k] == 1:
+                            print(f"{m:>2}", end=' ')
+                            has_rbg = True
+
+                    if not has_rbg:
+                        print("NO", end=' ')
+
+                    print("RBGs", end=' ')
+                    print(f"and sends {self.Bits(k)} bits")
+
+            print()
+
+    def action_space_sample(self):
+        N = self.N[-1]+1
+        M = self.M[-1]+1
+
+        return random.randint(0, DIV*N*M-1)
+    
+    def n_action_space(self):
+        N = self.N[-1]+1
+        M = self.M[-1]+1
+
+        return DIV*N*M
+
+    def m_state_space(self):
+        N = self.N[-1]+1
+        M = self.M[-1]+1
+        K = self.K[-1]+1
+        return N*M + 2*K + N*M*(N-1)
 
 def main():
     with open('tests/test3/data.json', 'r') as data_file: # load the data
