@@ -9,5 +9,33 @@ powerAllocation:
   learning_rate_a: 0.001
   discount_factor_g: 0.99
   stop_on_reward: 1_000_000_000
-  fc1_nodes: 10
+  fc1_nodes: 512
   nData: 1
+
+powerAllocation2:
+  env_id: powerAllocation2
+  replay_memory_size: 100000
+  mini_batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 5000
+  alpha: 0.001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  fc1_nodes: 256
+  nData: 2
+
+test:
+  env_id: test
+  replay_memory_size: 100000
+  mini_batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 5000
+  alpha: 0.001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  fc1_nodes: 256
+  nData: 2

@@ -13,6 +13,7 @@ class ENVIRONMENT():
         " Save the data "
         self.data = data
         self.render = render
+        self.iterations = 0
 
         """ Parameters """
         self.N        = range(data['N']) # int // Number of base stations
@@ -36,16 +37,13 @@ class ENVIRONMENT():
         self.alpha = {(n,m,k):0 for n in self.N for m in self.M for k in self.K}     # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
         self.beta  = {(n,k):1 for n in self.N for k in self.K}                       # list // User distribution in BS (i.e self.beta[n,k] = 1 iff user[k] is on BS n, 0 otherwise)
     
-        self.alpha[0,0,0] = 1
-        return
-
         usr = 0
         for n in self.N:
             for m in self.M:
                 for k in self.K:
                     self.alpha[n,m,k] = int(k == usr)
                 usr += 1
-                usr %= self.K[-1] + 1
+                usr = usr %(self.K[-1] + 1)
 
 
     def gamma_maj(self, n : int, m : int) -> list[float]:
@@ -121,6 +119,12 @@ class ENVIRONMENT():
             self.L[k] = round(self.L[k] - self.Bits(k))
 
     def RqData(self): # "insert" new data to be transmitted
+
+        for k in self.K:
+            self.L[k] = 100_000# + np.random.randint(-50_000, 50_000)
+        
+        return
+
         pkg = np.random.poisson(self.lamda*self.T, self.K[-1]+1) # The expected value
         
         for k in self.K:
@@ -144,6 +148,66 @@ class ENVIRONMENT():
 
     def reset(self):
         self.__init__(self.data, self.render)
+        self.RqData()
+        self.ori_bits = sum(self.L.values())
+
+        new_state = []
+
+        for n in self.N:
+            for m in self.M:
+                new_state += self.gamma_maj(n, m)
+        
+        for k in self.K:
+            new_state.append(self.Bits(k))
+
+        for k in self.K:
+            new_state.append(self.L[k])
+
+        for n in self.N:
+            for m in self.M:
+                new_state.append(self.P[n,m]) 
+        
+        new_state.append(self.iterations)
+        
+        return new_state
+    
+    def action_translator(self, action):
+
+        N = self.N[-1] + 1
+        M = self.M[-1] + 1
+
+        BS  = int(action//(DIV*M))
+        RBG = int((action%(DIV*M))//DIV)
+        P   = int(action%(DIV*M)%DIV)
+
+        return BS, RBG, P
+    
+    def step(self, action):
+        N = self.N[-1] + 1
+        M = self.M[-1] + 1
+        self.iterations += 1
+        if self.render:
+            print(f"Iteration x:")
+            print("Bits in the buffer:", end=' ')
+            print(f"{self.L}")
+
+        
+        BS, RBG, P = self.action_translator(action)
+
+
+        self.P[BS, RBG] = self.Pmin + (self.Pmax - self.Pmin)/(DIV-1)*P
+        
+        if self.render: print(f"Action taken BS {BS}, RBG {RBG} to power: {self.P[BS,RBG]}")
+
+        if self.render:
+            self.results()
+
+        
+        reward = self.transmissionBits()
+        ## New state ##
+        self.TxData()
+
+        if self.render: print("Bits remaining in the buffer:", self.L)
 
         new_state = []
 
@@ -160,50 +224,13 @@ class ENVIRONMENT():
         for n in self.N:
             for m in self.M:
                 new_state.append(self.P[n,m]) 
-        
-        return new_state
-    
-    def step(self, action):
-        if self.render:
-            print(f"Iteration x:")
-            print("Bits in the buffer:", end=' ')
-            print(f"{self.L}")
 
+                
+        new_state.append(self.iterations)
 
-        N = self.N[-1] + 1
-        M = self.M[-1] + 1
-
-        BS  = int(action//(DIV*M))
-        RBG = int((action%(DIV*M))//DIV)
-        P   = int(action%(DIV*M)%DIV)
-
-        self.P[BS, RBG] = self.Pmin + (self.Pmax - self.Pmin)/(DIV-1)*P
-
-        self.TxData()
-        self.RqData()
-
-        new_state = []
-
-        for n in self.N:
-            for m in self.M:
-                new_state += self.gamma_maj(n, m)
-
-        for k in self.K:
-            new_state.append(self.Bits(k))
-
-        for k in self.K:
-            new_state.append(self.L[k])
-
-        for n in self.N:
-            for m in self.M:
-                new_state.append(self.P[n,m])    
+        #print(new_state)
        
-        reward = self.transmissionBits()
-
-        if self.render:
-            self.results()
-
-        return new_state, reward
+        return new_state, reward, bool(sum(self.L.values()) == 0)
     
     def results(self, time : float = 0.0):        
         print(f"Time: {time}s\n")
@@ -249,7 +276,35 @@ class ENVIRONMENT():
         N = self.N[-1]+1
         M = self.M[-1]+1
         K = self.K[-1]+1
-        return N*M + 2*K + N*M*(N-1)
+        return N*M + 2*K + 1 + N*M*(N-1)
+
+    """ This is a test to show if the agent learns properly in a imple scenario """
+
+    def reset2(self):
+        self.__init__(self.data, self.render)
+        for k in self.K:
+            self.L[k] = random.randint(0,100)
+
+        return list(self.L.values())
+
+    def step2(self,action):
+        print(self.L)
+        if self.L[int(action)] == 0:
+            reward = -100
+        else:
+            self.L[int(action)] = 0
+            reward = sum(self.L.values())
+
+        return list(self.L.values()), reward, bool(sum(self.L.values()) == 0)
+
+    def n_action_space2(self):
+        return len(self.L)
+
+    def m_state_space2(self):
+        return len(self.L)
+    
+    def action_space_sample2(self):
+        return random.randint(0, len(self.L)-1)
 
 def main():
     with open('tests/test3/data.json', 'r') as data_file: # load the data

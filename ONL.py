@@ -19,7 +19,7 @@ OF = sys.stdout
 class ONL(ENV):
     def __init__(self, data : dict):
         """ Initialize parameters and variables"""
-        super().__init__(data)
+        super().__init__(data, False)
 
         """ Solver model """
         self.model = ConcreteModel()
@@ -60,7 +60,6 @@ class ONL(ENV):
 
     def auto_denominator(self, model, n : int, m: int, k: int):
         return self.eta(n,m,k,model) >= 0
-
     
     def min_bool_bits_constraint(self, model, k : int):
         return model.min_bool_bits[k]*(self.rhs(k, model) -  self.lhs(k, model)) >= 0

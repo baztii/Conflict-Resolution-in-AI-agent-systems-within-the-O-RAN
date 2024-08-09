@@ -36,8 +36,8 @@ class Agent():
         
         self.hyperparameter_set = hyperparameter_set
         self.env_id             = hyperparameters['env_id']
-        self.learning_rate_a    = hyperparameters['learning_rate_a']        # learning rate (alpha)
-        self.discount_factor_g  = hyperparameters['discount_factor_g']      # discount rate (gamma)
+        self.learning_rate_a    = hyperparameters['alpha']        # learning rate (alpha)
+        self.discount_factor_g  = hyperparameters['gamma']      # discount rate (gamma)
         self.network_sync_rate  = hyperparameters['network_sync_rate']      # number of steps the agent takes before syncing the policy and target network
         self.replay_memory_size = hyperparameters['replay_memory_size']     # size of replay memory
         self.mini_batch_size    = hyperparameters['mini_batch_size']        # size of the training data set sampled from the replay memory
@@ -45,8 +45,8 @@ class Agent():
         self.epsilon_decay      = hyperparameters['epsilon_decay']          # epsilon decay rate
         self.epsilon_min        = hyperparameters['epsilon_min']            # minimum epsilon value
         self.stop_on_reward     = hyperparameters['stop_on_reward']         # stop training after reaching this number of rewards
-        self.fc1_nodes          = hyperparameters['fc1_nodes']
-        self.nData              = hyperparameters['nData']
+        self.fc1_nodes          = hyperparameters['fc1_nodes']              # number of nodes in the first hidden layer
+        self.nData              = hyperparameters['nData']                  # Data set
         self.env_make_params    = hyperparameters.get('env_make_params',{}) # Get optional environment-specific parameters, default to empty dict
 
         # Neural Network
@@ -78,6 +78,8 @@ class Agent():
 
         num_actions = env.n_action_space()
         num_states  = env.m_state_space()
+
+        print(num_states, num_actions)
 
         #print(f"Nume of actinos {num_actions} and num_states {num_states}")
         rewards_per_episode = []
@@ -122,7 +124,9 @@ class Agent():
             episode_reward = 0.0    # Used to accumulate rewards per episode
             it = 0
 
-            while(not terminated and episode_reward < self.stop_on_reward and it < 1000):
+            action_list = []
+
+            while not terminated and it < 100: # episode_reward < self.stop_on_reward
                 it += 1	
                 #print("episode_reward: ", episode_reward)
                 # Select action based on epsilon-greedy
@@ -137,32 +141,44 @@ class Agent():
                         # policy_dqn returns tensor([[1], [2], [3]]), so squeeze it to tensor([1, 2, 3]).
                         # argmax finds the index of the largest element.
                         action = policy_dqn(state.unsqueeze(dim=0)).squeeze().argmax()
+
+                action_list.append(int(action))
                 
-                new_state, reward = env.step(action)
+                new_state, reward, terminated = env.step(action)
 
                 episode_reward += reward
 
                 # Convert new state and reward to tensors on device
                 new_state = T.tensor(new_state, dtype=T.float, device=device)
                 reward = T.tensor(reward, dtype=T.float, device=device)
+                terminated = T.tensor(terminated, dtype=T.float, device=device)
 
                 if is_training:
                     # Save experience into memory
-                    memory.push(state, action, new_state, reward, False)
+                    memory.push(state, action, reward, new_state, terminated)
 
                     # Increment step counter
                     step_count+=1
 
                 # Move to the next state
+                
                 state = new_state
             
+            T.save(policy_dqn.state_dict(), self.MODEL_FILE)
+
+
+            if not is_training:
+                print(action_list)
+                print(episode_reward)
+                exit(0)
+
             # Keep track of the rewards collected per episode.
             rewards_per_episode.append(episode_reward)
 
             # Save model when new best reward is obtained.
             if is_training:
                 if episode_reward > best_reward:
-                    log_message = f"{datetime.now().strftime(DATE_FORMAT)}: New best reward {episode_reward:0.1f} ({(episode_reward-best_reward)/best_reward*100:+.1f}%) at episode {episode}, saving model..."
+                    log_message = f"{datetime.now().strftime(DATE_FORMAT)}: New best reward {episode_reward} ({(episode_reward-best_reward)/best_reward*100:+.1f}%) at episode {episode}, saving model..." ## {episode_reward:0.1f}
                     print(log_message)
                     with open(self.LOG_FILE, 'a') as file:
                         file.write(log_message + '\n')
@@ -189,6 +205,9 @@ class Agent():
                     if step_count > self.network_sync_rate:
                         target_dqn.load_state_dict(policy_dqn.state_dict())
                         step_count=0
+                        
+            #if episode_reward > 228333: exit(0)
+        
 
 
     def save_graph(self, rewards_per_episode, epsilon_history):
@@ -217,13 +236,13 @@ class Agent():
         plt.close(fig)
 
     def optimize(self, mini_batch, policy_dqn, target_dqn):
-        states, actions, new_states, rewards, terminations = zip(*mini_batch)
+        states, actions, rewards, new_states, terminations = zip(*mini_batch)
         
         states = T.stack(states)
         actions = T.stack(actions)
         new_states = T.stack(new_states)
         rewards = T.stack(rewards)
-        terminations = T.tensor(terminations).float().to(device)
+        terminations = T.stack(terminations)
 
         with T.no_grad():
             # Calculate target Q values (expected returns)
