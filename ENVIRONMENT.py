@@ -2,17 +2,30 @@ import numpy as np
 from pyomo.environ import log
 import random
 
+import gymnasium as gym
+from gymnasium import spaces
+import json
+
 
 """ Global variables """
 DISPLAY = True
 ITER    = 10
 DIV = 50
 
-class ENVIRONMENT():
-    def __init__(self, data, render):
+class ENVIRONMENT(gym.Env):
+
+    metadata = {'render_modes': ['human', 'rgb_array']}
+    possible_render_modes = ['human', 'rgb_array']  
+    
+    def __init__(self, render_mode='human'):
+        super(ENVIRONMENT, self).__init__()
+
+        with open('tests/test2/data.json', 'r') as data_file: # load the data
+            data = json.load(data_file)
+        
         " Save the data "
         self.data = data
-        self.render = render
+        self.render_mode = render_mode
         self.iterations = 0
 
         """ Parameters """
@@ -32,8 +45,15 @@ class ENVIRONMENT():
         self.B     = {(n,m):data['B'][n][m] for n in self.N for m in self.M}    # list // Brandwith of all RBG (i.e. BW[n,m] determines the brandwith of the RBG m at the BS n)
         self.L     = {k:data['L'][k] for k in self.K}                           # list // Amount of remained data of all users in the transimssion buffer (i.e. L[k] is the remaining data of user k)
         
+        #print(len(self.L))
+
+
+        self.action_space = spaces.Discrete(len(self.L))
+        self.observation_space = spaces.Box(low=np.zeros(len(self.L)), high=100_000*np.ones(len(self.L)), dtype=np.float64)
+        self.state = None
+
         """ Variables """
-        self.P     = {(n,m):self.Pmin for n in self.N for m in self.M} # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
+        self.P     = {(n,m):0 for n in self.N for m in self.M} # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
         self.alpha = {(n,m,k):0 for n in self.N for m in self.M for k in self.K}     # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
         self.beta  = {(n,k):1 for n in self.N for k in self.K}                       # list // User distribution in BS (i.e self.beta[n,k] = 1 iff user[k] is on BS n, 0 otherwise)
     
@@ -146,7 +166,7 @@ class ENVIRONMENT():
         print("Bits remaining in the buffer:", end=' ')
         print(f"{self.L}")
 
-    def reset(self):
+    def reset2(self):
         self.__init__(self.data, self.render)
         self.RqData()
         self.ori_bits = sum(self.L.values())
@@ -182,7 +202,7 @@ class ENVIRONMENT():
 
         return BS, RBG, P
     
-    def step(self, action):
+    def step2(self, action):
         N = self.N[-1] + 1
         M = self.M[-1] + 1
         self.iterations += 1
@@ -260,25 +280,78 @@ class ENVIRONMENT():
 
             print()
 
-    def action_space_sample(self):
+    def action_space_sample2(self):
         N = self.N[-1]+1
         M = self.M[-1]+1
 
         return random.randint(0, DIV*N*M-1)
     
-    def n_action_space(self):
+    def n_action_space2(self):
         N = self.N[-1]+1
         M = self.M[-1]+1
 
         return DIV*N*M
 
-    def m_state_space(self):
+    def m_state_space2(self):
         N = self.N[-1]+1
         M = self.M[-1]+1
         K = self.K[-1]+1
         return N*M + 2*K + 1 + N*M*(N-1)
 
-    """ This is a test to show if the agent learns properly in a imple scenario """
+
+    """ This is another test to show if the agent learns properly in a simple scenario """
+    def reset(self, seed=None, options=None):
+
+        super().reset(seed=seed)
+        #self.state = np.random.uniform(low = 0, high=100_000, size=(len(self.L),))
+
+        for m in self.M:
+            self.P[0,m] = 0
+        self.RqData()
+
+        state = list(self.L.values())
+
+        return np.array(state, dtype=np.float64), {}
+
+        for m in self.M:
+            self.P[0,m] = 0
+        self.RqData()
+
+        state = list(self.L.values())
+        state += [self.P[0,m] for m in self.M]
+
+        return state
+
+    def step(self, action):
+
+        #print(self.L)
+        self.P[0,int(action)] = self.Pmax
+
+        reward = self.transmissionBits()
+
+        #print(self.P)
+        #print(action)
+        self.TxData()
+        state = list(self.L.values())
+        return np.array(state, dtype=np.float64), reward, bool(sum(self.L.values()) == 0), False, {}
+
+    def render(self, mode='human'):
+        if mode == 'human':
+            print(self.L)
+    
+    def close(self):
+        pass
+
+    def n_action_space(self):
+        return len(self.K)
+
+    def m_state_space(self):
+        return 2*len(self.K)
+    
+    def action_space_sample(self):
+        return random.randint(0, len(self.K)-1)
+
+    """ This is a test to show if the agent learns properly in a simple scenario """
 
     def reset2(self):
         self.__init__(self.data, self.render)
@@ -307,6 +380,7 @@ class ENVIRONMENT():
         return random.randint(0, len(self.L)-1)
 
 def main():
+    import json
     with open('tests/test3/data.json', 'r') as data_file: # load the data
         data = json.load(data_file)
     
@@ -318,5 +392,4 @@ def main():
     env.gameloop()
 
 if __name__ == '__main__':
-    import json
     main()

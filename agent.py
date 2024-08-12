@@ -193,7 +193,7 @@ class Agent():
                     last_graph_update_time = current_time
 
                 # If enough experience has been collected
-                if len(memory)>self.mini_batch_size:
+                if len(memory)>self.mini_batch_size and terminated:
                     mini_batch = memory.sample(self.mini_batch_size)
                     self.optimize(mini_batch, policy_dqn, target_dqn)
 
