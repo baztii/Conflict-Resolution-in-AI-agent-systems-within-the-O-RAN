@@ -34,7 +34,7 @@ test:
   epsilon_decay: 0.9995
   epsilon_min: 0.01
   network_sync_rate: 500
-  alpha: 0.001
+  alpha: 0.00001
   gamma: 0.99
   stop_on_reward: 1_000_000_000
   fc1_nodes: 256

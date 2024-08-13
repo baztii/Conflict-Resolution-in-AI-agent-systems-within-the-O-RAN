@@ -103,14 +103,16 @@ class Agent:
 
         global_reward = 0
 
-        for episode in itertools.count():
+        for episode in itertools.count():# in range(2000):#itertools.count():
             state, _ = env.reset()
             state = torch.tensor(state, dtype=torch.float32, device=device)
 
             terminated = False
             episode_reward = 0.0
 
-            while not terminated and episode_reward < self.stop_on_reward: # Episode loop
+            it = 0
+            while not terminated and episode_reward < self.stop_on_reward and it < 5: # Episode loop
+                it += 1
                 # Epsilon greedy algorithm
                 if is_training and random.random() < epsilon: 
                     action = env.action_space.sample()
@@ -142,12 +144,19 @@ class Agent:
             if episode_reward == 500_000:
                 global_reward += 1
             
+            if not is_training:
+                exit()
+            
+
             global_rewards_total.append(global_rewards_total)
             rewards_per_episode.append(episode_reward)
 
+            #print('episode ', episode, 'score %.2f' % episode_reward, 'average score %.2f' % np.mean(rewards_per_episode), 'epsilon %.2f' % epsilon)
+
+
                         # Save model when new best reward is obtained.
             if is_training:
-                if episode_reward == 500_000:#episode_reward > best_reward:
+                if episode_reward >= best_reward:
                     log_message = f"{datetime.now().strftime(DATE_FORMAT)}: New best reward {episode_reward:0.1f} ({(episode_reward-best_reward)/best_reward*100:+.1f}%) at episode {episode}, saving model..."
                     print(log_message)
                     with open(self.LOG_FILE, 'a') as file:

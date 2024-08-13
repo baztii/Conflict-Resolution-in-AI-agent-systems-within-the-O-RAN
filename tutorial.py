@@ -108,6 +108,13 @@ class Agent():
         self.epsilon = self.epsilon - self.eps_dec \
             if self.epsilon > self.eps_min else self.eps_min
 
+    def deploy(self, observation):
+        state = T.tensor([observation]).to(self.Q_eval.device)
+        actions = self.Q_eval.forward(state)
+        action = T.argmax(actions).item()
+
+        return action
+    
 def main():
     import gymnasium as gym
 
@@ -116,15 +123,17 @@ def main():
 
     env = gym.make('ENVIRONMENT-v0')
     agent = Agent(gamma=0.99, epsilon=1.0, batch_size=64, n_actions=5,
-                  eps_end=0.01, input_dims=[5], lr=0.003)
+                  eps_end=0.01, input_dims=[5], lr=0.00001)
     scores, eps_history = [], []
-    n_games = 500
+    n_games = 2000
 
     for i in range(n_games):
         done = False
         observation, info = env.reset()
         score = 0
-        while not done:
+        it = 0
+        while not done and it < 5:
+            it += 1
             action = agent.choose_action(observation)
             observation_, reward, terminated, truncated, info = env.step(action)
             done = terminated or truncated
@@ -138,7 +147,20 @@ def main():
         avg_score = np.mean(scores[-100:])
         print('episode ', i, 'score %.2f' % score, 'average score %.2f' % avg_score, 'epsilon %.2f' % agent.epsilon)
     
+    agent.epsilon = 0
+    for i in range(1):
+        done = False
+        observation, info = env.reset()
+        it = 0
+        print(env.L)
 
+        while not done and it < 5:
+            it += 1
+            action = agent.deploy(observation)
+            observation_, reward, terminated, truncated, info = env.step(action)
+            done = terminated or truncated
+            observation = observation_
+            print(env.L)
 
 
     x = [i+1 for i in range(n_games)]

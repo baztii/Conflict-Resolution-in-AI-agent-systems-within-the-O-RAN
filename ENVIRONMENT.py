@@ -141,7 +141,7 @@ class ENVIRONMENT(gym.Env):
     def RqData(self): # "insert" new data to be transmitted
 
         for k in self.K:
-            self.L[k] = 100_000# + np.random.randint(-50_000, 50_000)
+            self.L[k] = 100# + np.random.randint(-50_000, 50_000)
         
         return
 
@@ -303,6 +303,7 @@ class ENVIRONMENT(gym.Env):
     def reset(self, seed=None, options=None):
 
         super().reset(seed=seed)
+        self.iterations = 0
         #self.state = np.random.uniform(low = 0, high=100_000, size=(len(self.L),))
 
         for m in self.M:
@@ -310,6 +311,9 @@ class ENVIRONMENT(gym.Env):
         self.RqData()
 
         state = list(self.L.values())
+        #state.append(self.iterations)
+        print(self.L)
+
 
         return np.array(state, dtype=np.float64), {}
 
@@ -323,16 +327,20 @@ class ENVIRONMENT(gym.Env):
         return state
 
     def step(self, action):
+        self.iterations += 1
+        #self.P[0,int(action)] = self.Pmax
 
-        #print(self.L)
-        self.P[0,int(action)] = self.Pmax
-
-        reward = self.transmissionBits()
+        reward = self.L[int(action)]
+        self.L[int(action)] = 0
 
         #print(self.P)
         #print(action)
-        self.TxData()
+        #self.TxData()
         state = list(self.L.values())
+        #state.append(self.iterations)
+
+        print(self.L)
+
         return np.array(state, dtype=np.float64), reward, bool(sum(self.L.values()) == 0), False, {}
 
     def render(self, mode='human'):
@@ -353,22 +361,24 @@ class ENVIRONMENT(gym.Env):
 
     """ This is a test to show if the agent learns properly in a simple scenario """
 
-    def reset2(self):
-        self.__init__(self.data, self.render)
+    def reset2(self, seed=None, options=None):
+        super().reset(seed=seed)
         for k in self.K:
             self.L[k] = random.randint(0,100)
 
-        return list(self.L.values())
+        return np.array(list(self.L.values())), {}
 
     def step2(self,action):
-        print(self.L)
+        #print(self.L)
         if self.L[int(action)] == 0:
             reward = -100
         else:
             self.L[int(action)] = 0
             reward = sum(self.L.values())
 
-        return list(self.L.values()), reward, bool(sum(self.L.values()) == 0)
+        state = list(self.L.values())
+
+        return np.array(state, dtype=np.float64), reward, bool(sum(self.L.values()) == 0), False, {}    
 
     def n_action_space2(self):
         return len(self.L)
