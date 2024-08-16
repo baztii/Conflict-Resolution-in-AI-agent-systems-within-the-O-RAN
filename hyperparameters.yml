@@ -39,3 +39,34 @@ test:
   stop_on_reward: 1_000_000_000
   fc1_nodes: 256
   nData: 2
+
+
+test2:
+  env_id: ENVIRONMENT-v0
+  replay_memory_size: 100000
+  mini_batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  fc1_nodes: 256
+  nData: 2
+
+test3:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  nData: 2
+  env_make_params:
+    render_mode: human

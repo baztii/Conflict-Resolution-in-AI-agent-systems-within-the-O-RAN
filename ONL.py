@@ -6,6 +6,8 @@ import numpy as np
 import sys
 import os
 
+from utils import asserts
+
 """Global variables"""
 FILE = 1
 START = 7
@@ -19,7 +21,7 @@ OF = sys.stdout
 class ONL(ENV):
     def __init__(self, data : dict):
         """ Initialize parameters and variables"""
-        super().__init__(data, False)
+        super().__init__(data)
 
         """ Solver model """
         self.model = ConcreteModel()
@@ -158,16 +160,6 @@ class ONL(ENV):
         for n in self.N:
             for m in self.M:
                 print(f"C({n},{m})={self.C(n,m)}")
-
-
-def asserts(data : dict) -> None:
-    assert len(data["B"])    == data["N"]
-    assert len(data["B"][0]) == data["M"]
-    
-    assert len(data["g"])    == data["N"]
-    assert len(data["g"][0]) == data["K"]
-
-    assert len(data["L"])    == data["K"]
 
 
 def main():

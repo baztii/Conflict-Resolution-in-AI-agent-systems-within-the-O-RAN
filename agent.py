@@ -208,8 +208,6 @@ class Agent():
                         
             #if episode_reward > 228333: exit(0)
         
-
-
     def save_graph(self, rewards_per_episode, epsilon_history):
         # Save plots
         fig = plt.figure(1)

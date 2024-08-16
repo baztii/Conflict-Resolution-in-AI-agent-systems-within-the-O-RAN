@@ -115,55 +115,66 @@ class Agent():
 
         return action
     
+from utils import save_graph
 def main():
     import gymnasium as gym
 
     from gymnasium.envs.registration import register
-    register(id="ENVIRONMENT-v0", entry_point="ENVIRONMENT:ENVIRONMENT")
+    register(id="ENVIRONMENT-v1", entry_point="gym_environment:CUSTOM_ENVIRONMENT")
 
-    env = gym.make('ENVIRONMENT-v0')
+    env = gym.make('ENVIRONMENT-v1')
+
     agent = Agent(gamma=0.99, epsilon=1.0, batch_size=64, n_actions=250,
                   eps_end=0.01, input_dims=[15], lr=0.00001)
     scores, eps_history = [], []
-    n_games = 2000
+    n_games = 100_000
 
-    for i in range(n_games):
-        done = False
-        observation, info = env.reset()
-        score = 0
-        it = 0
-        while not done and it < 5:
-            it += 1
-            action = agent.choose_action(observation)
-            observation_, reward, terminated, truncated, info = env.step(action)
-            done = terminated or truncated
-            score += reward
-            agent.store_transition(observation, action, reward, observation_, done)
-            agent.learn()
-            observation = observation_
-        scores.append(score)
-        eps_history.append(agent.epsilon)
+    train = True
+    if train:
+        for i in range(n_games):
+            done = False
+            observation, info = env.reset()
+            score = 0
+            it = 0
+            while not done and it < 5:
+                it += 1
+                action = agent.choose_action(observation)
+                observation_, reward, terminated, truncated, info = env.step(action)
+                done = terminated or truncated
+                score += reward
+                agent.store_transition(observation, action, reward, observation_, done)
+                agent.learn()
+                observation = observation_
+            scores.append(score)
+            eps_history.append(agent.epsilon)
 
-        avg_score = np.mean(scores[-100:])
-        from utils import save_graph
-        save_graph("aaa.png", scores, eps_history)
+            # Save the agent
+            T.save(agent.Q_eval.state_dict(), 'ccc.pt')
 
-        print('episode ', i, 'score %.2f' % score, 'average score %.2f' % avg_score, 'epsilon %.2f' % agent.epsilon)
-    
-    agent.epsilon = 0
-    for i in range(1):
-        done = False
-        observation, info = env.reset()
-        it = 0
-        print(env.L)
+            avg_score = np.mean(scores[-100:])
+            if avg_score < 600:
+                agent.epsilon = 1
+            if i%1000 == 0: save_graph("ccc.png", scores, eps_history)
 
-        while not done and it < 5:
-            it += 1
-            action = agent.deploy(observation)
-            observation_, reward, terminated, truncated, info = env.step(action)
-            done = terminated or truncated
-            observation = observation_
-            print(env.L)
+            print('episode ', i, 'score %.2f' % score, 'average score %.2f' % avg_score, 'epsilon %.2f' % agent.epsilon)
+    else:
+        agent.Q_eval.load_state_dict(T.load('ccc.pt'))
+        agent.Q_eval.eval()
+        for i in range(1):
+            done = False
+            observation, info = env.reset()
+            it = 0
+            print(env.get_wrapper_attr('L'))
+
+            while not done and it < 5:
+                it += 1
+                action = agent.deploy(observation)
+                observation_, reward, terminated, truncated, info = env.step(action)
+                done = terminated or truncated
+                observation = observation_
+                print(env.get_wrapper_attr('P'))
+                print(env.get_wrapper_attr('L'))
+                
 
 
     x = [i+1 for i in range(n_games)]

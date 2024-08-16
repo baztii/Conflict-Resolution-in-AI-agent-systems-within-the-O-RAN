@@ -156,7 +156,7 @@ class Agent:
 
                         # Save model when new best reward is obtained.
             if is_training:
-                if episode_reward >= best_reward:
+                if episode_reward > best_reward:
                     log_message = f"{datetime.now().strftime(DATE_FORMAT)}: New best reward {episode_reward:0.1f} ({(episode_reward-best_reward)/best_reward*100:+.1f}%) at episode {episode}, saving model..."
                     print(log_message)
                     with open(self.LOG_FILE, 'a') as file:
@@ -177,7 +177,7 @@ class Agent:
                     mini_batch = memory.sample(self.mini_batch_size)
                     self.optimize(mini_batch, policy_dqn, target_dqn)
 
-                    epsilon = max(epsilon*self.epsilon_decay, self.epsilon_min)
+                    epsilon = max(epsilon-1+self.epsilon_decay, self.epsilon_min)
                     epsilon_history.append(epsilon)
 
                     # Copy policy network to target network after a certain number of steps
@@ -269,7 +269,7 @@ class Agent:
         """
 
 if __name__ == "__main__":
-    register(id="ENVIRONMENT-v0", entry_point="ENVIRONMENT:ENVIRONMENT")
+    register(id="ENVIRONMENT-v1", entry_point="gym_environment:CUSTOM_ENVIRONMENT")
 
     # Parse command line inputs
     parser = argparse.ArgumentParser(description='Train or test model.')
