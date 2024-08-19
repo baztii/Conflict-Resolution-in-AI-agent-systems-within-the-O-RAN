@@ -1,273 +1,307 @@
-import gymnasium as gym
-import numpy as np
-
-import matplotlib.pyplot as plt
-import matplotlib
-
-import random
 import torch as T
 import torch.nn as nn
+import torch.optim as optim
+
+import random
+import numpy as np
+
+from collections import deque
 
 import yaml
-import json
+import os
 
-from DQN import DQN, ReplayMemory
-from ENVIRONMENT import ENVIRONMENT as ENV
-from ONL import asserts
-
-from datetime import datetime, timedelta
-import argparse
+import gymnasium as gym
 import itertools
 
-import os
+from utils import log_message, save_graph
 
 DATE_FORMAT = "%d-%m-%Y %H:%M:%S"
 RUNS_DIR = "runs"
+SAVE_GRAPH_STEP = 100
 
-os.makedirs(RUNS_DIR, exist_ok=True)
-matplotlib.use('Agg')
-device = "cuda" if T.cuda.is_available() else "cpu"
+class DeepQNetwork(nn.Module):
+    """
+    A Deep Q-Network (DQN) is a neural network used for estimation of
+    Q-values in reinforcement learning problems.
 
-class Agent():
-    def __init__(self, hyperparameter_set):
+    The DQN is a fully connected feed-forward network with one or more
+    hidden layers. The output of the network is a vector of Q-values, one
+    for each action in the action space.
+
+    Parameters
+    ----------
+    state_dim : int
+        The dimension of the state space.
+    action_dim : int
+        The dimension of the action space.
+    hidden_dims : list[int]
+        A list of the dimensions of the hidden layers.
+    """
+    def __init__(self, state_dim : int, action_dim : int, hidden_dims : list[int]):
+        super(DeepQNetwork, self).__init__()
+        layers = [] # A list to store the layers
+        in_dim = state_dim
+        for out_dim in hidden_dims:
+            layers.append(nn.Linear(in_dim, out_dim))
+            layers.append(nn.ReLU())
+            in_dim = out_dim
+        layers.append(nn.Linear(in_dim, action_dim))
+        self.layers = nn.Sequential(*layers) # Unpack the list
+
+        # nn.Sequential is a container that allows you to define
+        # a neural network in a sequential manner. Layers are added
+        # in the order they are passed, and the input is passed
+        # through each layer sequentially.
+
+    
+    def forward(self, x):
+        return self.layers(x)
+
+class ReplayMemory:
+    """
+    A replay memory is a data structure that stores a fixed number of
+    past transitions that can be sampled at random. The transitions
+    are stored as a list of tuples, where each tuple contains the
+    current state, the action taken, the reward received, the next
+    state, and whether the episode ended or not.
+
+    Parameters
+    ----------
+    capacity : int
+        The maximum number of transitions that can be stored in the
+        replay memory.
+    """
+    def __init__(self, capacity : int):
+        self.memory = deque(maxlen=capacity) # A deque is a double-ended queue that can be used to store elements in a specific order.
+        self.capacity = capacity
+
+    def push(self, state, action, reward, next_state, terminated, truncated):
+        """ Store a transition in the replay memory. """
+        self.memory.append((state, action, reward, next_state, terminated, truncated))
+
+    def sample(self, batch_size):
+        """Sample a batch of transitions."""
+        return random.sample(self.memory, batch_size)
+
+    def __len__(self):
+        """Return the current size of the memory."""
+        return len(self.memory)
+
+class Agent:
+    """
+    An agent is an object that can take actions in an environment
+    and learn from experiences.
+
+    Parameters
+    ----------
+    hyperparameter_set : str
+        The name of the hyperparameter set to use.
+    training : bool
+        Whether the agent is in training mode or not.
+    """
+    def __init__(self, hyperparameter_set : str, training : bool = True):
+        self.training = training
+
+        # Load hyperparameters
         with open('hyperparameters.yml', 'r') as file:
-            all_hyperparameter_sets = yaml.safe_load(file)
-            hyperparameters = all_hyperparameter_sets[hyperparameter_set]
+            hyperparameters = yaml.safe_load(file)[hyperparameter_set]
         
-        self.hyperparameter_set = hyperparameter_set
-        self.env_id             = hyperparameters['env_id']
-        self.learning_rate_a    = hyperparameters['alpha']        # learning rate (alpha)
-        self.discount_factor_g  = hyperparameters['gamma']      # discount rate (gamma)
-        self.network_sync_rate  = hyperparameters['network_sync_rate']      # number of steps the agent takes before syncing the policy and target network
-        self.replay_memory_size = hyperparameters['replay_memory_size']     # size of replay memory
-        self.mini_batch_size    = hyperparameters['mini_batch_size']        # size of the training data set sampled from the replay memory
-        self.epsilon_init       = hyperparameters['epsilon_init']           # 1 = 100% random actions
-        self.epsilon_decay      = hyperparameters['epsilon_decay']          # epsilon decay rate
-        self.epsilon_min        = hyperparameters['epsilon_min']            # minimum epsilon value
-        self.stop_on_reward     = hyperparameters['stop_on_reward']         # stop training after reaching this number of rewards
-        self.fc1_nodes          = hyperparameters['fc1_nodes']              # number of nodes in the first hidden layer
-        self.nData              = hyperparameters['nData']                  # Data set
-        self.env_make_params    = hyperparameters.get('env_make_params',{}) # Get optional environment-specific parameters, default to empty dict
+        self.hyperparameter_set = hyperparameter_set                                              # The name of the hyperparameter set
+        
+        # Environment parameters
+        self.env_id      = hyperparameters['env_id']                                              # The name of the environment
+        self.render_mode = 'human' if not self.training else None                                 # The render mode for the environment
+        self.env_params  = hyperparameters.get('env_params',{})                                   # Get optional environment-specific parameters, default to empty dict
+        self.env         = gym.make(self.env_id, render_mode=self.render_mode, **self.env_params) # Create the environment
+        self.num_states  = self.env.observation_space.shape[0]                                    # Number of states in the environment
+        self.num_actions = self.env.action_space.n                                                # Number of actions in the environment
 
-        # Neural Network
-        self.loss_fn = nn.MSELoss()          # NN Loss function. MSE=Mean Squared Error can be swapped to something else.
-        self.optimizer = None                # NN Optimizer. Initialize later.
+        # Agent parameters
+        self.alpha              = hyperparameters['alpha']                                        # learning rate
+        self.gamma              = hyperparameters['gamma']                                        # discount rate
+        self.hidden_dims        = hyperparameters['hidden_dims']                                  # List of number of nodes in each hidden layer
+        self.network_sync_rate  = hyperparameters['network_sync_rate']                            # number of steps the agent takes before syncing the policy and target network
+        
+        # Exploration parameters
+        self.epsilon_init       = hyperparameters['epsilon_init']                                 # 1 = 100% random actions
+        self.epsilon_decay      = hyperparameters['epsilon_decay']                                # epsilon decay rate
+        self.epsilon_min        = hyperparameters['epsilon_min']                                  # minimum epsilon value
+        
+        # Memory parameters
+        self.replay_memory_size = hyperparameters['replay_memory_size']                           # size of replay memory
+        self.batch_size         = hyperparameters['batch_size']                                   # size of the training data set sampled from the replay memory
+        
+        self.device = T.device('cuda:0' if T.cuda.is_available() else 'cpu')                      # Device to run on
 
         # Path to Run info
+        os.makedirs(RUNS_DIR, exist_ok=True)
         self.LOG_FILE   = os.path.join(RUNS_DIR, f'{self.hyperparameter_set}.log')
         self.MODEL_FILE = os.path.join(RUNS_DIR, f'{self.hyperparameter_set}.pt')
         self.GRAPH_FILE = os.path.join(RUNS_DIR, f'{self.hyperparameter_set}.png')
-    
-    def run(self, is_training=True, render=False):
-        if is_training:
-            start_time = datetime.now()
-            last_graph_update_time = start_time
 
-            log_message = f"{start_time.strftime(DATE_FORMAT)}: Training starting..."
-            print(log_message)
-            with open(self.LOG_FILE, 'w') as file:
-                file.write(log_message + '\n')
-            
-        file = f"tests/test{self.nData}/data.json"
-        with open(file, 'r') as data_file: # load the data
-            data = json.load(data_file)
-        
-        asserts(data)
-        
-        env = ENV(data, render)
+    def run(self):
+        # Run the agent
+        if self.training:
+            self.train()
+        else:
+            self.deploy()
 
-        num_actions = env.n_action_space()
-        num_states  = env.m_state_space()
-
-        print(num_states, num_actions)
-
-        #print(f"Nume of actinos {num_actions} and num_states {num_states}")
-        rewards_per_episode = []
-        policy_dqn = DQN(num_states, num_actions, self.fc1_nodes).to(device)
-
-        if is_training:
-            # Initialize epsilon
-            epsilon = self.epsilon_init
-
-            # Initialize replay memory
-            memory = ReplayMemory(self.replay_memory_size)
-
-            # Create the target network and make it identical to the policy network
-            target_dqn = DQN(num_states, num_actions, self.fc1_nodes).to(device)
-            target_dqn.load_state_dict(policy_dqn.state_dict())
-
-            # Policy network optimizer. "Adam" optimizer can be swapped to something else.
-            self.optimizer = T.optim.Adam(policy_dqn.parameters(), lr=self.learning_rate_a)
-
-            # List to keep track of epsilon decay
-            epsilon_history = []
-
-            # Track number of steps taken. Used for syncing policy => target network.
-            step_count=0
-
-            # Track best reward
-            best_reward = -9999999
+    def select_action(self, state):
+        if self.training and np.random.random() < self.epsilon:
+            action = self.env.action_space.sample()
+            action = T.tensor(action, dtype=T.int64, device=self.device)
 
         else:
-            # Load learned policy
-            policy_dqn.load_state_dict(T.load(self.MODEL_FILE))
+            with T.no_grad():
+                # tensor([1 ,2, 3, ...]) ==> tensor([[1, 2, 3, ...]])
+                action = self.policy_dqn(state.unsqueeze(0)).squeeze(0).argmax() # index of the best action
 
-            # switch model to evaluation mode
-            policy_dqn.eval()
-        
+        return action
+
+    def train(self):
+        # Create the policy and target networks
+        self.policy_dqn = DeepQNetwork(self.num_states, self.num_actions, self.hidden_dims).to(self.device)
+        self.target_dqn = DeepQNetwork(self.num_states, self.num_actions, self.hidden_dims).to(self.device)
+        self.target_dqn.load_state_dict(self.policy_dqn.state_dict())
+
+        # Create the replay memory
+        self.memory = ReplayMemory(self.replay_memory_size)
+
+        # Create the optimizer and loss function
+        self.optimizer = optim.Adam(self.policy_dqn.parameters(), lr=self.alpha)
+        self.loss_fn   = nn.MSELoss()
+
+        # Initialize the epsilon value
+        self.epsilon = self.epsilon_init
+
+        # Initialize the reward and epsilon history 
+        epsilon_history = [self.epsilon_init]
+        rewards_per_episode = []
+
+        # Initialize the best reward
+        best_reward = -np.inf
+
+        # Track the number of steps taken. Used for syncing the policy and target networks
+        step_count = 0
+
+        # Start training message
+        log_message("Training starting...", DATE_FORMAT, self.LOG_FILE, 'w')
+
+        # Training loop
         for episode in itertools.count():
-            #print("episode: ", episode)
-            state = env.reset()
-            state = T.tensor(state, dtype=T.float, device=device) # Convert state to tensor directly on device
+            state, info = self.env.reset()
+            state = T.tensor(state, dtype=T.float32, device=self.device)
 
-            terminated = False      # True when agent reaches goal or fails
-            episode_reward = 0.0    # Used to accumulate rewards per episode
-            it = 0
+            terminated = truncated = False
+            episode_reward = 0.0
 
-            action_list = []
+            while not terminated and not truncated:
+                # Select an action with epsilon-greedy
+                action = self.select_action(state)
 
-            while not terminated and it < 100: # episode_reward < self.stop_on_reward
-                it += 1	
-                #print("episode_reward: ", episode_reward)
-                # Select action based on epsilon-greedy
-                if is_training and random.random() < epsilon:
-                    # select random action
-                    action = env.action_space_sample()
-                    action = T.tensor(action, dtype=T.int64, device=device)
-                else:
-                    # select best action
-                    with T.no_grad():
-                        # state.unsqueeze(dim=0): Pytorch expects a batch layer, so add batch dimension i.e. tensor([1, 2, 3]) unsqueezes to tensor([[1, 2, 3]])
-                        # policy_dqn returns tensor([[1], [2], [3]]), so squeeze it to tensor([1, 2, 3]).
-                        # argmax finds the index of the largest element.
-                        action = policy_dqn(state.unsqueeze(dim=0)).squeeze().argmax()
+                # Perform the action
+                next_state, reward, terminated, truncated, info = self.env.step(action.item())
 
-                action_list.append(int(action))
-                
-                new_state, reward, terminated = env.step(action)
-
+                # Acumulative_reward
                 episode_reward += reward
 
-                # Convert new state and reward to tensors on device
-                new_state = T.tensor(new_state, dtype=T.float, device=device)
-                reward = T.tensor(reward, dtype=T.float, device=device)
-                terminated = T.tensor(terminated, dtype=T.float, device=device)
-
-                if is_training:
-                    # Save experience into memory
-                    memory.push(state, action, reward, new_state, terminated)
-
-                    # Increment step counter
-                    step_count+=1
-
-                # Move to the next state
-                
-                state = new_state
+                # Store the transition in the replay memory
+                next_state = T.tensor(next_state, dtype=T.float32, device=self.device)
+                reward     = T.tensor(reward, dtype=T.float32, device=self.device)
+                terminated = T.tensor(terminated, dtype=T.float32, device=self.device)
+                truncated  = T.tensor(truncated, dtype=T.float32, device=self.device)
+                self.memory.push(state, action, reward, next_state, terminated, truncated)
+                state = next_state
             
-            T.save(policy_dqn.state_dict(), self.MODEL_FILE)
-
-
-            if not is_training:
-                print(action_list)
-                print(episode_reward)
-                exit(0)
-
-            # Keep track of the rewards collected per episode.
             rewards_per_episode.append(episode_reward)
+            step_count += 1
 
-            # Save model when new best reward is obtained.
-            if is_training:
-                if episode_reward > best_reward:
-                    log_message = f"{datetime.now().strftime(DATE_FORMAT)}: New best reward {episode_reward} ({(episode_reward-best_reward)/best_reward*100:+.1f}%) at episode {episode}, saving model..." ## {episode_reward:0.1f}
-                    print(log_message)
-                    with open(self.LOG_FILE, 'a') as file:
-                        file.write(log_message + '\n')
+            # Print episode statistics
+            avg_reward = np.mean(rewards_per_episode[-100:])
+            print('episode ', episode, 'reward %.2f' % episode_reward, 'average score %.2f' % avg_reward, 'epsilon %.2f' % self.epsilon)
 
-                    T.save(policy_dqn.state_dict(), self.MODEL_FILE)
-                    best_reward = episode_reward
-                
-                                # Update graph every x seconds
-                current_time = datetime.now()
-                if current_time - last_graph_update_time > timedelta(seconds=10):
-                    self.save_graph(rewards_per_episode, epsilon_history)
-                    last_graph_update_time = current_time
+            # If improving, save the model
+            if episode_reward >= best_reward:
+                best_reward = episode_reward
+                T.save(self.policy_dqn.state_dict(), self.MODEL_FILE)
+                log_message(f"New best reward {best_reward:0.1f} at episode {episode}, saving model...", DATE_FORMAT, self.LOG_FILE, 'a')
 
-                # If enough experience has been collected
-                if len(memory)>self.mini_batch_size and terminated:
-                    mini_batch = memory.sample(self.mini_batch_size)
-                    self.optimize(mini_batch, policy_dqn, target_dqn)
+            # Update the graph
+            if episode % SAVE_GRAPH_STEP == 0:
+                save_graph(self.GRAPH_FILE, rewards_per_episode, epsilon_history)
 
-                    # Decay epsilon
-                    epsilon = max(epsilon * self.epsilon_decay, self.epsilon_min)
-                    epsilon_history.append(epsilon)
+            # If enough experiences, start training
+            if len(self.memory) > self.batch_size:
+                batch = self.memory.sample(self.batch_size)
+                self.optimize(batch)
 
-                    # Copy policy network to target network after a certain number of steps
-                    if step_count > self.network_sync_rate:
-                        target_dqn.load_state_dict(policy_dqn.state_dict())
-                        step_count=0
-                        
-            #if episode_reward > 228333: exit(0)
+                # Update epsilon
+                self.epsilon = max(self.epsilon * self.epsilon_decay, self.epsilon_min)
+                epsilon_history.append(self.epsilon)
+
+                # Copy policy network to target network after a certain number of steps
+                if step_count % self.network_sync_rate == 0:
+                    self.target_dqn.load_state_dict(self.policy_dqn.state_dict())
+                    step_count = 0
         
-    def save_graph(self, rewards_per_episode, epsilon_history):
-        # Save plots
-        fig = plt.figure(1)
+    def optimize(self, batch):
+        # Transpose the list of experiences and separate each element
+        states, actions, rewards, new_states, terminations, truncations = zip(*batch)
 
-        # Plot average rewards (Y-axis) vs episodes (X-axis)
-        mean_rewards = np.zeros(len(rewards_per_episode))
-        for x in range(len(mean_rewards)):
-            mean_rewards[x] = np.mean(rewards_per_episode[max(0, x-99):(x+1)])
-        plt.subplot(121) # plot on a 1 row x 2 col grid, at cell 1
-        # plt.xlabel('Episodes')
-        plt.ylabel('Mean Rewards')
-        plt.plot(mean_rewards)
-
-        # Plot epsilon decay (Y-axis) vs episodes (X-axis)
-        plt.subplot(122) # plot on a 1 row x 2 col grid, at cell 2
-        # plt.xlabel('Time Steps')
-        plt.ylabel('Epsilon Decay')
-        plt.plot(epsilon_history)
-
-        plt.subplots_adjust(wspace=1.0, hspace=1.0)
-
-        # Save plots
-        fig.savefig(self.GRAPH_FILE)
-        plt.close(fig)
-
-    def optimize(self, mini_batch, policy_dqn, target_dqn):
-        states, actions, rewards, new_states, terminations = zip(*mini_batch)
-        
-        states = T.stack(states)
-        actions = T.stack(actions)
-        new_states = T.stack(new_states)
-        rewards = T.stack(rewards)
+        # Stack tensors to create batch tensors
+        # tensor([[1,2,3]])
+        states       = T.stack(states)
+        actions      = T.stack(actions)
+        rewards      = T.stack(rewards)
+        new_states   = T.stack(new_states)
         terminations = T.stack(terminations)
 
+        # Calculate target Q values (expected returns)
         with T.no_grad():
-            # Calculate target Q values (expected returns)
-            target_q = rewards + (1-terminations) * self.discount_factor_g * target_dqn(new_states).max(dim=1)[0]
+            target_q = rewards + (1-terminations)*self.gamma*self.target_dqn(new_states).max(dim=1)[0]
             '''
                 target_dqn(new_states)  ==> tensor([[1,2,3],[4,5,6]])
-                    .max(dim=1)         ==> torch.return_types.max(values=tensor([3,6]), indices=tensor([3, 0, 0, 1]))
-                        [0]             ==> tensor([3,6])
+                    .max(dim=1)         ==> torch.return_types.max(values=tensor([3,6]),indices=tensor([3, 0, 0, 1]))
+                        [0]             ==> tensor([3, 6])
+            
             '''
 
         # Calcuate Q values from current policy
-        current_q = policy_dqn(states).gather(dim=1, index=actions.unsqueeze(dim=1)).squeeze()
-        '''
-            policy_dqn(states)  ==> tensor([[1,2,3],[4,5,6]])
-                actions.unsqueeze(dim=1)
-                .gather(1, actions.unsqueeze(dim=1))  ==>
-                    .squeeze()                    ==>
-        '''
+        current_q = self.policy_dqn(states).gather(dim=1, index=actions.unsqueeze(dim=1)).squeeze()
 
         # Calculate loss
-
         loss = self.loss_fn(current_q, target_q)
 
-        # Optimize the model (backpropagation)
+        # Optimize the model
         self.optimizer.zero_grad()  # Clear gradients
-        loss.backward()             # Compute gradients
-        self.optimizer.step()       # Update network parameters i.e. weights and biases
+        loss.backward()             # Calculate gradients (backpropagation)
+        self.optimizer.step()       # Update weights
+
+    def deploy(self):
+        # Load the best model
+        self.policy_dqn = DeepQNetwork(self.num_states, self.num_actions, self.hidden_dims).to(self.device)
+        self.policy_dqn.load_state_dict(T.load(self.MODEL_FILE))
+        self.policy_dqn.eval()
+    
+        for episode in itertools.count():
+            state, info = self.env.reset()
+            state = T.tensor(state, dtype=T.float32, device=self.device)
+
+            terminated = truncated = False
+            episode_reward = 0.0
+
+            while not terminated and not truncated:
+                # Select an action with epsilon-greedy
+                action = self.select_action(state)
+
+                # Perform the action
+                next_state, reward, terminated, truncated, info = self.env.step(action.item())
+                next_state = T.tensor(next_state, dtype=T.float32, device=self.device)
+
+                # Acumulative_reward
+                episode_reward += reward
+
+                state = next_state
 
 def main():
     # Parse command line inputs
@@ -276,14 +310,12 @@ def main():
     parser.add_argument('--train', help='Training mode', action='store_true')
     args = parser.parse_args()
 
-    dql = Agent(hyperparameter_set=args.hyperparameters)
-
-    if args.train:
-        dql.run(is_training=True)
-    else:
-        dql.run(is_training=False, render=True)
+    agent = Agent(hyperparameter_set=args.hyperparameters, training=args.train)
+    agent.run()
 
 if __name__ == '__main__':
+    from gymnasium.envs.registration import register
+    import argparse
+    register(id="ENVIRONMENT-v1", entry_point="gym_environment:CUSTOM_ENVIRONMENT")
     main()
-
 

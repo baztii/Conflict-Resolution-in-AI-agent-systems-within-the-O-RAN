@@ -1,61 +1,4 @@
-powerAllocation:
-  env_id: powerAllocation
-  replay_memory_size: 100000
-  mini_batch_size: 32
-  epsilon_init: 1
-  epsilon_decay: 0.9995
-  epsilon_min: 0.05
-  network_sync_rate: 10
-  learning_rate_a: 0.001
-  discount_factor_g: 0.99
-  stop_on_reward: 1_000_000_000
-  fc1_nodes: 512
-  nData: 1
-
-powerAllocation2:
-  env_id: powerAllocation2
-  replay_memory_size: 100000
-  mini_batch_size: 64
-  epsilon_init: 1
-  epsilon_decay: 0.9995
-  epsilon_min: 0.01
-  network_sync_rate: 5000
-  alpha: 0.001
-  gamma: 0.99
-  stop_on_reward: 1_000_000_000
-  fc1_nodes: 256
-  nData: 2
-
-test:
-  env_id: ENVIRONMENT-v0
-  replay_memory_size: 100000
-  mini_batch_size: 64
-  epsilon_init: 1
-  epsilon_decay: 0.9995
-  epsilon_min: 0.01
-  network_sync_rate: 500
-  alpha: 0.00001
-  gamma: 0.99
-  stop_on_reward: 1_000_000_000
-  fc1_nodes: 256
-  nData: 2
-
-
-test2:
-  env_id: ENVIRONMENT-v0
-  replay_memory_size: 100000
-  mini_batch_size: 64
-  epsilon_init: 1
-  epsilon_decay: 0.9995
-  epsilon_min: 0.01
-  network_sync_rate: 500
-  alpha: 0.00001
-  gamma: 0.99
-  stop_on_reward: 1_000_000_000
-  fc1_nodes: 256
-  nData: 2
-
-test3:
+test1_power_allocation:
   env_id: ENVIRONMENT-v1
   replay_memory_size: 100000
   batch_size: 64
@@ -67,6 +10,220 @@ test3:
   gamma: 0.99
   stop_on_reward: 1_000_000_000
   hidden_dims: [256]
-  nData: 2
-  env_make_params:
-    render_mode: human
+  env_params:
+    data_file: 1
+    mode: power_allocation
+
+test1_resource_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 1
+    mode: resource_allocation
+
+
+test2_power_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 2
+    mode: power_allocation
+
+test2_resource_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 2
+    mode: resource_allocation
+
+
+test3_power_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 3
+    mode: power_allocation
+
+test3_resource_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 3
+    mode: resource_allocation
+
+
+test4_power_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 4
+    mode: power_allocation
+
+test4_resource_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 4
+    mode: resource_allocation
+
+
+test5_power_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 5
+    mode: power_allocation
+
+test5_resource_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 5
+    mode: resource_allocation
+
+
+test6_power_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 6
+    mode: power_allocation
+
+test6_resource_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 6
+    mode: resource_allocation
+    
+
+test7_power_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 7
+    mode: power_allocation
+
+test7_resource_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.01
+  network_sync_rate: 500
+  alpha: 0.00001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256]
+  env_params:
+    data_file: 7
+    mode: resource_allocation

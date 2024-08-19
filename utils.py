@@ -41,6 +41,8 @@ def asserts(data : dict) -> None:
     assert len(data["L"])    == data["K"]
 
 def load_data(n : int) -> dict:
+    assert type(n) == int, "You must specify a data set number!"
+
     file = f"tests/test{n}/data.json"
     with open(file, 'r') as data_file: # load the data
         data = json.load(data_file)

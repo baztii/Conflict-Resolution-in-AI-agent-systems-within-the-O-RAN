@@ -1,11 +1,9 @@
 import numpy as np
 from pyomo.environ import log
-import random
 
 """ Global variables """
 DISPLAY = True
 ITER    = 10
-DIV = 50
 
 class ENVIRONMENT():
     def __init__(self, data):        
@@ -27,9 +25,9 @@ class ENVIRONMENT():
         self.L     = {k:data['L'][k] for k in self.K}                           # list // Amount of remained data of all users in the transimssion buffer (i.e. L[k] is the remaining data of user k)
         
         """ Variables """
-        self.P     = {(n,m):0 for n in self.N for m in self.M} # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
+        self.P     = {(n,m):self.Pmin for n in self.N for m in self.M} # list // Transmission power allocation to RBG of BS (i.e. P[n,m] is the power of RBG m at BS n)
         self.alpha = {(n,m,k):0 for n in self.N for m in self.M for k in self.K}     # list // Distribution of RGB to each user (self.alpha[n,m,k] = 1 iff user k has RBG m at BS n, 0 otherwise)
-        self.beta  = {(n,k):1 for n in self.N for k in self.K}                       # list // User distribution in BS (i.e self.beta[n,k] = 1 iff user[k] is on BS n, 0 otherwise)
+        self.beta  = {(n,k):0 for n in self.N for k in self.K}                       # list // User distribution in BS (i.e self.beta[n,k] = 1 iff user[k] is on BS n, 0 otherwise)
 
     def gamma_maj(self, n : int, m : int) -> list[float]:
         return [log(1+
