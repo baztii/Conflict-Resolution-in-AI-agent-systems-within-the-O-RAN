@@ -329,19 +329,22 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         BS, RBG, P = self.action_translator_power_allocation(action)
         if BS is not None:
             self.P[BS, RBG] = self.Pmin + (self.Pmax - self.Pmin)/(DIV-1)*P
+
+        reward = 0
         
         if self.render_mode == "human": 
             if BS is not None:
                 print(f"Action taken BS {BS}, RBG {RBG} to power: {self.P[BS,RBG]}")
             else:
                 print("Action taken: None")
+                reward += 1
 
         if self.render_mode == "human":
             self.results()
         
         self.iterations += 1
 
-        reward = self.transmissionBits()/1e5 - sum(self.P[n,m] for n in self.N for m in self.M)*0.1
+        reward += self.transmissionBits()/1e6
 
         self.TxData()
 
@@ -455,10 +458,14 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
 
         mode, n, m, k = self.action_translator_resource_allocation(action)
 
+        reward = 0
+
         if mode == "beta":
             self.beta[n,k] = 1 if self.beta[n,k] == 0 else 0
         elif mode == "alpha":
             self.alpha[n,m,k] = 1 if self.alpha[n,m,k] == 0 else 0
+        else:
+            reward += 1
 
         if self.render_mode == "human": print(f"Action taken {mode} {n} {m} {k}")
 
@@ -467,7 +474,7 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         
         self.iterations += 1
 
-        reward = self.transmissionBits()/1e6 if self.valid() else 0
+        reward += self.transmissionBits()/1e6 if self.valid() else 0
 
         self.TxData()
 
