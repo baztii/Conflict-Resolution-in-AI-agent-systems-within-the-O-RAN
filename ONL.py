@@ -1,25 +1,73 @@
+"""
+# ONL
+    This module provides the ONL class which represents the online optimization model.
+
+## Classes
+    - **ONL**: The online optimization model
+
+## Functions
+    - *main*: The main function to show how should the online optimization model work
+
+## Author
+    Miquel P. Baztan Grau
+
+## Date
+    21/08/2024
+"""
+
 from pyomo.environ import *
 from time import time
 from ENVIRONMENT import ENVIRONMENT as ENV
-import matplotlib.pyplot as plt
-import numpy as np
 import sys
 import os
 
 from utils import asserts
 
 """Global variables"""
-FILE = 1
-START = 7
-END = 7
-TEE = True
-SOLVER = "scip"
-CONSOLE = False
-TERMINAL = sys.stdout
-OF = sys.stdout
+FILE = 1                # file number
+START = 1              # starting file
+END = 7                 # ending file
+TEE = True              # tee output
+SOLVER = "scip"         # solver (you can also use ipopt)
+CONSOLE = False         # console output
+TERMINAL = sys.stdout   # terminal
+OF = sys.stdout         # output file
 
 class ONL(ENV):
-    def __init__(self, data : dict):
+    """
+    Online optimization model.
+
+    This class extends the `ENVIRONMENT` class and initializes the parameters and variables for the online optimization model.
+
+    Attributes:
+        ENV.attributes (*): The attributes inherited from the ENVIRONMENT class (see `ENVIRONMENT.py` for more information).
+        model (ConcreteModel): Pyomo model for the online optimization problem.
+
+    ## Methods
+        - *ENV.methods*: The methods inherited from the ENVIRONMENT class (see `ENVIRONMENT.py` for more information).
+        - *_init_model*: Sets up the solver model.
+        - *min_bool_bits_constraint*: Constraint1 for the solver to be able to calculate the min(rhs, lhs)
+        - *min_bool_bits_constraint2*: Constraint2 for the solver to be able to calculate the min(rhs, lhs)
+        - *beta_constraint*: Each user must be assigned to a base station constraint
+        - *beta_constraint2*: You cannot give a RBG m from one BS n to a user k that is not situated on BS n constraint
+        - *alpha_constrint*: You cannot give the same RBG to more than one user
+        - *obj_function*: Objective function for the solver to maximize
+        - *solve*: Solves the online optimization model
+    """
+    def __init__(self, data : dict) -> None:
+        """
+        Initializes the ONL object.
+
+        Initializes the parameters and variables for the online optimization model.
+        Calls the superclass's `__init__` method and sets up the solver model.
+
+        Parameters:
+            data (dict): Dictionary containing the data for the optimization model.
+
+        Returns:
+            None
+        """
+
         """ Initialize parameters and variables"""
         super().__init__(data)
 
@@ -27,7 +75,14 @@ class ONL(ENV):
         self.model = ConcreteModel()
         self._init_model()
         
-    def _init_model(self):
+    def _init_model(self) -> None:
+        """
+        Sets up the solver model based of the parameters and variables in the `ENVIRONMENT` class.
+
+        Returns:
+            None
+        """
+
         """ Sets """
         self.model.N     = Set(initialize=self.N)
         self.model.K     = Set(initialize=self.K)
@@ -39,12 +94,12 @@ class ONL(ENV):
 
         self.model.g     = Param(self.model.N, self.model.K, initialize=self.g)
         self.model.B     = Param(self.model.N, self.model.M, initialize=self.B)
-        self.model.L     = Param(self.model.K, mutable=True, initialize=self.L) # self.L
+        self.model.L     = Param(self.model.K, mutable=True, initialize=self.L)
 
         """ Variables """
-        self.model.alpha         = Var(self.model.N, self.model.M, self.model.K, domain=Binary, initialize=self.alpha) # self.alpha
-        self.model.beta          = Var(self.model.N, self.model.K, domain=Binary, initialize=self.beta) # self.beta
-        self.model.P             = Var(self.model.N, self.model.M, bounds = (self.Pmin, self.Pmax), initialize=self.P) # self.P
+        self.model.alpha         = Var(self.model.N, self.model.M, self.model.K, domain=Binary, initialize=self.alpha)
+        self.model.beta          = Var(self.model.N, self.model.K, domain=Binary, initialize=self.beta)
+        self.model.P             = Var(self.model.N, self.model.M, bounds = (self.Pmin, self.Pmax), initialize=self.P)
         self.model.min_bool_bits = Var(self.model.K, domain=Binary)
 
         """ Objective function """
@@ -52,65 +107,109 @@ class ONL(ENV):
 
         """ Constraints """
         self.model.alphaConstr    = Constraint(self.model.N, self.model.M, rule=self.alpha_constraint)
+        
         self.model.betaConstr     = Constraint(self.model.K, rule=self.beta_constraint)
+        self.model.betaConstr2     = Constraint(self.model.N, self.model.M, self.model.K, rule=self.beta_constraint2)
+        
         self.model.min_bool_bitsConstr = Constraint(self.model.K, rule=self.min_bool_bits_constraint)
         self.model.min_bool_bitsConstr2 = Constraint(self.model.K, rule=self.min_bool_bits_constraint2)
 
-        self.model.betaConstr2     = Constraint(self.model.N, self.model.M, self.model.K, rule=self.beta_constraint2)
-        #self.etasss =  Constraint(self.model.N, self.model.M, self.model.K, rule=self.auto_denominator)
-        
+    def min_bool_bits_constraint(self, model, k : int) -> pyomo.core.expr.relational_expr.InequalityExpression:
+        """
+        Constraint1 for the solver to be able to calculate the min(rhs, lhs)
 
-    def auto_denominator(self, model, n : int, m: int, k: int):
-        return self.eta(n,m,k,model) >= 0
-    
-    def min_bool_bits_constraint(self, model, k : int):
+        Parameters:
+            model (ConcreteModel): The solver model
+            k (int): The index of the user
+
+        Returns:
+            pyomo.core.expr.relational_expr.InequalityExpression: The constraint that pyomo will try to satisfy
+            
+        """
+
         return model.min_bool_bits[k]*(self.rhs(k, model) -  self.lhs(k, model)) >= 0
     
-    def min_bool_bits_constraint2(self, model, k : int):
+    def min_bool_bits_constraint2(self, model, k : int) -> pyomo.core.expr.relational_expr.InequalityExpression:
+        """
+        Constraint2 for the solver to be able to calculate the min(rhs, lhs)
+
+        Parameters:
+            model (ConcreteModel): The solver model
+            k (int): The index of the user
+
+        Returns:
+            pyomo.core.expr.relational_expr.InequalityExpression: The constraint that pyomo will try to satisfy
+            
+        """
+
         return (1-model.min_bool_bits[k])*(self.rhs(k, model) - self.lhs(k, model)) <= 0
 
-    def beta_constraint(self, model, k : int):
+    def beta_constraint(self, model, k : int) -> pyomo.core.expr.relational_expr.EqualityExpression:
+        """
+        Each user must be assigned to a base station constraint
+
+        Parameters:
+            model (ConcreteModel): The solver model
+            k (int): The index of the user
+
+        Returns:
+            pyomo.core.expr.relational_expr.EqualityExpression: The constraint that pyomo will try to satisfy
+        """
+
         return sum(model.beta[n,k] for n in model.N) == 1
 
-    def beta_constraint2(self, model, n : int, m : int, k : int):
+    def beta_constraint2(self, model, n : int, m : int, k : int) -> pyomo.core.expr.relational_expr.EqualityExpression:
+        """
+        You cannot give a RBG m from one BS n to a user k that is not situated on BS n constraint
+
+        Parameters:
+            model (ConcreteModel): The solver model
+            n (int): The index of the base station
+            m (int): The index of the RBG
+            k (int): The index of the user
+
+        Returns:
+            pyomo.core.expr.relational_expr.EqualityExpression: The constraint that pyomo will try to satisfy
+        """
         return (1 - model.beta[n,k])*model.alpha[n,m,k] == 0
     
-    def alpha_constraint(self, model, n : int, m : int):
+    def alpha_constraint(self, model, n : int, m : int) -> pyomo.core.expr.relational_expr.InequalityExpression:
+        """
+        You cannot give the same RBG to more than one user
+
+        Parameters:
+            model (ConcreteModel): The solver model
+            n (int): The index of the base station
+            m (int): The index of the RBG
+
+        Returns:
+            pyomo.core.expr.relational_expr.InequalityExpression: The constraint that pyomo will try to satisfy
+        """
+
         return sum(model.alpha[n, m, k] for k in model.K) <= 1
 
-    def obj_function(self, model=None):
+    def obj_function(self, model=None) -> float:
+        """
+        Objective function for the solver (maximize the bits sent and minimize the number of RBGs used)
+
+        Parameters:
+            model (ConcreteModel): The solver model
+
+        Returns:
+            float: The value of the objective function
+        """
+
         if model is None: model = self
         return self.transmissionBits(model) - self.RBGs(model)# Maximize the bits sent and minimize the number of RBGs used
 
-    def results(self, time : float):        
-        print(f"Time: {time}s\n")
-        print(f"Total bits sent: {round(self.transmissionBits())}", end="\t")
-        print(f"Total RBGs used: {self.RBGs()}\n")
+    def solve(self):
+        """
+        Solves the problem and prints the results in the standard output
 
-        for n in self.N:
-            print(f"BS {n}:")
-            for m in self.M:
-                print(f"\tP({n:>2},{m:>2}) = {self.P[n,m]}")
-            print()
+        Returns:
+            None
+        """
 
-            for k in self.K:
-                if self.beta[n,k] == 1:
-                    print(f"\tuser({k:>2}) uses", end=' ')
-                    has_rbg = False
-                    for m in self.M:
-                        if self.alpha[n,m,k] == 1:
-                            print(f"{m:>2}", end=' ')
-                            has_rbg = True
-
-                    if not has_rbg:
-                        print("NO", end=' ')
-
-                    print("RBGs", end=' ')
-                    print(f"and sends {self.Bits(k)} bits")
-
-            print()
-
-    def solve(self, display=True):
         solver=SolverFactory(SOLVER)
         self.model.L.store_values(self.L)
 
@@ -125,42 +224,6 @@ class ONL(ENV):
         self.beta = {(n, k): round(self.model.beta[n, k].value) for n in self.model.N for k in self.model.K}
 
         self.results(time=t)
-
-    def own_policy(self, display=True):
-        usr = 0
-        for n in self.N:
-            for m in self.M:
-                for k in self.K:
-                    if k == usr:
-                        self.alpha[n, m, k] = 1
-                    else:
-                        self.alpha[n, m, k] = 0
-                usr += 1
-                usr %= self.K[-1] + 1
-
-        for n in self.N:
-            for k in self.K:
-                self.beta[n, k] = 1
-
-        for n in self.N:
-            for m in self.M:
-                self.P[n,m] = self.Pmax
-                
-        self.results(time=0)
-
-        for n in self.N:
-            for m in self.M:
-                for k in self.K:
-                    print(f"Numerator({n},{m},{k})={self.numerator(n, m, k)}")
-
-        for n in self.N:
-            for m in self.M:
-                print(f"Denominator({n},{m})={self.denominator(n, m)}")
-        
-        for n in self.N:
-            for m in self.M:
-                print(f"C({n},{m})={self.C(n,m)}")
-
 
 def main():
     dBm_to_watts = lambda dBm : 10**(dBm/10)/1000 # watts = dBm_to_watts(dBm) conversor
@@ -195,4 +258,3 @@ if __name__ == '__main__':
         print(f"File: {FILE} done!")
         sys.stdout = OF
         os.system('cls')
-

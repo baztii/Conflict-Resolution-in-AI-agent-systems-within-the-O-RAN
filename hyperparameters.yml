@@ -1,15 +1,54 @@
-test1_power_allocation:
-  env_id: ENVIRONMENT-v1
+flappy:
+  env_id: FlappyBird-v0
+  replay_memory_size: 100000
+  batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.99995
+  epsilon_min: 0.01
+  network_sync_rate: 10
+  alpha: 0.001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [256, 512, 256]
+
+cartPole-v1:
+  env_id: CartPole-v1
   replay_memory_size: 100000
   batch_size: 64
   epsilon_init: 1
   epsilon_decay: 0.9995
   epsilon_min: 0.01
-  network_sync_rate: 500
-  alpha: 0.00001
+  network_sync_rate: 10
+  alpha: 0.001
   gamma: 0.99
   stop_on_reward: 1_000_000_000
   hidden_dims: [256]
+
+cartPole-v2:
+  env_id: CartPole-v1
+  replay_memory_size: 100000
+  batch_size: 32
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.05
+  network_sync_rate: 10
+  alpha: 0.001
+  gamma: 0.99
+  stop_on_reward: 100000
+  hidden_dims: [10]
+
+test1_power_allocation:
+  env_id: ENVIRONMENT-v1
+  replay_memory_size: 100000
+  batch_size: 32
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.05
+  network_sync_rate: 10
+  alpha: 0.001
+  gamma: 0.99
+  stop_on_reward: 1_000_000_000
+  hidden_dims: [100, 200, 100]
   env_params:
     data_file: 1
     mode: power_allocation
@@ -22,7 +61,7 @@ test1_resource_allocation:
   epsilon_decay: 0.9995
   epsilon_min: 0.01
   network_sync_rate: 500
-  alpha: 0.00001
+  alpha: 0.001
   gamma: 0.99
   stop_on_reward: 1_000_000_000
   hidden_dims: [256]
@@ -39,10 +78,10 @@ test2_power_allocation:
   epsilon_decay: 0.9995
   epsilon_min: 0.01
   network_sync_rate: 500
-  alpha: 0.00001
+  alpha: 0.001
   gamma: 0.99
   stop_on_reward: 1_000_000_000
-  hidden_dims: [256]
+  hidden_dims: [256, 256, 256, 256, 256, 256]
   env_params:
     data_file: 2
     mode: power_allocation
@@ -54,11 +93,11 @@ test2_resource_allocation:
   epsilon_init: 1
   epsilon_decay: 0.9995
   epsilon_min: 0.01
-  network_sync_rate: 500
-  alpha: 0.00001
+  network_sync_rate: 1000
+  alpha: 0.0001
   gamma: 0.99
   stop_on_reward: 1_000_000_000
-  hidden_dims: [256]
+  hidden_dims: [256,512,256]
   env_params:
     data_file: 2
     mode: resource_allocation
@@ -72,10 +111,10 @@ test3_power_allocation:
   epsilon_decay: 0.9995
   epsilon_min: 0.01
   network_sync_rate: 500
-  alpha: 0.00001
+  alpha: 0.001
   gamma: 0.99
   stop_on_reward: 1_000_000_000
-  hidden_dims: [256]
+  hidden_dims: [256, 512, 256]
   env_params:
     data_file: 3
     mode: power_allocation
@@ -83,15 +122,15 @@ test3_power_allocation:
 test3_resource_allocation:
   env_id: ENVIRONMENT-v1
   replay_memory_size: 100000
-  batch_size: 64
+  batch_size: 128
   epsilon_init: 1
   epsilon_decay: 0.9995
   epsilon_min: 0.01
-  network_sync_rate: 500
-  alpha: 0.00001
+  network_sync_rate: 1000
+  alpha: 0.0001
   gamma: 0.99
   stop_on_reward: 1_000_000_000
-  hidden_dims: [256]
+  hidden_dims: [256,512,256]
   env_params:
     data_file: 3
     mode: resource_allocation
