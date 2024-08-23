@@ -38,7 +38,6 @@ from agent import Agent, DeepQNetwork
 from gymnasium.envs.registration import register
 import itertools
 import torch as T
-import gymnasium as gym
 import argparse
 
 def merge_agents(agentRA : Agent, agentPA : Agent):

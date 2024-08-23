@@ -7,7 +7,7 @@ test1_power_allocation:
   epsilon_min: 0.05
   network_sync_rate: 1000
   alpha: 0.001
-  gamma: 0.99
+  gamma: 0.4
   stop_on_reward: 1_000_000_000
   hidden_dims: [256,512,256]
   env_params:
@@ -23,7 +23,7 @@ test1_resource_allocation:
   epsilon_min: 0.05
   network_sync_rate: 1000
   alpha: 0.001
-  gamma: 0.99
+  gamma: 0.4
   stop_on_reward: 1_000_000_000
   hidden_dims: [256,512,256]
   env_params:
@@ -40,7 +40,7 @@ test2_power_allocation:
   epsilon_min: 0.01
   network_sync_rate: 1000
   alpha: 0.001
-  gamma: 0.99
+  gamma: 0.4
   stop_on_reward: 1_000_000_000
   hidden_dims: [256,512,256]
   env_params:
@@ -56,7 +56,7 @@ test2_resource_allocation:
   epsilon_min: 0.01
   network_sync_rate: 1000
   alpha: 0.001
-  gamma: 0.99
+  gamma: 0.4
   stop_on_reward: 1_000_000_000
   hidden_dims: [256,512,256]
   env_params:
@@ -73,7 +73,7 @@ test3_power_allocation:
   epsilon_min: 0.01
   network_sync_rate: 1000
   alpha: 0.001
-  gamma: 0.99
+  gamma: 0.4
   stop_on_reward: 1_000_000_000
   hidden_dims: [256, 512, 256]
   env_params:
@@ -89,7 +89,7 @@ test3_resource_allocation:
   epsilon_min: 0.01
   network_sync_rate: 1000
   alpha: 0.001
-  gamma: 0.99
+  gamma: 0.4
   stop_on_reward: 1_000_000_000
   hidden_dims: [256,512,256]
   env_params:
