@@ -25,7 +25,7 @@ from utils import asserts
 
 """Global variables"""
 FILE = 1                # file number
-START = 1              # starting file
+START = 1               # starting file
 END = 7                 # ending file
 TEE = True              # tee output
 SOLVER = "scip"         # solver (you can also use ipopt)
