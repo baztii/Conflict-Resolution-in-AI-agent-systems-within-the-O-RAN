@@ -548,7 +548,7 @@ class Agent:
             episode_reward = 0.0
 
             while not terminated and not truncated:
-                # Select an action with epsilon-greedy
+                # Select best action
                 action = self.select_action(state)
 
                 # Perform the action

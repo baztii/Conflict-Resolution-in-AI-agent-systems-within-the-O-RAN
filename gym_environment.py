@@ -46,6 +46,7 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         possible_render_modes (list): A list of possible render modes for the environment.
         render_mode (str): The render mode for the environment.
         mode (str): The mode for the environment.
+        send_data (bool): Whether to send data to the agent or not.
         iterations (int): The number of iterations in the environment.
         action_space (gym.Space): The action space of the environment.
         observation_space (gym.Space): The observation space of the environment.
@@ -56,8 +57,9 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         - *gym.Env.methods*: The methods inherited from the `gym.Env` class (see `gym.Env` for more information).
         - *reset*: Resets the environment.	
         - *step*: Performs an action in the environment.
-        - *n_action_space*: Returns the number of actions in the environment.*
+        - *n_action_space*: Returns the number of actions in the environment.
         - *m_state_space*: Returns the number of states in the environment.
+        - *set_state*: Sets the state of the envrioment.
         - *random_alpha*: Randomly assigns a resource block (RBG) to each user in the environment.
         - *random_beta*: Randomly assigns a base station to each user in the environment.
         - *random_power*: Randomly assigns power to each RBG in the environment.
@@ -97,6 +99,7 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         
         data = load_data(data_file)
         ENVIRONMENT.__init__(self, data)
+        self.send_data = True
 
         self.iterations = 0
 
@@ -107,15 +110,21 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         self.observation_space = spaces.Box(low=np.zeros(self.m_state_space()), high=10*np.ones(self.m_state_space()), dtype=np.float32)
         self.state = None
     
-    def reset(self, seed : int = None, options : dict = None) -> tuple[np.ndarray, dict]:
+    def reset(self, seed : int = None, options : dict = {"restart_mode": "auto"}) -> tuple[np.ndarray, dict]:
         """
         Resets the environment to its initial state.
 
         This function takes an optional seed and options as parameters, and returns the current state of the environment as a tuple of a numpy array and a dictionary.
+        If the options have a restart_mode key with a value of "merge", the environment is reset to its initial state.
+        Otherwise, the environment is reset to a random state.
+        
+        The power allocation initial state is set as follows: the power is 0 for all RBGs and the allocation of all RBGs is randomly chosen.
+        
+        The resource allocation initial state is set as follows: the RBGs are not allocated to any users and the power of them is randomly chosen.
 
         Parameters:
             seed (int): The seed to use for resetting the environment. Defaults to None.
-            options (dict): Additional options for resetting the environment. Defaults to None.
+            options (dict): Additional options for resetting the environment. Defaults to empty dict.
 
         Returns:
             tuple(np.ndarray, dict): The restarted environment:
@@ -123,8 +132,11 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
                 - dict: Additional information about the environment.
         """ 
 
+        if options["restart_mode"] == "merge":
+            self.send_data = False
+
         super().reset(seed=seed)
-        if self.mode == "resource_allocation":
+        if self.mode == "resource_allocation" or options["restart_mode"] == "merge":
             for n in self.N:
                 for m in self.M:
                     for k in self.K:
@@ -134,7 +146,7 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
             self.random_alpha()
             self.random_beta()
                 
-        if self.mode == "power_allocation":
+        if self.mode == "power_allocation" or options["restart_mode"] == "merge":
             for n in self.N:
                 for m in self.M:
                     self.P[n,m] = 0
@@ -211,6 +223,25 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         return len(self.current_state())
     
     #################################
+
+    def set_state(self, alpha : dict, beta : dict, P : dict, L : dict) -> None:
+        """
+        Sets the state of the environment.
+
+        Parameters:
+            alpha (dict): The resource allocation of the environment.
+            beta (dict): The user distribution in the environment.
+            P (dict): The transmission power allocation of the environment.
+            L (dict): The amount of remaining data in the environment.
+
+        Returns:
+            None
+        """
+
+        self.alpha = alpha
+        self.beta = beta
+        self.P = P
+        self.L = L
 
     def random_alpha(self) -> None:
         """
@@ -337,7 +368,7 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
                 print(f"Action taken BS {BS}, RBG {RBG} to power: {self.P[BS,RBG]}")
             else:
                 print("Action taken: None")
-                reward += 1
+                reward += 0
 
         if self.render_mode == "human":
             self.results()
@@ -346,16 +377,19 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
 
         reward += self.transmissionBits()/1e6
 
-        self.TxData()
+        terminated = False
+
+        if self.iterations%(len(self.N)*len(self.M)) == 0:
+            if self.send_data: self.TxData()
+            terminated = True
 
         if self.render_mode == "human": print("Bits remaining in the buffer:", self.L)
 
-        self.RqData()
+        #self.RqData()
 
-        terminated = bool(sum(self.L[k]*self.alpha[n,m,k]*self.beta[n,k] for k in self.K for n in self.N for m in self.M) == 0)
-        truncated = self.iterations == 200
+        terminated = terminated or bool(sum(self.L[k]*self.alpha[n,m,k]*self.beta[n,k] for k in self.K for n in self.N for m in self.M) == 0)
 
-        return  self.current_state(), reward, terminated, truncated, {}
+        return  self.current_state(), reward, terminated, False, {}
     
     def n_action_space_power_allocation(self) -> int:
         """
@@ -465,7 +499,7 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         elif mode == "alpha":
             self.alpha[n,m,k] = 1 if self.alpha[n,m,k] == 0 else 0
         else:
-            reward += 1
+            reward += 0
 
         if self.render_mode == "human": print(f"Action taken {mode} {n} {m} {k}")
 
@@ -476,17 +510,19 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
 
         reward += self.transmissionBits()/1e6 if self.valid() else 0
 
-        self.TxData()
+        terminated = False
+        
+        if self.iterations%(len(self.K) + len(self.N)*len(self.M)) == 0:
+            self.TxData()
+            terminated = True
 
         if self.render_mode == "human": print("Bits remaining in the buffer:", self.L)
 
-        self.RqData()
+        #self.RqData()
 
-        terminated = bool(sum(self.L.values()) == 0) or not self.valid()
-        truncated = self.iterations == 200
+        terminated = terminated or bool(sum(self.L.values()) == 0) or not self.valid()
 
-
-        return  self.current_state(), reward, terminated, truncated, {}
+        return  self.current_state(), reward, terminated, False, {}
 
     def n_action_space_resource_allocation(self) -> int:
         """
