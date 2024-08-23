@@ -78,7 +78,7 @@ This script processes data files to resolve the optimization scenarios. The key 
 - END: Specifies the ending data file index.
 - CONSOLE: Determines the output destination (console or `.txt` file).
 
-### Configure Parameters:
+#### Configure Parameters:
 
 - Open the ONL script in a text editor.
 - Set the `START` parameter to the index of the first test file you want to process (e.g., `START = 1` for `test1`).
@@ -93,5 +93,5 @@ CONSOLE = False
 ```
 
 > [!NOTE]
-> Ensure that the test data files are located in the `tests` directory.
+> Ensure that the test data files are located in the `tests` directory.\n
 > Adjust `START` and `END` according to the number of data files and the scenarios you want to process.
