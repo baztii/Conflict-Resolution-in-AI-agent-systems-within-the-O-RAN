@@ -209,7 +209,7 @@ class ONL(ENV):
         Returns:
             None
         """
-
+	print("Using Display "+str(display))
         solver=SolverFactory(SOLVER)
         self.model.L.store_values(self.L)
 
@@ -257,4 +257,4 @@ if __name__ == '__main__':
         sys.stdout = TERMINAL
         print(f"File: {FILE} done!")
         sys.stdout = OF
-        os.system('cls')
+        #os.system('cls')
