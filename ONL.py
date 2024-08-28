@@ -202,14 +202,13 @@ class ONL(ENV):
         if model is None: model = self
         return self.transmissionBits(model) - self.RBGs(model)# Maximize the bits sent and minimize the number of RBGs used
 
-    def solve(self):
+    def solve(self,display):
         """
         Solves the problem and prints the results in the standard output
 
         Returns:
             None
         """
-	print("Using Display "+str(display))
         solver=SolverFactory(SOLVER)
         self.model.L.store_values(self.L)
 
