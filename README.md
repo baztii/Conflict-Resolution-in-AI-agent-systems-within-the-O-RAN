@@ -66,17 +66,57 @@ With the dependencies installed, you can now install the project package itself.
 ```bash
 $> pip install -e .
 ````
+## Project Usage Guide
 
-## Usage
+This section explains how to use the different files within the project to execute the environment, agent, and experiments. 
+
+It is divided into the following sections:
+
+1. [ENVIRONMENT](#ENVRIONMENT.py)
+2. [ONL](#ONL.py)
+3. [gym_environment](#gym_environment.py)
+4. [utils](#utils.py)
+5. [agent](#agent.py)
+6. [main](#main.py)
+
+---
+
+### ENVIRONMENT.py
+
+The `ENVIRONMENT.py` file is responsible for creating the environment in which the game loop operates.
+
+#### Parameters
+- **ITER**: This sets the number of iterations for the game loop.
+
+#### Configure Parameters
+- Open the `ENVIRONMENT.py` file in a text editor.
+- Set the `ITER` parameter to the number of iterations you want the game loop to run for.
+
+#### Example
+```
+ITER = 10
+```
+
+Once you have configured the parameter you need to load the data to be used in the environment (you have and example in the ENVIRONMENT.py file).
+
+Then you need to create an environment object using the following command:
+   ```python
+   env = ENVIRONMENT(data)
+   ```
+
+Finally execute the game loop by calling the `gameloop()` method with your policy function. The policy should determine how resources are allocated and the power is set during each iteration:
+   ```python
+   env.gameloop(policy=your_policy)
+   ```
 
 ### ONL.py
 
 This script processes data files to resolve the optimization scenarios. The key parameters to adjust in the `ONL` script are `START`, `END`, and `CONSOLE`. These parameters control the range of data files to process and the output format.
 
 #### Parameters
-- START: Specifies the starting data file index.
-- END: Specifies the ending data file index.
-- CONSOLE: Determines the output destination (console or `.txt` file).
+- **START**: Specifies the starting data file index.
+- **END**: Specifies the ending data file index.
+- **CONSOLE**: Determines the output destination (console or `.txt` file).
 
 #### Configure Parameters:
 
@@ -92,6 +132,116 @@ END = 3
 CONSOLE = False
 ```
 
+When you have configured the parameters, you can run the script using the following command:
+   
+   $> python ONL.py
+
+
 > [!NOTE]
 > Ensure that the test data files are located in the `tests` directory.
 > Adjust `START` and `END` according to the number of data files and the scenarios you want to process.
+
+
+
+
+
+### gym_environment.py
+
+The `gym_environment.py` file does not execute on its own but is responsible for creating a custom Gym environment.
+
+#### Parameters
+
+- **DIV**: Defines the number of divisions for power allocation.
+
+This file is imported into other scripts, such as `agent.py`, where the Gym environment is utilized for training or testing.
+
+#### Configure Parameters
+
+- Open the `gym_environment.py` file in a text editor.
+- Set the `DIV` parameter to the number of divisions you want for power allocation.
+
+### utils.py
+
+The `utils.py` file contains utility functions that are used across different parts of the project. It does not execute independently, but you can import and use the functions within this file wherever needed.
+
+### agent.py 
+
+The `agent.py` file is where you can control and execute the agent's behavior.
+
+#### Parameters
+
+- **DATE_FORMAT**: The format in which logs are saved (e.g., `"YYYY-MM-DD HH:mm:ss"`).
+- **RUNS_DIR**: The directory where all logs, graphs, and other outputs will be saved.
+- **SAVE_GRAPH_STEP**: The interval for updating and saving the graph. If set to 1000, the graph will be saved every 1000 iterations.
+
+#### Configure Parameters
+
+- Open the `agent.py` file in a text editor.
+- Set the parameters as needed.
+
+#### Example
+
+```
+DATE_FORMAT = "YYYY-MM-DD HH:mm:ss"
+RUNS_DIR = "runs"
+SAVE_GRAPH_STEP = 1000
+```
+
+> [!NOTE]
+> This file imports and utilizes the `gym_environment.py` file. You can choose your custom Gym environment within your hyperparameter set.
+
+To run the agent, use the following command:
+   ```bash
+   python agent.py <hyperparameterSet> [--train]
+   ```
+   - `<hyperparameterSet>`: The name of the hyperparameter set you want to use. This should include the Gym environment you wish to employ.
+   - `--train` (optional): Add this flag if you want the agent to train.
+
+For instance,
+
+```bash
+python agent.py test1_power_allocation --train
+```
+
+### main.py
+
+The `main.py` file serves as the entry point for running the entire system. There are multiple ways to use it, depending on your needs.
+
+#### Usage
+
+```bash
+$ python main.py <parameterSet> [--train]
+$ python main.py merge<n>
+```
+
+#### Arguments
+
+- **parameterSet**: The name of the parameter set to use, defined within the `hyperparameters.yml` file.
+- **--train** (optional): Add this flag if you want the agent to train.
+- **n**: The test number for merging agents.
+
+#### Examples
+
+1. **Running with Training**:
+   ```bash
+   python main.py test1_power_allocation --train
+   ```
+2. **Running without Training**:
+   ```bash
+   python main.py test1_power_allocation
+   ```
+3. **Merging Agents**:
+   ```bash
+   python main.py merge1
+   ```
+
+## Future Work
+
+1. **Re-run the Agent Test**: Re-run the `test3_power_allocation` because the results were not saved properly during the initial run.
+2. **Test Agent Merging**: Test the merging of the two agents (power allocation and resource allocation) to assess how well they work together.
+3. **Performance Comparison**: Compare the results of the `ONL.py` file with the merged agents to determine which performs better.
+4. **Document Results**: Create a detailed document showing the results of the above comparisons and tests.
+
+--- 
+
+This guide should help you understand how to use the files in this project and plan for future improvements.

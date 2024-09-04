@@ -256,4 +256,3 @@ if __name__ == '__main__':
         sys.stdout = TERMINAL
         print(f"File: {FILE} done!")
         sys.stdout = OF
-        #os.system('cls')
