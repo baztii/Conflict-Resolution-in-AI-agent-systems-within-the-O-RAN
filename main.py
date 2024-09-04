@@ -117,9 +117,9 @@ def main():
     args = parser.parse_args()
 
     if "merge" in args.hyperparameters:
-        hyperparameters = "test" + args.hyperparameters[4] + "_power_allocation"
+        hyperparameters = "test" + args.hyperparameters[5] + "_power_allocation"
         agentPA = Agent(hyperparameter_set=hyperparameters, training=False)
-        hyperparameters = "test" + args.hyperparameters[4] + "_resource_allocation"
+        hyperparameters = "test" + args.hyperparameters[5] + "_resource_allocation"
         agentRA = Agent(hyperparameter_set=hyperparameters, training=False)
         merge_agents(agentRA, agentPA)
     else:
