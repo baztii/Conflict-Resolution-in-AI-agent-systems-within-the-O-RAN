@@ -72,12 +72,12 @@ This section explains how to use the different files within the project to execu
 
 It is divided into the following sections:
 
-1. [ENVIRONMENT](#ENVRIONMENT.py)
-2. [ONL](#ONL.py)
-3. [gym_environment](#gym_environment.py)
-4. [utils](#utils.py)
-5. [agent](#agent.py)
-6. [main](#main.py)
+1. [ENVIRONMENT](#ENVRIONMENTpy)
+2. [ONL](#ONLpy)
+3. [gym_environment](#gym_environmentpy)
+4. [utils](#utilspy)
+5. [agent](#agentpy)
+6. [main](#mainpy)
 
 ---
 
@@ -133,8 +133,9 @@ CONSOLE = False
 ```
 
 When you have configured the parameters, you can run the script using the following command:
-   
-   $> python ONL.py
+```
+$> python ONL.py
+```
 
 
 > [!NOTE]
