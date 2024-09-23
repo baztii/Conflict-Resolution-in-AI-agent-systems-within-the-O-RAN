@@ -71,6 +71,7 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         - *valid*: Checks if the current state of the environment is valid.
         - *step_resource_allocation*: Performs a resource allocation action in the environment.
         - *n_action_space_resource_allocation*: Returns the number of resource allocation actions in the environment.
+        - *step_merge*: Performs a merge action of both agents in the environment
     """
 
     metadata = {'render_modes': ['human', 'rgb_array']}
@@ -158,7 +159,7 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         for k in self.K:
             self.L[k] = 0
 
-        self.RqData()
+        if options["restart_mode"] != "merge": self.RqData()
 
         self.total = sum(self.L[k]*self.alpha[n,m,k]*self.beta[n,k] for k in self.K for n in self.N for m in self.M)
        
@@ -182,6 +183,9 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         Raises:
             ValueError: If the mode is not 'power_allocation' nor 'resource_allocation'.
         """
+
+        if not self.send_data:
+            return self.step_merge(action)
 
         if self.mode == "power_allocation":
             return self.step_power_allocation(action)
@@ -337,7 +341,7 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
 
         return BS, RBG, P
 
-    def step_power_allocation(self, action : int):
+    def step_power_allocation(self, action : int) -> tuple[np.ndarray, float, bool, bool, dict]:
         """
         Takes a step in the power allocation process.
 
@@ -542,3 +546,76 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
         K = len(self.K)
 
         return N*K + N*M*K + 1
+
+    def step_merge(self, action : int) -> None:
+        """
+        Takes a step in the merge agent process.
+
+        Parameters:
+            action (int): The action to take.
+
+        Returns:
+            tuple(np.ndarray, int, bool, bool, dict): The result of applying the action to the environment:
+                - np.ndarray: The next state of the environment.
+                - float: The reward obtained by applying the action to the environment.
+                - bool: Whether the episode has ended.
+                - bool: Whether the episode has been truncated.
+                - dict: Additional information about the environment.
+        """
+
+        if self.render_mode == "human":
+            print(f"Iteration {self.iterations}:")
+            print("Bits in the buffer:", end=' ')
+            print(f"{self.L}")
+        
+        reward = 0
+
+        if self.mode == "power_allocation":
+            BS, RBG, P = self.action_translator_power_allocation(action)
+            if BS is not None:
+                self.P[BS, RBG] = self.Pmin + (self.Pmax - self.Pmin)/(DIV-1)*P
+
+            if self.render_mode == "human": 
+                if BS is not None:
+                    print(f"Action taken BS {BS}, RBG {RBG} to power: {self.P[BS,RBG]}")
+                else:
+                    print("Action taken: None")
+
+            if self.render_mode == "human":
+                self.results()
+            
+            self.iterations += 1
+
+            reward += self.transmissionBits()/1e6
+
+            self.TxData()
+            self.RqData()
+
+            if self.render_mode == "human": print("Bits remaining in the buffer:", self.L)
+
+            terminated = bool(sum(self.L[k]*self.alpha[n,m,k]*self.beta[n,k] for k in self.K for n in self.N for m in self.M) == 0)
+
+        if self.mode == "resource_allocation":
+            mode, n, m, k = self.action_translator_resource_allocation(action)
+
+            if mode == "beta":
+                self.beta[n,k] = 1 if self.beta[n,k] == 0 else 0
+            elif mode == "alpha":
+                self.alpha[n,m,k] = 1 if self.alpha[n,m,k] == 0 else 0
+            else:
+                reward += 0
+
+            if self.render_mode == "human": print(f"Action taken {mode} {n} {m} {k}")
+
+            if self.render_mode == "human":
+                self.results()
+            
+            self.iterations += 1
+
+            reward += self.transmissionBits()/1e6 if self.valid() else 0
+
+            if self.render_mode == "human": print("Bits remaining in the buffer:", self.L)
+
+            terminated = bool(sum(self.L.values()) == 0) or not self.valid()
+
+        return  self.current_state(), reward, terminated, False, {}
