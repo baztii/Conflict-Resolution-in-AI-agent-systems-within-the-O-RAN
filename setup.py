@@ -17,6 +17,7 @@ setup(
         "pyomo",                 
         "matplotlib",             
         "numpy",
+        "python-dotenv",
     ],
     classifiers=[
         'Programming Language :: Python :: 3',

@@ -1,6 +1,6 @@
 Iteration 0:
 Bits in the buffer: {0: 0}
-Time: 1.4820466041564941s
+Time: 0.013241291046142578s
 
 Total bits sent: 0	Total RBGs used: 0
 
@@ -14,23 +14,4538 @@ BS 0:
 	user( 0) uses NO RBGs and sends 0 bits
 
 Iteration 1:
-Bits in the buffer: {0: 308000}
-Time: 0.22036981582641602s
+Bits in the buffer: {0: np.int64(252000)}
+Time: 0.016313552856445312s
+
+Total bits sent: 252000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.01523249574613634
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 251999.99999987753 bits
+
+Iteration 2:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.020031213760375977s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.1125315019600674
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 367500 bits
+
+Iteration 3:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.021028518676757812s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941675
+	P( 0, 1) = 2.2841185560908834
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 360500 bits
+
+Iteration 4:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.018711328506469727s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.3826749698757178
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 322000 bits
+
+Iteration 5:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.01741480827331543s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 6:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.016184329986572266s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 7:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.01556849479675293s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 304500 bits
+
+Iteration 8:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.009656190872192383s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 9:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.01849508285522461s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 318500 bits
+
+Iteration 10:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.02023172378540039s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 11:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.017963647842407227s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 12:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.02074885368347168s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.391662408382862
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 13:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.016678810119628906s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 381500 bits
+
+Iteration 14:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.018439531326293945s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 325500 bits
+
+Iteration 15:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.010692596435546875s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 343000 bits
+
+Iteration 16:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.018111228942871094s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 346500 bits
+
+Iteration 17:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.010526895523071289s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 343000 bits
+
+Iteration 18:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.01142263412475586s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 360500 bits
+
+Iteration 19:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.01811504364013672s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 371000 bits
+
+Iteration 20:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.01080179214477539s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 336000 bits
+
+Iteration 21:
+Bits in the buffer: {0: np.int64(399000)}
+Time: 0.027554035186767578s
+
+Total bits sent: 399000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573432170906
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  4 RBGs and sends 399000 bits
+
+Iteration 22:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.017766237258911133s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 23:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.010666847229003906s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 24:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.010363340377807617s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 25:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.01764535903930664s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 325500 bits
+
+Iteration 26:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.017361879348754883s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 27:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.020261287689208984s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.6214387343307447
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 28:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.020545482635498047s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941675
+	P( 0, 1) = 2.2841185560908834
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 360500 bits
+
+Iteration 29:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.0160367488861084s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 315000 bits
+
+Iteration 30:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.018296003341674805s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 371000 bits
+
+Iteration 31:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.01092982292175293s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 339500 bits
+
+Iteration 32:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.020468950271606445s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 33:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.01831340789794922s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 353500 bits
+
+Iteration 34:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.018111705780029297s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 325500 bits
+
+Iteration 35:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.010930061340332031s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 36:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.010572433471679688s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 37:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.01812005043029785s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 367500 bits
+
+Iteration 38:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.01824474334716797s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 371000 bits
+
+Iteration 39:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.01549077033996582s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 364000 bits
+
+Iteration 40:
+Bits in the buffer: {0: np.int64(283500)}
+Time: 0.015583992004394531s
+
+Total bits sent: 283500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 283500 bits
+
+Iteration 41:
+Bits in the buffer: {0: np.int64(297500)}
+Time: 0.01562047004699707s
+
+Total bits sent: 297500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 297500 bits
+
+Iteration 42:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.010743141174316406s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 374500 bits
+
+Iteration 43:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.011619329452514648s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 44:
+Bits in the buffer: {0: np.int64(451500)}
+Time: 0.029166221618652344s
+
+Total bits sent: 451500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012610676623250282
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589244117941674
+	P( 0, 3) = 0.016418336002097047
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 451500 bits
+
+Iteration 45:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.02006983757019043s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.6214387343307447
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 46:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.017377614974975586s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325499.99999999994 bits
+
+Iteration 47:
+Bits in the buffer: {0: np.int64(297500)}
+Time: 0.015347480773925781s
+
+Total bits sent: 297500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 297500 bits
+
+Iteration 48:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.017444133758544922s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 381500 bits
+
+Iteration 49:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.011084556579589844s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 360500 bits
+
+Iteration 50:
+Bits in the buffer: {0: np.int64(399000)}
+Time: 0.027459383010864258s
+
+Total bits sent: 399000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573432170906
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  4 RBGs and sends 399000 bits
+
+Iteration 51:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.015811443328857422s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 315000 bits
+
+Iteration 52:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.018433809280395508s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 371000 bits
+
+Iteration 53:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.011311531066894531s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 374500 bits
+
+Iteration 54:
+Bits in the buffer: {0: np.int64(402500)}
+Time: 0.029520034790039062s
+
+Total bits sent: 402500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.001259660416422072
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0017173556716170116
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0  3 RBGs and sends 402499.9999999958 bits
+
+Iteration 55:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.02069568634033203s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 56:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.01692938804626465s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 381500 bits
+
+Iteration 57:
+Bits in the buffer: {0: np.int64(406000)}
+Time: 0.02191329002380371s
+
+Total bits sent: 406000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 2.083787705345655
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.2941331110457186
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 406000 bits
+
+Iteration 58:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.015820980072021484s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 59:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.017482519149780273s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 322000 bits
+
+Iteration 60:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.02070331573486328s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.6570893479336646
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 371000 bits
+
+Iteration 61:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.024901390075683594s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 2.6840790254699094
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 62:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.01652693748474121s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 381500 bits
+
+Iteration 63:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.02309274673461914s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 388500 bits
+
+Iteration 64:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.018941402435302734s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 385000 bits
+
+Iteration 65:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.015935659408569336s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 66:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.017349958419799805s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 346500 bits
+
+Iteration 67:
+Bits in the buffer: {0: np.int64(427000)}
+Time: 0.028741836547851562s
+
+Total bits sent: 427000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.309573451111503
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  4 RBGs and sends 427000 bits
+
+Iteration 68:
+Bits in the buffer: {0: np.int64(399000)}
+Time: 0.02171015739440918s
+
+Total bits sent: 399000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.309573451111503
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  4 RBGs and sends 399000 bits
+
+Iteration 69:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.021594762802124023s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.6570893479336646
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 371000 bits
+
+Iteration 70:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.017881393432617188s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325499.99999999994 bits
+
+Iteration 71:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.0173799991607666s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 322000 bits
+
+Iteration 72:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.01716756820678711s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 73:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.01999497413635254s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.6214387343307447
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 74:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.02313518524169922s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 388500 bits
+
+Iteration 75:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.018484830856323242s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 318500 bits
+
+Iteration 76:
+Bits in the buffer: {0: np.int64(297500)}
+Time: 0.015642881393432617s
+
+Total bits sent: 297500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 297500 bits
+
+Iteration 77:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.01721954345703125s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 322000 bits
+
+Iteration 78:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.01775527000427246s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 318500 bits
+
+Iteration 79:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.015677690505981445s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 304500 bits
+
+Iteration 80:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.010809898376464844s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 336000 bits
+
+Iteration 81:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.010102272033691406s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 82:
+Bits in the buffer: {0: np.int64(399000)}
+Time: 0.02697277069091797s
+
+Total bits sent: 399000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573432170906
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  4 RBGs and sends 399000 bits
+
+Iteration 83:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.017546653747558594s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 84:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.011010408401489258s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 85:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.016080856323242188s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 86:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.01798844337463379s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 318500 bits
+
+Iteration 87:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.01582503318786621s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 88:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.019131183624267578s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 89:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.018280744552612305s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 346500 bits
+
+Iteration 90:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.025255441665649414s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 2.6840790254699094
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 91:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.018153667449951172s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.3826749698757178
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 322000 bits
+
+Iteration 92:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.017314434051513672s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325499.99999999994 bits
+
+Iteration 93:
+Bits in the buffer: {0: np.int64(423500)}
+Time: 0.026400089263916016s
+
+Total bits sent: 423500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.6713005137713856
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 423500 bits
+
+Iteration 94:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.019517898559570312s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596467
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 95:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.01755380630493164s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596467
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 325500 bits
+
+Iteration 96:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.01729559898376465s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596467
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 315000 bits
+
+Iteration 97:
+Bits in the buffer: {0: np.int64(406000)}
+Time: 0.021907329559326172s
+
+Total bits sent: 406000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 2.083787705345655
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.2941331110457186
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 406000 bits
+
+Iteration 98:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.018925905227661133s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.3826749698757178
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 322000 bits
+
+Iteration 99:
+Bits in the buffer: {0: np.int64(430500)}
+Time: 0.02662944793701172s
+
+Total bits sent: 430500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.309573451111503
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  4 RBGs and sends 430500 bits
+
+Iteration 100:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.02106451988220215s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.6570893479336646
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 371000 bits
+
+Iteration 101:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.025244951248168945s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 2.6840790254699094
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 102:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.018614768981933594s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.3826749698757178
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 322000 bits
+
+Iteration 103:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.024915695190429688s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 2.6840790254699094
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 104:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.020606040954589844s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 105:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.02107548713684082s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 106:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.01981949806213379s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.1125315019600674
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 367500 bits
+
+Iteration 107:
+Bits in the buffer: {0: np.int64(399000)}
+Time: 0.026624441146850586s
+
+Total bits sent: 399000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573432170906
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  4 RBGs and sends 399000 bits
+
+Iteration 108:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.01585698127746582s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 109:
+Bits in the buffer: {0: np.int64(406000)}
+Time: 0.022058725357055664s
+
+Total bits sent: 406000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 2.083787705345655
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.2941331110457186
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 406000 bits
+
+Iteration 110:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.019714832305908203s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.1125315019600674
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 367500 bits
+
+Iteration 111:
+Bits in the buffer: {0: np.int64(280000)}
+Time: 0.02251911163330078s
+
+Total bits sent: 280000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 0.0554092798539577
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 279999.9999999974 bits
+
+Iteration 112:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.02232193946838379s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.391662408382862
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 113:
+Bits in the buffer: {0: np.int64(231000)}
+Time: 0.0162200927734375s
+
+Total bits sent: 231000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.005788979414991744
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 230999.99999999983 bits
+
+Iteration 114:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.022840023040771484s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941675
+	P( 0, 1) = 2.2841185560908834
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 360500 bits
+
+Iteration 115:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.0214993953704834s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 116:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.014192581176757812s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 346500 bits
+
+Iteration 117:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.015371322631835938s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 118:
+Bits in the buffer: {0: np.int64(290500)}
+Time: 0.015065670013427734s
+
+Total bits sent: 290500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.09061184171442166
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 290500 bits
+
+Iteration 119:
+Bits in the buffer: {0: np.int64(413000)}
+Time: 0.031003475189208984s
+
+Total bits sent: 413000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.231191634641861
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 5.341518276355011
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  3 RBGs and sends 413000 bits
+
+Iteration 120:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.01784062385559082s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325499.99999999994 bits
+
+Iteration 121:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.01758718490600586s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 322000 bits
+
+Iteration 122:
+Bits in the buffer: {0: np.int64(399000)}
+Time: 0.02716207504272461s
+
+Total bits sent: 399000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573432170906
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  4 RBGs and sends 399000 bits
+
+Iteration 123:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.018207788467407227s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 124:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.0196835994720459s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 125:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.018673181533813477s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 126:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.010621309280395508s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 332500 bits
+
+Iteration 127:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.02049875259399414s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.391662408382862
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 128:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.020676851272583008s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 129:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.019666433334350586s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596544
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 130:
+Bits in the buffer: {0: np.int64(308000)}
+Time: 0.01605081558227539s
+
+Total bits sent: 308000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596544
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 308000 bits
+
+Iteration 131:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.02573108673095703s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 2.6840790254699094
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 132:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.01605987548828125s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 133:
+Bits in the buffer: {0: np.int64(413000)}
+Time: 0.02937030792236328s
+
+Total bits sent: 413000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.231191634641861
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 5.341518276355011
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  3 RBGs and sends 413000 bits
+
+Iteration 134:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.020550251007080078s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.6214387343307447
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 135:
+Bits in the buffer: {0: np.int64(283500)}
+Time: 0.014451980590820312s
+
+Total bits sent: 283500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.06561927087316059
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 283500 bits
+
+Iteration 136:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.017583608627319336s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325499.99999999994 bits
+
+Iteration 137:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.022115230560302734s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941675
+	P( 0, 1) = 2.2841185560908834
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 360500 bits
+
+Iteration 138:
+Bits in the buffer: {0: np.int64(301000)}
+Time: 0.017729520797729492s
+
+Total bits sent: 301000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 0.14581096580915817
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 301000 bits
+
+Iteration 139:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.021324872970581055s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.001258925411795568
+	P( 0, 2) = 6.30957344480193
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 364000 bits
+
+Iteration 140:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.013094663619995117s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.001258925411795568
+	P( 0, 2) = 6.30957344480193
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 374500 bits
+
+Iteration 141:
+Bits in the buffer: {0: np.int64(311500)}
+Time: 0.020825624465942383s
+
+Total bits sent: 311500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.001258925411795568
+	P( 0, 2) = 6.30957344480193
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 311500 bits
+
+Iteration 142:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.012363672256469727s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.001258925411795568
+	P( 0, 2) = 6.30957344480193
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 350000 bits
+
+Iteration 143:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.016966819763183594s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.001258925411795568
+	P( 0, 2) = 6.30957344480193
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 381500 bits
+
+Iteration 144:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.01132345199584961s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.001258925411795568
+	P( 0, 2) = 6.30957344480193
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 343000 bits
+
+Iteration 145:
+Bits in the buffer: {0: np.int64(311500)}
+Time: 0.018545150756835938s
+
+Total bits sent: 311500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.001258925411795568
+	P( 0, 2) = 6.30957344480193
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 311500 bits
+
+Iteration 146:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.026044845581054688s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 147:
+Bits in the buffer: {0: np.int64(395500)}
+Time: 0.02917647361755371s
+
+Total bits sent: 395500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 395500 bits
+
+Iteration 148:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.023189067840576172s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.7301724429399231
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 149:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.021333694458007812s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 346500 bits
+
+Iteration 150:
+Bits in the buffer: {0: np.int64(280000)}
+Time: 0.016858339309692383s
+
+Total bits sent: 280000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 280000 bits
+
+Iteration 151:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.018124103546142578s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 3.9994352420110486
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 322000 bits
+
+Iteration 152:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.018787860870361328s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 3.9994352420110486
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 367500 bits
+
+Iteration 153:
+Bits in the buffer: {0: np.int64(290500)}
+Time: 0.01578497886657715s
+
+Total bits sent: 290500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 3.9994352420110486
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 290500 bits
+
+Iteration 154:
+Bits in the buffer: {0: np.int64(392000)}
+Time: 0.027243375778198242s
+
+Total bits sent: 392000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 392000 bits
+
+Iteration 155:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.0174257755279541s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325499.99999999994 bits
+
+Iteration 156:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.01880359649658203s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 157:
+Bits in the buffer: {0: np.int64(420000)}
+Time: 0.02462291717529297s
+
+Total bits sent: 420000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.09158756787547834
+	P( 0, 1) = 0.0014185957328457363
+	P( 0, 2) = 6.309573432170903
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  2 RBGs and sends 420000 bits
+
+Iteration 158:
+Bits in the buffer: {0: np.int64(287000)}
+Time: 0.014984846115112305s
+
+Total bits sent: 287000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.07710955364956898
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 287000 bits
+
+Iteration 159:
+Bits in the buffer: {0: np.int64(406000)}
+Time: 0.021901845932006836s
+
+Total bits sent: 406000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 2.083787705345655
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.2941331110457186
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 406000 bits
+
+Iteration 160:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.017251968383789062s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 0.1713265814946866
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 304500 bits
+
+Iteration 161:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.01610398292541504s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 162:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.017827510833740234s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 163:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.023810386657714844s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 388500 bits
+
+Iteration 164:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.0198516845703125s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596484
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 165:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.02128291130065918s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.391662408382862
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 166:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.021180391311645508s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941675
+	P( 0, 1) = 2.2841185560908834
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 360500 bits
+
+Iteration 167:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.017611026763916016s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 168:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.011016368865966797s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 169:
+Bits in the buffer: {0: np.int64(392000)}
+Time: 0.028301239013671875s
+
+Total bits sent: 392000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 392000 bits
+
+Iteration 170:
+Bits in the buffer: {0: np.int64(413000)}
+Time: 0.02962470054626465s
+
+Total bits sent: 413000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.231191634641861
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 5.341518276355011
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  3 RBGs and sends 413000 bits
+
+Iteration 171:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.017287492752075195s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 0.1713265814946866
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 304500 bits
+
+Iteration 172:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.013999223709106445s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 346500 bits
+
+Iteration 173:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.017845869064331055s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 346500 bits
+
+Iteration 174:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.015294790267944336s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 175:
+Bits in the buffer: {0: np.int64(308000)}
+Time: 0.015268087387084961s
+
+Total bits sent: 308000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 308000 bits
+
+Iteration 176:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.009453535079956055s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 177:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.01741170883178711s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 4.023738745726577
+	P( 0, 2) = 0.0012589254117941675
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325500 bits
+
+Iteration 178:
+Bits in the buffer: {0: np.int64(430500)}
+Time: 0.0274658203125s
+
+Total bits sent: 430500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.309573451111503
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  4 RBGs and sends 430500 bits
+
+Iteration 179:
+Bits in the buffer: {0: np.int64(301000)}
+Time: 0.01831960678100586s
+
+Total bits sent: 301000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 0.14581096580915817
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 301000 bits
+
+Iteration 180:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.016303300857543945s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 181:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.023978233337402344s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 388500 bits
+
+Iteration 182:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.020478487014770508s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 364000 bits
+
+Iteration 183:
+Bits in the buffer: {0: np.int64(308000)}
+Time: 0.011492013931274414s
+
+Total bits sent: 308000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 308000 bits
+
+Iteration 184:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.010568380355834961s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 367500 bits
+
+Iteration 185:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.009546995162963867s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 325500 bits
+
+Iteration 186:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.010152339935302734s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 346500 bits
+
+Iteration 187:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.0102081298828125s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 188:
+Bits in the buffer: {0: np.int64(434000)}
+Time: 0.027648210525512695s
+
+Total bits sent: 434000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.309573451111503
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  4 RBGs and sends 434000 bits
+
+Iteration 189:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.016704797744750977s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 190:
+Bits in the buffer: {0: np.int64(427000)}
+Time: 0.03084421157836914s
+
+Total bits sent: 427000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.309573451111503
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  4 RBGs and sends 427000 bits
+
+Iteration 191:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.01846599578857422s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 0.1713265814946866
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 304500 bits
+
+Iteration 192:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.017721891403198242s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 193:
+Bits in the buffer: {0: np.int64(294000)}
+Time: 0.01631903648376465s
+
+Total bits sent: 294000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 294000 bits
+
+Iteration 194:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.011568307876586914s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 195:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.02686619758605957s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 2.6840790254699094
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 196:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.0192410945892334s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909534221002153
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 197:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.020833969116210938s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.391662408382862
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 198:
+Bits in the buffer: {0: np.int64(406000)}
+Time: 0.0227053165435791s
+
+Total bits sent: 406000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 2.083787705345655
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.2941331110457186
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 406000 bits
+
+Iteration 199:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.01793384552001953s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 200:
+Bits in the buffer: {0: np.int64(311500)}
+Time: 0.01790142059326172s
+
+Total bits sent: 311500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 311500 bits
+
+Iteration 201:
+Bits in the buffer: {0: np.int64(423500)}
+Time: 0.026648283004760742s
+
+Total bits sent: 423500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.6713005137713856
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 423500 bits
+
+Iteration 202:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.01938772201538086s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 203:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.021663665771484375s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941675
+	P( 0, 1) = 2.2841185560908834
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 360500 bits
+
+Iteration 204:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.017745494842529297s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 205:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.01188516616821289s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 206:
+Bits in the buffer: {0: np.int64(427000)}
+Time: 0.03085184097290039s
+
+Total bits sent: 427000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.309573451111503
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  4 RBGs and sends 427000 bits
+
+Iteration 207:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.021872997283935547s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 208:
+Bits in the buffer: {0: np.int64(287000)}
+Time: 0.015225410461425781s
+
+Total bits sent: 287000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.07710955364956898
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 287000 bits
+
+Iteration 209:
+Bits in the buffer: {0: np.int64(420000)}
+Time: 0.025569915771484375s
+
+Total bits sent: 420000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.09158756787547834
+	P( 0, 1) = 0.0014185957328457363
+	P( 0, 2) = 6.309573432170903
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  2 RBGs and sends 420000 bits
+
+Iteration 210:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.021088361740112305s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.6570893479336646
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 371000 bits
+
+Iteration 211:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.021095991134643555s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 212:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.019413232803344727s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 213:
+Bits in the buffer: {0: np.int64(255500)}
+Time: 0.009546518325805664s
+
+Total bits sent: 255500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 255500 bits
+
+Iteration 214:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.017244338989257812s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 215:
+Bits in the buffer: {0: np.int64(297500)}
+Time: 0.016299724578857422s
+
+Total bits sent: 297500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 297500 bits
+
+Iteration 216:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.02028656005859375s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 346500 bits
+
+Iteration 217:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.011154890060424805s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 332500 bits
+
+Iteration 218:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.010541200637817383s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 219:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.012325286865234375s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 350000 bits
+
+Iteration 220:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.01941704750061035s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 346500 bits
+
+Iteration 221:
+Bits in the buffer: {0: np.int64(406000)}
+Time: 0.023077964782714844s
+
+Total bits sent: 406000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 2.083787705345655
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.2941331110457186
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 406000 bits
+
+Iteration 222:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.01626753807067871s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 223:
+Bits in the buffer: {0: np.int64(423500)}
+Time: 0.026139020919799805s
+
+Total bits sent: 423500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.6713005137713856
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 423500 bits
+
+Iteration 224:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.017870426177978516s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325499.99999999994 bits
+
+Iteration 225:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.020665407180786133s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.6570893479336646
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 371000 bits
+
+Iteration 226:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.016651153564453125s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 227:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.017486572265625s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 228:
+Bits in the buffer: {0: np.int64(283500)}
+Time: 0.016018390655517578s
+
+Total bits sent: 283500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.06561927087316059
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 283500 bits
+
+Iteration 229:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.02150273323059082s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.1125315019600674
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 367500 bits
+
+Iteration 230:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.015895605087280273s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 315000 bits
+
+Iteration 231:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.010684490203857422s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 339500 bits
+
+Iteration 232:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.010745525360107422s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 233:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.011117696762084961s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 339500 bits
+
+Iteration 234:
+Bits in the buffer: {0: np.int64(406000)}
+Time: 0.022043943405151367s
+
+Total bits sent: 406000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 2.083787705345655
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.2941331110457186
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 406000 bits
+
+Iteration 235:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.019055843353271484s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.3826749698757178
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 322000 bits
+
+Iteration 236:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.015863656997680664s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 237:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.01575183868408203s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 238:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.017329931259155273s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 318500 bits
+
+Iteration 239:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.015236854553222656s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 304500 bits
+
+Iteration 240:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.022825241088867188s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 388500 bits
+
+Iteration 241:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.017899274826049805s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 0.1713265814946866
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 304500 bits
+
+Iteration 242:
+Bits in the buffer: {0: np.int64(287000)}
+Time: 0.014891386032104492s
+
+Total bits sent: 287000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.07710955364956898
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 287000 bits
+
+Iteration 243:
+Bits in the buffer: {0: np.int64(406000)}
+Time: 0.022214651107788086s
+
+Total bits sent: 406000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 2.083787705345655
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.2941331110457186
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 406000 bits
+
+Iteration 244:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.019954204559326172s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 364000 bits
+
+Iteration 245:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.023550748825073242s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 388500 bits
+
+Iteration 246:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.019544601440429688s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 364000 bits
+
+Iteration 247:
+Bits in the buffer: {0: np.int64(252000)}
+Time: 0.009274959564208984s
+
+Total bits sent: 252000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 252000 bits
+
+Iteration 248:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.01007390022277832s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 343000 bits
+
+Iteration 249:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.023637056350708008s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 388500 bits
+
+Iteration 250:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.016178607940673828s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 251:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.01799321174621582s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 252:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.017864227294921875s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 253:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.01937127113342285s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 254:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.018680095672607422s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 325500 bits
+
+Iteration 255:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.02089834213256836s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 256:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.019187450408935547s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.3826749698757178
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 322000 bits
+
+Iteration 257:
+Bits in the buffer: {0: np.int64(416500)}
+Time: 0.023183584213256836s
+
+Total bits sent: 416500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.231022810570155
+	P( 0, 1) = 0.0012641705929121343
+	P( 0, 2) = 0.426744507648389
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 416500 bits
+
+Iteration 258:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.021350622177124023s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 259:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.01628708839416504s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 260:
+Bits in the buffer: {0: np.int64(297500)}
+Time: 0.023521900177001953s
+
+Total bits sent: 297500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 297500 bits
+
+Iteration 261:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.017957687377929688s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 381500 bits
+
+Iteration 262:
+Bits in the buffer: {0: np.int64(283500)}
+Time: 0.015352010726928711s
+
+Total bits sent: 283500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 283500 bits
+
+Iteration 263:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.017586469650268555s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 325500 bits
+
+Iteration 264:
+Bits in the buffer: {0: np.int64(287000)}
+Time: 0.015283823013305664s
+
+Total bits sent: 287000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 287000 bits
+
+Iteration 265:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.017826557159423828s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 367500 bits
+
+Iteration 266:
+Bits in the buffer: {0: np.int64(395500)}
+Time: 0.025210142135620117s
+
+Total bits sent: 395500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589244117937664
+	P( 0, 2) = 0.0012589254117924265
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  1 RBGs and sends 395500 bits
+
+Iteration 267:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.020204544067382812s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596484
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 268:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.02595973014831543s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 2.6840790254699094
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 269:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.018197298049926758s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.3826749698757178
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 322000 bits
+
+Iteration 270:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.016588211059570312s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.3826749698757178
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 315000 bits
+
+Iteration 271:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.015150070190429688s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 272:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.019265174865722656s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909534221002153
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 273:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.02008843421936035s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 274:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.018146276473999023s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 275:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.02017998695373535s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 276:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.016698837280273438s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 350000 bits
+
+Iteration 277:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.010278940200805664s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 332500 bits
+
+Iteration 278:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.009656190872192383s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 378000 bits
+
+Iteration 279:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.010390281677246094s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 336000 bits
+
+Iteration 280:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.010111570358276367s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 329000 bits
+
+Iteration 281:
+Bits in the buffer: {0: np.int64(409500)}
+Time: 0.03360557556152344s
+
+Total bits sent: 409500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.231191634641861
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 5.341518276355004
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  3 RBGs and sends 409500 bits
+
+Iteration 282:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.027737855911254883s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.01180161008494757
+
+	user( 0) uses  0  4 RBGs and sends 388500 bits
+
+Iteration 283:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.021273136138916016s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 284:
+Bits in the buffer: {0: np.int64(395500)}
+Time: 0.02483224868774414s
+
+Total bits sent: 395500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589244117937664
+	P( 0, 2) = 0.0012589254117905191
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  1 RBGs and sends 395500 bits
+
+Iteration 285:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.01888561248779297s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596484
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 286:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.010784626007080078s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596484
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 287:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.018021583557128906s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596484
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 325500 bits
+
+Iteration 288:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.011211872100830078s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596484
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 289:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.017636537551879883s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596484
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 325500 bits
+
+Iteration 290:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.010281801223754883s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596484
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 291:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.016721487045288086s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 292:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.020441055297851562s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941675
+	P( 0, 1) = 2.2841185560908834
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 360500 bits
+
+Iteration 293:
+Bits in the buffer: {0: np.int64(297500)}
+Time: 0.021262168884277344s
+
+Total bits sent: 297500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 297500 bits
+
+Iteration 294:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.010382890701293945s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 332500 bits
+
+Iteration 295:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.018965482711791992s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 346500 bits
+
+Iteration 296:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.011623620986938477s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 336000 bits
+
+Iteration 297:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.021593332290649414s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 318500 bits
+
+Iteration 298:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.02453303337097168s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 322000 bits
+
+Iteration 299:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.019056081771850586s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 315000 bits
+
+Iteration 300:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.019153833389282227s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 318500 bits
+
+Iteration 301:
+Bits in the buffer: {0: np.int64(301000)}
+Time: 0.01726841926574707s
+
+Total bits sent: 301000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 301000 bits
+
+Iteration 302:
+Bits in the buffer: {0: np.int64(308000)}
+Time: 0.018627643585205078s
 
 Total bits sent: 308000	Total RBGs used: 1
 
 BS 0:
 	P( 0, 0) = 1.0
 	P( 0, 1) = 1.0
-	P( 0, 2) = 0.20079027053988383
-	P( 0, 3) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.443649651808278
 	P( 0, 4) = 1.0
 
-	user( 0) uses  2 RBGs and sends 308000 bits
+	user( 0) uses  3 RBGs and sends 308000 bits
 
-Iteration 2:
-Bits in the buffer: {0: 353500}
-Time: 0.14547038078308105s
+Iteration 303:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.020124197006225586s
 
 Total bits sent: 353500	Total RBGs used: 1
 
@@ -38,114 +4553,2949 @@ BS 0:
 	P( 0, 0) = 1.0
 	P( 0, 1) = 1.0
 	P( 0, 2) = 1.0
-	P( 0, 3) = 1.6379780736238838
+	P( 0, 3) = 2.443649651808278
 	P( 0, 4) = 1.0
 
 	user( 0) uses  3 RBGs and sends 353500 bits
 
-Iteration 3:
-Bits in the buffer: {0: 392000}
-Time: 0.14128804206848145s
+Iteration 304:
+Bits in the buffer: {0: np.int64(427000)}
+Time: 0.03792548179626465s
 
-Total bits sent: 392000	Total RBGs used: 2
-
-BS 0:
-	P( 0, 0) = 2.083789891714298
-	P( 0, 1) = 0.001260817250327046
-	P( 0, 2) = 0.0015877978595778702
-	P( 0, 3) = 0.0012589254117941673
-	P( 0, 4) = 0.0012589254117941673
-
-	user( 0) uses  0  2 RBGs and sends 392000 bits
-
-Iteration 4:
-Bits in the buffer: {0: 336000}
-Time: 0.11004281044006348s
-
-Total bits sent: 336000	Total RBGs used: 1
+Total bits sent: 427000	Total RBGs used: 2
 
 BS 0:
-	P( 0, 0) = 0.7301724429399209
+	P( 0, 0) = 6.309573451111503
 	P( 0, 1) = 0.0012589254117941673
 	P( 0, 2) = 0.0012589254117941673
 	P( 0, 3) = 0.0012589254117941673
 	P( 0, 4) = 0.0012589254117941673
 
-	user( 0) uses  0 RBGs and sends 336000 bits
+	user( 0) uses  0  4 RBGs and sends 427000 bits
 
-Iteration 5:
-Bits in the buffer: {0: 346500}
-Time: 0.10950040817260742s
+Iteration 305:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.019504308700561523s
 
-Total bits sent: 346500	Total RBGs used: 1
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 306:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.021561622619628906s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.6214387343307447
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 307:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.021142244338989258s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 308:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.027344703674316406s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 315000 bits
+
+Iteration 309:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.013073205947875977s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 329000 bits
+
+Iteration 310:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.013257980346679688s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.47425970469775125
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.3753572440130404
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 311:
+Bits in the buffer: {0: np.int64(409500)}
+Time: 0.0411684513092041s
+
+Total bits sent: 409500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.231191634641861
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 5.341518276355004
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  3 RBGs and sends 409500 bits
+
+Iteration 312:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.030127286911010742s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 313:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.026371002197265625s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 314:
+Bits in the buffer: {0: np.int64(276500)}
+Time: 0.0228726863861084s
+
+Total bits sent: 276500	Total RBGs used: 1
 
 BS 0:
 	P( 0, 0) = 1.0
 	P( 0, 1) = 1.0
-	P( 0, 2) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 0.04715717871832846
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 276499.99999999977 bits
+
+Iteration 315:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.02338886260986328s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
 	P( 0, 3) = 1.0
 	P( 0, 4) = 1.0
 
-	user( 0) uses  2 RBGs and sends 346500 bits
+	user( 0) uses  0 RBGs and sends 336000 bits
 
-Iteration 6:
-Bits in the buffer: {0: 360500}
-Time: 0.09385204315185547s
+Iteration 316:
+Bits in the buffer: {0: np.int64(308000)}
+Time: 0.016772031784057617s
+
+Total bits sent: 308000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.20303391390697395
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 308000 bits
+
+Iteration 317:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.02083563804626465s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.3826749698757178
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 322000 bits
+
+Iteration 318:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.02083420753479004s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 319:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.0207064151763916s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.6214387343307447
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 320:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.0206296443939209s
 
 Total bits sent: 360500	Total RBGs used: 1
 
 BS 0:
-	P( 0, 0) = 1.0
-	P( 0, 1) = 1.0
-	P( 0, 2) = 6.30957344480193
+	P( 0, 0) = 0.0012589254117941675
+	P( 0, 1) = 2.2841185560908834
+	P( 0, 2) = 1.0
 	P( 0, 3) = 1.0
 	P( 0, 4) = 1.0
 
-	user( 0) uses  2 RBGs and sends 360500 bits
+	user( 0) uses  1 RBGs and sends 360500 bits
 
-Iteration 7:
-Bits in the buffer: {0: 325500}
-Time: 0.07867097854614258s
+Iteration 321:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.020523786544799805s
 
-Total bits sent: 325500	Total RBGs used: 1
+Total bits sent: 385000	Total RBGs used: 2
 
 BS 0:
-	P( 0, 0) = 1.0
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 322:
+Bits in the buffer: {0: np.int64(413000)}
+Time: 0.021947145462036133s
+
+Total bits sent: 413000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 413000 bits
+
+Iteration 323:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.01955699920654297s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 324:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.020033836364746094s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
 	P( 0, 1) = 1.0
-	P( 0, 2) = 6.30957344480193
+	P( 0, 2) = 3.6570893479336646
 	P( 0, 3) = 1.0
 	P( 0, 4) = 1.0
 
-	user( 0) uses  2 RBGs and sends 325500 bits
+	user( 0) uses  2 RBGs and sends 371000 bits
 
-Iteration 8:
-Bits in the buffer: {0: 350000}
-Time: 0.08043813705444336s
+Iteration 325:
+Bits in the buffer: {0: np.int64(399000)}
+Time: 0.02783513069152832s
+
+Total bits sent: 399000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573432170906
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  4 RBGs and sends 399000 bits
+
+Iteration 326:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.022201061248779297s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573451111504
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 364000 bits
+
+Iteration 327:
+Bits in the buffer: {0: np.int64(406000)}
+Time: 0.024809837341308594s
+
+Total bits sent: 406000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 2.083787705345655
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.2941331110457186
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 406000 bits
+
+Iteration 328:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.0192108154296875s
 
 Total bits sent: 350000	Total RBGs used: 1
 
 BS 0:
-	P( 0, 0) = 1.0
-	P( 0, 1) = 1.0
-	P( 0, 2) = 6.30957344480193
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
 	P( 0, 3) = 1.0
 	P( 0, 4) = 1.0
 
+	user( 0) uses  1 RBGs and sends 350000 bits
+
+Iteration 329:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.021847248077392578s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 322000 bits
+
+Iteration 330:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.011788368225097656s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 339500 bits
+
+Iteration 331:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.01851511001586914s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 318500 bits
+
+Iteration 332:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.010712385177612305s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 343000 bits
+
+Iteration 333:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.016728639602661133s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 381500 bits
+
+Iteration 334:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.018765926361083984s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 325500 bits
+
+Iteration 335:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.0109100341796875s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 360500 bits
+
+Iteration 336:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.016795873641967773s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 315000 bits
+
+Iteration 337:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.010191917419433594s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 336000 bits
+
+Iteration 338:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.025764942169189453s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 388500 bits
+
+Iteration 339:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.018697738647460938s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 318500 bits
+
+Iteration 340:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.010907173156738281s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 332500 bits
+
+Iteration 341:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.016884565353393555s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 315000 bits
+
+Iteration 342:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.025559663772583008s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 2.6840790254699094
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 343:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.021120786666870117s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.391662408382862
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 344:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.020047903060913086s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.1125315019600674
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 367500 bits
+
+Iteration 345:
+Bits in the buffer: {0: np.int64(308000)}
+Time: 0.014534950256347656s
+
+Total bits sent: 308000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.20303391390697395
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 308000 bits
+
+Iteration 346:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.01986861228942871s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.6214387343307447
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 347:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.013893842697143555s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 346500 bits
+
+Iteration 348:
+Bits in the buffer: {0: np.int64(311500)}
+Time: 0.010881900787353516s
+
+Total bits sent: 311500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 3.9252721522661003
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 311500 bits
+
+Iteration 349:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.02293682098388672s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 388500 bits
+
+Iteration 350:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.018890857696533203s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550596484
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 351:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.01805901527404785s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 353500 bits
+
+Iteration 352:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.018390417098999023s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 367500 bits
+
+Iteration 353:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.011821985244750977s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 374500 bits
+
+Iteration 354:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.017770767211914062s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 381500 bits
+
+Iteration 355:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.01774430274963379s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 346500 bits
+
+Iteration 356:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.010597467422485352s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 357:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.018091440200805664s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 346500 bits
+
+Iteration 358:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.0185701847076416s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 353500 bits
+
+Iteration 359:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.010323762893676758s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 336000 bits
+
+Iteration 360:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.01729583740234375s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 325500 bits
+
+Iteration 361:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.009631633758544922s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 378000 bits
+
+Iteration 362:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.010203838348388672s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 363:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.016796112060546875s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 315000 bits
+
+Iteration 364:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.01526331901550293s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 304500 bits
+
+Iteration 365:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.016659021377563477s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 315000 bits
+
+Iteration 366:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.011688232421875s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
 	user( 0) uses  2 RBGs and sends 350000 bits
 
-Iteration 9:
-Bits in the buffer: {0: 297500}
-Time: 0.07869648933410645s
+Iteration 367:
+Bits in the buffer: {0: np.int64(406000)}
+Time: 0.022130727767944336s
+
+Total bits sent: 406000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 2.083787705345655
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.2941331110457186
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  2 RBGs and sends 406000 bits
+
+Iteration 368:
+Bits in the buffer: {0: np.int64(308000)}
+Time: 0.016745805740356445s
+
+Total bits sent: 308000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.20303391390697395
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 308000 bits
+
+Iteration 369:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.015195608139038086s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 346500 bits
+
+Iteration 370:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.017818689346313477s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 3.9994352420110486
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 322000 bits
+
+Iteration 371:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.01804065704345703s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 3.9994352420110486
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325500 bits
+
+Iteration 372:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.018540143966674805s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 3.9994352420110486
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 371000 bits
+
+Iteration 373:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.01912069320678711s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 3.9994352420110486
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325500 bits
+
+Iteration 374:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.01785445213317871s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 375:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.018320083618164062s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 376:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.014516592025756836s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.004831988479023316
+	P( 0, 1) = 2.9792008910180905
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 346500 bits
+
+Iteration 377:
+Bits in the buffer: {0: np.int64(395500)}
+Time: 0.024902820587158203s
+
+Total bits sent: 395500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589244117937664
+	P( 0, 2) = 0.0012589254117924265
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  1 RBGs and sends 395500 bits
+
+Iteration 378:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.012242555618286133s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.5810820278776759
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 2.5015731233849436
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 379:
+Bits in the buffer: {0: np.int64(402500)}
+Time: 0.030820369720458984s
+
+Total bits sent: 402500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.001259660416422072
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0017173556716170116
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0  3 RBGs and sends 402499.9999999958 bits
+
+Iteration 380:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.020833969116210938s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.391662408382862
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 381:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.02028036117553711s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.001258925411795568
+	P( 0, 2) = 6.30957344480193
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 364000 bits
+
+Iteration 382:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.016913175582885742s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.001258925411795568
+	P( 0, 2) = 6.30957344480193
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 381500 bits
+
+Iteration 383:
+Bits in the buffer: {0: np.int64(413000)}
+Time: 0.032387733459472656s
+
+Total bits sent: 413000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 6.231191634641861
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 5.341518276355011
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  3 RBGs and sends 413000 bits
+
+Iteration 384:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.01590728759765625s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 385:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.017701148986816406s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 386:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.01793670654296875s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 387:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.020438432693481445s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.1125315019600674
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 367500 bits
+
+Iteration 388:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.02150559425354004s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.6214387343307447
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 389:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.0182955265045166s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 390:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.016476869583129883s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.055344600419687
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 377999.9999996228 bits
+
+Iteration 391:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.019008159637451172s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909534221002153
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 392:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.017698049545288086s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 393:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.020521163940429688s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.391662408382862
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 394:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.018336057662963867s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 318500 bits
+
+Iteration 395:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.024491310119628906s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 2.6840790254699094
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 396:
+Bits in the buffer: {0: np.int64(399000)}
+Time: 0.02779245376586914s
+
+Total bits sent: 399000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573432170906
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  4 RBGs and sends 399000 bits
+
+Iteration 397:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.021078824996948242s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.1125315019600674
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 367500 bits
+
+Iteration 398:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.020995140075683594s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 399:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.021113872528076172s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 400:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.02046489715576172s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.6214387343307439
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 401:
+Bits in the buffer: {0: np.int64(402500)}
+Time: 0.03007340431213379s
+
+Total bits sent: 402500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.001259660416422072
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0017173556716170116
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0  3 RBGs and sends 402499.9999999958 bits
+
+Iteration 402:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.016431093215942383s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 315000 bits
+
+Iteration 403:
+Bits in the buffer: {0: np.int64(297500)}
+Time: 0.016012191772460938s
 
 Total bits sent: 297500	Total RBGs used: 1
 
 BS 0:
-	P( 0, 0) = 1.0
+	P( 0, 0) = 6.30957344480193
 	P( 0, 1) = 1.0
-	P( 0, 2) = 6.30957344480193
+	P( 0, 2) = 1.0
 	P( 0, 3) = 1.0
 	P( 0, 4) = 1.0
 
-	user( 0) uses  2 RBGs and sends 297500 bits
+	user( 0) uses  0 RBGs and sends 297500 bits
 
-Bits remaining in the buffer: {0: 381500}
+Iteration 404:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.016355514526367188s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 304500 bits
+
+Iteration 405:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.018422842025756836s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 346500 bits
+
+Iteration 406:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.011397838592529297s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 407:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.019304513931274414s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 322000 bits
+
+Iteration 408:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.017820358276367188s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 322000 bits
+
+Iteration 409:
+Bits in the buffer: {0: np.int64(322000)}
+Time: 0.017399072647094727s
+
+Total bits sent: 322000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 322000 bits
+
+Iteration 410:
+Bits in the buffer: {0: np.int64(311500)}
+Time: 0.017134428024291992s
+
+Total bits sent: 311500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 311500 bits
+
+Iteration 411:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.010105371475219727s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 412:
+Bits in the buffer: {0: np.int64(392000)}
+Time: 0.027077436447143555s
+
+Total bits sent: 392000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 392000 bits
+
+Iteration 413:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.011909723281860352s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.5810820278776759
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 2.5015731233849436
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 414:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.01738882064819336s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.5810820278776759
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 2.5015731233849436
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 325500 bits
+
+Iteration 415:
+Bits in the buffer: {0: np.int64(395500)}
+Time: 0.025174379348754883s
+
+Total bits sent: 395500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589244117937664
+	P( 0, 2) = 0.0012589254117924265
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  1 RBGs and sends 395500 bits
+
+Iteration 416:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.01704263687133789s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 350000 bits
+
+Iteration 417:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.010526180267333984s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 332500 bits
+
+Iteration 418:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.01065826416015625s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 336000 bits
+
+Iteration 419:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.010205507278442383s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 329000 bits
+
+Iteration 420:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.011503219604492188s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 6.30957344480193
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 374500 bits
+
+Iteration 421:
+Bits in the buffer: {0: np.int64(392000)}
+Time: 0.02852487564086914s
+
+Total bits sent: 392000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 392000 bits
+
+Iteration 422:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.018279075622558594s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325499.99999999994 bits
+
+Iteration 423:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.02528095245361328s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 2.6840790254699094
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 364000 bits
+
+Iteration 424:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.01980900764465332s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 353500 bits
+
+Iteration 425:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.020198583602905273s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 353500 bits
+
+Iteration 426:
+Bits in the buffer: {0: np.int64(346500)}
+Time: 0.018576860427856445s
+
+Total bits sent: 346500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 346500 bits
+
+Iteration 427:
+Bits in the buffer: {0: np.int64(378000)}
+Time: 0.009907960891723633s
+
+Total bits sent: 378000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 378000 bits
+
+Iteration 428:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.009653568267822266s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 357000 bits
+
+Iteration 429:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.017302989959716797s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 315000 bits
+
+Iteration 430:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.010695934295654297s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 431:
+Bits in the buffer: {0: np.int64(420000)}
+Time: 0.024864673614501953s
+
+Total bits sent: 420000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.09158756787547834
+	P( 0, 1) = 0.0014185957328457363
+	P( 0, 2) = 6.309573432170903
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  2 RBGs and sends 420000 bits
+
+Iteration 432:
+Bits in the buffer: {0: np.int64(287000)}
+Time: 0.015211343765258789s
+
+Total bits sent: 287000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.07710955364956898
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 287000 bits
+
+Iteration 433:
+Bits in the buffer: {0: np.int64(399000)}
+Time: 0.027023792266845703s
+
+Total bits sent: 399000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 6.309573432170906
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  4 RBGs and sends 399000 bits
+
+Iteration 434:
+Bits in the buffer: {0: np.int64(294000)}
+Time: 0.019505023956298828s
+
+Total bits sent: 294000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 0.10561388895848234
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 294000 bits
+
+Iteration 435:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.01556253433227539s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 436:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.02175617218017578s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.6570893479336646
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 371000 bits
+
+Iteration 437:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.018327713012695312s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 0.1713265814946866
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 304500 bits
+
+Iteration 438:
+Bits in the buffer: {0: np.int64(367500)}
+Time: 0.021314382553100586s
+
+Total bits sent: 367500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.1125315019600674
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 367500 bits
+
+Iteration 439:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.02159595489501953s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012607584464561818
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0026350019023644
+	P( 0, 3) = 0.0012607590757825022
+	P( 0, 4) = 0.0012607663913179014
+
+	user( 0) uses  2 RBGs and sends 318500 bits
+
+Iteration 440:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.018423795700073242s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 1.0
+	P( 0, 3) = 4.310375598233575
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 374499.999999999 bits
+
+Iteration 441:
+Bits in the buffer: {0: np.int64(294000)}
+Time: 0.02578115463256836s
+
+Total bits sent: 294000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 2.4320987187804706
+	P( 0, 4) = 1.0
+
+	user( 0) uses  3 RBGs and sends 294000 bits
+
+Iteration 442:
+Bits in the buffer: {0: np.int64(437500)}
+Time: 0.02849602699279785s
+
+Total bits sent: 437500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012612030679766486
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.01198545355214921
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  2 RBGs and sends 437500 bits
+
+Iteration 443:
+Bits in the buffer: {0: np.int64(329000)}
+Time: 0.019347667694091797s
+
+Total bits sent: 329000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550597513
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 329000 bits
+
+Iteration 444:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.018174409866333008s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550597513
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 325500 bits
+
+Iteration 445:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.026572465896606445s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.0909990550597513
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.7012315079167919
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  0 RBGs and sends 315000 bits
+
+Iteration 446:
+Bits in the buffer: {0: np.int64(392000)}
+Time: 0.03493690490722656s
+
+Total bits sent: 392000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 392000 bits
+
+Iteration 447:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.012075185775756836s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.5810820278776759
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 2.5015731233849436
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 448:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.02037787437438965s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.6570893479336646
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 371000 bits
+
+Iteration 449:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.019244670867919922s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 353500 bits
+
+Iteration 450:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.01587533950805664s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 364000 bits
+
+Iteration 451:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.01865243911743164s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 353500 bits
+
+Iteration 452:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.010651111602783203s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 339500 bits
+
+Iteration 453:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.017827272415161133s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 353500 bits
+
+Iteration 454:
+Bits in the buffer: {0: np.int64(297500)}
+Time: 0.01563572883605957s
+
+Total bits sent: 297500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 297500 bits
+
+Iteration 455:
+Bits in the buffer: {0: np.int64(273000)}
+Time: 0.015549898147583008s
+
+Total bits sent: 273000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 273000 bits
+
+Iteration 456:
+Bits in the buffer: {0: np.int64(395500)}
+Time: 0.024842023849487305s
+
+Total bits sent: 395500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589244117937664
+	P( 0, 2) = 0.0012589254117924265
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0  1 RBGs and sends 395500 bits
+
+Iteration 457:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.016320228576660156s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 6.30957344480193
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 315000 bits
+
+Iteration 458:
+Bits in the buffer: {0: np.int64(388500)}
+Time: 0.024439334869384766s
+
+Total bits sent: 388500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 388500 bits
+
+Iteration 459:
+Bits in the buffer: {0: np.int64(392000)}
+Time: 0.02422356605529785s
+
+Total bits sent: 392000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012655464946376245
+	P( 0, 3) = 1.5783375552592491
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  3 RBGs and sends 392000 bits
+
+Iteration 460:
+Bits in the buffer: {0: np.int64(399000)}
+Time: 0.021393299102783203s
+
+Total bits sent: 399000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012655464946376245
+	P( 0, 3) = 1.5783375552592491
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  3 RBGs and sends 399000 bits
+
+Iteration 461:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.018363237380981445s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 353500 bits
+
+Iteration 462:
+Bits in the buffer: {0: np.int64(304500)}
+Time: 0.015642642974853516s
+
+Total bits sent: 304500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 304500 bits
+
+Iteration 463:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.010297775268554688s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 464:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.017923355102539062s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 371000 bits
+
+Iteration 465:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.01745295524597168s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 381500 bits
+
+Iteration 466:
+Bits in the buffer: {0: np.int64(392000)}
+Time: 0.02727222442626953s
+
+Total bits sent: 392000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 392000 bits
+
+Iteration 467:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.017148494720458984s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 1.8671961661635192
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.001320517721432139
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 468:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.01986861228942871s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.0
+	P( 0, 2) = 3.6570893479336646
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  2 RBGs and sends 371000 bits
+
+Iteration 469:
+Bits in the buffer: {0: np.int64(381500)}
+Time: 0.01599884033203125s
+
+Total bits sent: 381500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 381500 bits
+
+Iteration 470:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.01750922203063965s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 318500 bits
+
+Iteration 471:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.010743141174316406s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 360500 bits
+
+Iteration 472:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.010289907455444336s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Iteration 473:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.015064716339111328s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 364000 bits
+
+Iteration 474:
+Bits in the buffer: {0: np.int64(315000)}
+Time: 0.01727890968322754s
+
+Total bits sent: 315000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 315000 bits
+
+Iteration 475:
+Bits in the buffer: {0: np.int64(374500)}
+Time: 0.011696815490722656s
+
+Total bits sent: 374500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.001260907716426944
+	P( 0, 1) = 0.001260907716426944
+	P( 0, 2) = 6.173503927898431
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2 RBGs and sends 374500 bits
+
+Iteration 476:
+Bits in the buffer: {0: np.int64(385000)}
+Time: 0.02067422866821289s
+
+Total bits sent: 385000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.011985462071604589
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1  4 RBGs and sends 385000 bits
+
+Iteration 477:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.016108989715576172s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 357000 bits
+
+Iteration 478:
+Bits in the buffer: {0: np.int64(308000)}
+Time: 0.01630234718322754s
+
+Total bits sent: 308000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 1.9437570654696787
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 308000 bits
+
+Iteration 479:
+Bits in the buffer: {0: np.int64(402500)}
+Time: 0.03162527084350586s
+
+Total bits sent: 402500	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.001259660416422072
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0017173556716170116
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0  3 RBGs and sends 402499.9999999958 bits
+
+Iteration 480:
+Bits in the buffer: {0: np.int64(325500)}
+Time: 0.017989158630371094s
+
+Total bits sent: 325500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 325499.99999999994 bits
+
+Iteration 481:
+Bits in the buffer: {0: np.int64(318500)}
+Time: 0.017856359481811523s
+
+Total bits sent: 318500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 318500 bits
+
+Iteration 482:
+Bits in the buffer: {0: np.int64(311500)}
+Time: 0.01811957359313965s
+
+Total bits sent: 311500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.454937788770611
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  1 RBGs and sends 311500 bits
+
+Iteration 483:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.021750211715698242s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941675
+	P( 0, 1) = 2.2841185560908834
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  1 RBGs and sends 360500 bits
+
+Iteration 484:
+Bits in the buffer: {0: np.int64(336000)}
+Time: 0.021236896514892578s
+
+Total bits sent: 336000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.730172442939923
+	P( 0, 1) = 1.0
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 336000 bits
+
+Iteration 485:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.018780946731567383s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 353500 bits
+
+Iteration 486:
+Bits in the buffer: {0: np.int64(350000)}
+Time: 0.011961698532104492s
+
+Total bits sent: 350000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 350000 bits
+
+Iteration 487:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.010724782943725586s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 488:
+Bits in the buffer: {0: np.int64(353500)}
+Time: 0.018133878707885742s
+
+Total bits sent: 353500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 353500 bits
+
+Iteration 489:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.018378019332885742s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 371000 bits
+
+Iteration 490:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.010530710220336914s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 339500 bits
+
+Iteration 491:
+Bits in the buffer: {0: np.int64(360500)}
+Time: 0.011122941970825195s
+
+Total bits sent: 360500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 360500 bits
+
+Iteration 492:
+Bits in the buffer: {0: np.int64(357000)}
+Time: 0.010255098342895508s
+
+Total bits sent: 357000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 357000 bits
+
+Iteration 493:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.0182037353515625s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 371000 bits
+
+Iteration 494:
+Bits in the buffer: {0: np.int64(371000)}
+Time: 0.018305301666259766s
+
+Total bits sent: 371000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 371000 bits
+
+Iteration 495:
+Bits in the buffer: {0: np.int64(332500)}
+Time: 0.011545419692993164s
+
+Total bits sent: 332500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 332500 bits
+
+Iteration 496:
+Bits in the buffer: {0: np.int64(364000)}
+Time: 0.015948057174682617s
+
+Total bits sent: 364000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 364000 bits
+
+Iteration 497:
+Bits in the buffer: {0: np.int64(343000)}
+Time: 0.010682821273803711s
+
+Total bits sent: 343000	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 5.341954521662001
+	P( 0, 1) = 1.0
+	P( 0, 2) = 1.0
+	P( 0, 3) = 1.0
+	P( 0, 4) = 1.0
+
+	user( 0) uses  0 RBGs and sends 343000 bits
+
+Iteration 498:
+Bits in the buffer: {0: np.int64(392000)}
+Time: 0.0285336971282959s
+
+Total bits sent: 392000	Total RBGs used: 2
+
+BS 0:
+	P( 0, 0) = 0.0012589254117941673
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 0.0012589254117941673
+	P( 0, 3) = 0.0012589254117941673
+	P( 0, 4) = 0.0012589254117941673
+
+	user( 0) uses  2  3 RBGs and sends 392000 bits
+
+Iteration 499:
+Bits in the buffer: {0: np.int64(339500)}
+Time: 0.012424945831298828s
+
+Total bits sent: 339500	Total RBGs used: 1
+
+BS 0:
+	P( 0, 0) = 0.5810820278776759
+	P( 0, 1) = 0.0012589254117941673
+	P( 0, 2) = 2.5015731233849436
+	P( 0, 3) = 0.001260907716426944
+	P( 0, 4) = 0.001260907716426944
+
+	user( 0) uses  2 RBGs and sends 339500 bits
+
+Bits remaining in the buffer: {0: np.int64(276500)}

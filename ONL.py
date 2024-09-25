@@ -21,17 +21,22 @@ from ENVIRONMENT import ENVIRONMENT as ENV
 import sys
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from utils import asserts
 
 """Global variables"""
 FILE = 1                # file number
-START = 1               # starting file
-END = 7                 # ending file
+START = 2               # starting file
+END = 2                 # ending file
 TEE = True              # tee output
 SOLVER = "scip"         # solver (you can also use ipopt)
 CONSOLE = False         # console output
 TERMINAL = sys.stdout   # terminal
 OF = sys.stdout         # output file
+
+PATH = os.getenv("SCIP_PATH")
 
 class ONL(ENV):
     """
@@ -210,7 +215,7 @@ class ONL(ENV):
             None
         """
 
-        solver=SolverFactory(SOLVER)
+        solver=SolverFactory(SOLVER, executable=PATH)
         self.model.L.store_values(self.L)
 
         sys.stdout = TERMINAL

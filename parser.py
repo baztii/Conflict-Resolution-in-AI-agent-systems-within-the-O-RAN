@@ -16,10 +16,10 @@ import re
 from utils import read_file_to_string, plot_two_dicts
 
 ## Constants
-N = 3
+N = 2
 FILE1 = f"merge/merge{N}.txt"
 FILE2 = f"tests/test{N}/results.txt"
-MAXITER = 80
+MAXITER = 15
 
 PLOTNAME = f"plots/data{N}.png"
 
@@ -76,15 +76,17 @@ def main(file1 : str = FILE1, file2 : str = FILE2):
     # Parse the log1
     parsed_results1_long = parse_total_bits_sent(log_text1)
     parsed_results1 = {}
-    for i in range(MAXITER):
-        parsed_results1[i] = parsed_results1_long[i]
-
 
     # Sample log text2
     log_text2 = read_file_to_string(file2)
 
     # Parse the log2
-    parsed_results2 = parse_total_bits_sent(log_text2)
+    parsed_results2_long = parse_total_bits_sent(log_text2)
+    parsed_results2 = {}
+
+    for i in range(MAXITER):
+        parsed_results1[i] = parsed_results1_long[i+50]
+        parsed_results2[i] = parsed_results2_long[i+1]
 
     plot_two_dicts(parsed_results1, parsed_results2, "NLO and merged agent comparison", "merged", "NLO", "Iterations", "Bits sent", PLOTNAME)
 

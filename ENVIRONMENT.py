@@ -20,7 +20,7 @@ import numpy as np
 from pyomo.environ import log
 
 """ Global variables """
-ITER    = 10   # Number of iterations of the gameloop
+ITER    = 500   # Number of iterations of the gameloop
 
 class ENVIRONMENT:
     """

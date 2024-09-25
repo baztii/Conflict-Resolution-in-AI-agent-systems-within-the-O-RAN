@@ -589,7 +589,9 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
             reward += self.transmissionBits()/1e6
 
             self.TxData()
-            self.RqData()
+            if self.iterations < 50: self.RqData()
+            elif self.iterations < 65: self.L = L_iterations[self.iterations-50]
+            else: self.RqData()
 
             if self.render_mode == "human": print("Bits remaining in the buffer:", self.L)
 
@@ -619,3 +621,20 @@ class CUSTOM_ENVIRONMENT(gym.Env, ENVIRONMENT):
             terminated = bool(sum(self.L.values()) == 0) or not self.valid()
 
         return  self.current_state(), reward, terminated, False, {}
+
+
+L_iterations = [{0: np.int64(350000), 1: np.int64(343000), 2: np.int64(381500), 3: np.int64(350000), 4: np.int64(332500)},
+                {0: np.int64(287000), 1: np.int64(357000), 2: np.int64(372467), 3: np.int64(311500), 4: np.int64(325500)},
+                {0: np.int64(318500), 1: np.int64(364000), 2: np.int64(311500), 3: np.int64(350000), 4: np.int64(287000)},
+                {0: np.int64(318500), 1: np.int64(364000), 2: np.int64(311500), 3: np.int64(350000), 4: np.int64(287000)},
+                {0: np.int64(350000), 1: np.int64(395500), 2: np.int64(319967), 3: np.int64(332500), 4: np.int64(304500)},
+                {0: np.int64(315000), 1: np.int64(376260), 2: np.int64(357000), 3: np.int64(353500), 4: np.int64(360500)},
+                {0: np.int64(329000), 1: np.int64(364000), 2: np.int64(353500), 3: np.int64(304500), 4: np.int64(406000)},
+                {0: np.int64(357000), 1: np.int64(339500), 2: np.int64(395500), 3: np.int64(336000), 4: np.int64(410784)},
+                {0: np.int64(290500), 1: np.int64(353500), 2: np.int64(400684), 3: np.int64(315000), 4: np.int64(387568)},
+                {0: np.int64(329000), 1: np.int64(381500), 2: np.int64(381368), 3: np.int64(374500), 4: np.int64(360852)},
+                {0: np.int64(350000), 1: np.int64(360500), 2: np.int64(351335), 3: np.int64(339500), 4: np.int64(325500)},
+                {0: np.int64(308000), 1: np.int64(364000), 2: np.int64(346500), 3: np.int64(308000), 4: np.int64(332500)},
+                {0: np.int64(388500), 1: np.int64(364000), 2: np.int64(276500), 3: np.int64(371000), 4: np.int64(308000)},
+                {0: np.int64(349664), 1: np.int64(234500), 2: np.int64(371000), 3: np.int64(388500), 4: np.int64(392000)},
+                {0: np.int64(360500), 1: np.int64(322000), 2: np.int64(371000), 3: np.int64(322200), 4: np.int64(312784)}]
